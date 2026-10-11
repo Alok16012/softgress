@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# allow the env template
+!.env.example
+
+# local data (embedded Postgres, dev secret)
+/.data/
+
+# test output
+/test-results/
+/playwright-report/
+/blob-report/
+/remotion/out/
