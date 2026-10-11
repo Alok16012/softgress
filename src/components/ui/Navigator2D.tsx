@@ -32,7 +32,7 @@ const TINT: Record<SceneId, string> = {
  * Lightweight 2D scene navigator for weak devices, no-WebGL browsers or by choice.
  * Uses the same state machine and hotspot actions as the 3D office.
  */
-export function Navigator2D() {
+export function Navigator2D({ introVideo = false }: { introVideo?: boolean }) {
   const st = useTour((s) => s.state);
   const dispatch = useTour((s) => s.dispatch);
   const run = useHotspotAction();
@@ -40,8 +40,9 @@ export function Navigator2D() {
   // No camera here: transitions complete immediately; no intro animation.
   useEffect(() => {
     if (st.phase === "transit") dispatch({ type: "ARRIVED", transitId: st.transitId });
-    if (st.phase === "intro") dispatch({ type: "SKIP_INTRO" });
-  }, [st.phase, st.transitId, dispatch]);
+    // With a pre-rendered intro available, the video handles the intro phase.
+    if (st.phase === "intro" && !introVideo) dispatch({ type: "SKIP_INTRO" });
+  }, [st.phase, st.transitId, dispatch, introVideo]);
 
   const scene = SCENES[st.scene];
   const Icon = ICONS[st.scene];

@@ -22,7 +22,7 @@ function Effects({ quality }: { quality: Quality }) {
   return (
     <EffectComposer multisampling={quality === "high" ? 4 : 0}>
       {quality === "high" ? <N8AO aoRadius={1.1} intensity={2.4} distanceFalloff={0.5} halfRes quality="performance" /> : <></>}
-      <Bloom mipmapBlur luminanceThreshold={1.0} luminanceSmoothing={0.2} intensity={0.55} />
+      <Bloom mipmapBlur luminanceThreshold={1.15} luminanceSmoothing={0.2} intensity={0.32} />
       <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
       <Vignette offset={0.32} darkness={0.42} />
     </EffectComposer>
@@ -67,7 +67,7 @@ export default function World({ onReady }: { onReady?: () => void }) {
 
   return (
     <Canvas
-      shadows={quality !== "low"}
+      shadows={quality !== "low" ? "percentage" : false}
       dpr={DPR[quality]}
       camera={{ fov: 52, near: 0.1, far: 900, position: [3.5, 3.4, 158] }}
       gl={{

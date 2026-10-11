@@ -45,17 +45,42 @@ export async function POST(req: Request) {
 
   const provider = getProvider();
   const encoder = new TextEncoder();
+  // The visitor can close the chat or navigate away mid-reply: stop writing once the
+  // stream is cancelled, and abort the model call so we don't pay for unused tokens.
+  const abort = new AbortController();
+  req.signal.addEventListener("abort", () => abort.abort(), { once: true });
+  let closed = false;
   const stream = new ReadableStream<Uint8Array>({
     async start(controller) {
-      const send = (e: ChatSse) => controller.enqueue(encoder.encode(`event: ${e.event}\ndata: ${JSON.stringify(e.data)}\n\n`));
+      const send = (e: ChatSse) => {
+        if (closed) return;
+        try {
+          controller.enqueue(encoder.encode(`event: ${e.event}\ndata: ${JSON.stringify(e.data)}\n\n`));
+        } catch {
+          closed = true;
+          abort.abort();
+        }
+      };
       try {
-        for await (const e of runChat({ db, provider, timeoutMs: env().AI_TIMEOUT_MS }, body, req.signal)) send(e);
+        for await (const e of runChat({ db, provider, timeoutMs: env().AI_TIMEOUT_MS }, body, abort.signal)) {
+          if (closed) break;
+          send(e);
+        }
       } catch (err) {
-        log.error("chat.stream_failed", { err: errorCode(err) });
-        send({ event: "error", data: { code: "internal_error", message: "Something went wrong. Please try again.", retryable: true } });
+        if (!closed) {
+          log.error("chat.stream_failed", { err: errorCode(err) });
+          send({ event: "error", data: { code: "internal_error", message: "Something went wrong. Please try again.", retryable: true } });
+        }
       } finally {
-        controller.close();
+        if (!closed) {
+          closed = true;
+          controller.close();
+        }
       }
+    },
+    cancel() {
+      closed = true;
+      abort.abort();
     },
   });
 

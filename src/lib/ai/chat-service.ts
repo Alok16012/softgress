@@ -25,8 +25,8 @@ export const chatRequestSchema = z.object({
     )
     .min(1)
     .max(60)
-    .refine((m) => m[m.length - 1].role === "user", "Last message must be from the visitor")
-    .refine((m) => m[m.length - 1].content.length > 0, "Message is empty"),
+    .refine((m) => m.at(-1)?.role === "user", "Last message must be from the visitor")
+    .refine((m) => (m.at(-1)?.content.length ?? 0) > 0, "Message is empty"),
   sharedBrief: briefSchema.partial().nullable().default(null),
 });
 export type ChatRequestBody = z.infer<typeof chatRequestSchema>;

@@ -89,7 +89,7 @@ export function sessionSecret(): string {
   if (s && s.length >= 32) return s;
   if (isProduction()) throw new Error("SESSION_SECRET (>=32 chars) is required in production");
   if (devSecret) return devSecret;
-  const file = path.resolve(process.cwd(), ".data/dev-secret");
+  const file = path.resolve(/*turbopackIgnore: true*/ process.cwd(), ".data/dev-secret");
   try {
     devSecret = readFileSync(file, "utf8").trim();
   } catch {

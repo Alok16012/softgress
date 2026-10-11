@@ -34,12 +34,12 @@ export function M(): Record<MatKey, THREE.Material> {
   if (mats) return mats;
   mats = {
     concrete: std({ map: tex(concreteTexture(226), [4, 2]), roughness: 0.92, metalness: 0 }),
-    concreteDark: std({ map: tex(concreteTexture(150), [4, 2]), roughness: 0.9 }),
-    plaster: std({ color: "#F1EEE8", roughness: 0.95 }),
+    concreteDark: std({ map: tex(concreteTexture(150), [4, 2]), color: "#9C9790", roughness: 0.6 }),
+    plaster: std({ color: "#E4DFD7", roughness: 0.95 }),
     wood: std({ map: tex(woodTexture("#B9844F"), [1, 1]), roughness: 0.55 }),
     woodDark: std({ map: tex(woodTexture("#6E4A2E"), [1, 1]), roughness: 0.5 }),
     oakFloor: std({ map: tex(woodTexture("#C29361"), [6, 6]), roughness: 0.45, metalness: 0.02 }),
-    stoneFloor: std({ map: tex(floorTileTexture("#E8E3DB"), [8, 6]), roughness: 0.25, metalness: 0.05 }),
+    stoneFloor: std({ map: tex(floorTileTexture("#E8E3DB"), [8, 6]), color: "#D9D3C9", roughness: 0.3, metalness: 0.05 }),
     carpet: std({ map: tex(carpetTexture("#3A434D"), [10, 10]), roughness: 1 }),
     carpetTeal: std({ map: tex(carpetTexture("#20504F"), [6, 6]), roughness: 1 }),
     glass: new THREE.MeshPhysicalMaterial({
@@ -67,7 +67,7 @@ export function M(): Record<MatKey, THREE.Material> {
     metalDark: std({ color: "#2B3036", roughness: 0.45, metalness: 0.7 }),
     chrome: std({ color: "#DDE3E8", roughness: 0.12, metalness: 1 }),
     black: std({ color: "#15181C", roughness: 0.6 }),
-    white: std({ color: "#F7F7F5", roughness: 0.5 }),
+    white: std({ color: "#ECEBE7", roughness: 0.5 }),
     teal: std({ color: "#29C6C0", roughness: 0.45 }),
     tealGlow: std({ color: "#29C6C0", emissive: "#29C6C0", emissiveIntensity: 2.2, roughness: 0.4, toneMapped: false }),
     mint: std({ color: "#A8F0D3", roughness: 0.6 }),
@@ -83,11 +83,11 @@ export function M(): Record<MatKey, THREE.Material> {
     bark: std({ color: "#5B4636", roughness: 1 }),
     soil: std({ color: "#4A3B2E", roughness: 1 }),
     screenOff: std({ color: "#0A0D11", roughness: 0.2, metalness: 0.4 }),
-    lightPanel: std({ color: "#ffffff", emissive: "#FFF6E8", emissiveIntensity: 1.6, toneMapped: false }),
+    lightPanel: std({ color: "#ffffff", emissive: "#FFF3E2", emissiveIntensity: 1.05, toneMapped: false }),
     warmLight: std({ color: "#FFE2B0", emissive: "#FFCF80", emissiveIntensity: 2.5, toneMapped: false }),
     rubber: std({ color: "#1B1D20", roughness: 0.9 }),
     terracotta: std({ color: "#B7653F", roughness: 0.85 }),
-    paint: std({ color: "#E9E6E0", roughness: 0.9 }),
+    paint: std({ color: "#D8D3CA", roughness: 0.9 }),
     redAccent: std({ color: "#D9534F", roughness: 0.5 }),
   };
   return mats;

@@ -128,3 +128,10 @@ describe("admin auth", () => {
     expect(can("owner", "knowledge:approve")).toBe(true);
   });
 });
+
+describe("chat request schema edge cases", () => {
+  it("rejects an empty message list without throwing", () => {
+    expect(() => chatRequestSchema.safeParse({ sessionId: crypto.randomUUID(), staffId: "x", messages: [] })).not.toThrow();
+    expect(chatRequestSchema.safeParse({ sessionId: crypto.randomUUID(), staffId: "x", messages: [] }).success).toBe(false);
+  });
+});

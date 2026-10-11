@@ -6,20 +6,27 @@ import { SCENE_IDS, type SceneId } from "@/lib/types";
 import { hydratePrefs, useTour, type Quality } from "@/stores/tour";
 import { CatalogProvider, type ClientCatalog } from "./ui/CatalogContext";
 import { ChatDrawer } from "./ui/ChatDrawer";
-import { ConsentNotice, EntryChoice, HelpDialog, IntroOverlay, MiniMap, RoomPanel, SettingsDialog, TopBar, TourControls } from "./ui/Hud";
+import { ConsentNotice, EntryChoice, HelpDialog, IntroOverlay, MiniMap, RoomPanel, RooftopFinale, SettingsDialog, TopBar, TourControls } from "./ui/Hud";
 import { Navigator2D } from "./ui/Navigator2D";
 import { PanelHost } from "./ui/Panels";
 import { HotspotLayer } from "./ui/HotspotLayer";
 import { useAmbientSound } from "./ui/useAmbientSound";
+import { IntroVideo } from "./ui/IntroVideo";
 
 const World = dynamic(() => import("./tour/World"), { ssr: false });
 
-function detectWebGL(): boolean {
+/** WebGL support, and whether it's a software rasteriser (no GPU), which can't run the 3D office smoothly. */
+function detectWebGL(): { ok: boolean; software: boolean } {
   try {
     const c = document.createElement("canvas");
-    return Boolean(c.getContext("webgl2") ?? c.getContext("webgl"));
+    const gl = (c.getContext("webgl2") ?? c.getContext("webgl")) as WebGLRenderingContext | null;
+    if (!gl) return { ok: false, software: false };
+    const ext = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = String(ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER));
+    gl.getExtension("WEBGL_lose_context")?.loseContext();
+    return { ok: true, software: /swiftshader|llvmpipe|software|basic render/i.test(renderer) };
   } catch {
-    return false;
+    return { ok: false, software: false };
   }
 }
 
@@ -172,7 +179,10 @@ function Fade() {
 
 export default function TourApp({ catalog }: { catalog: ClientCatalog }) {
   // Client-only component (ssr: false), so browser capabilities can be read during init.
-  const [caps] = useState(() => ({ webgl: detectWebGL(), reduced: window.matchMedia("(prefers-reduced-motion: reduce)").matches }));
+  const [caps] = useState(() => {
+    const gl = detectWebGL();
+    return { webgl: gl.ok, software: gl.software, reduced: window.matchMedia("(prefers-reduced-motion: reduce)").matches };
+  });
   const webgl = caps.webgl;
   const [ready, setReady] = useState(false);
   const [loaded, setLoaded] = useState(false);
@@ -180,7 +190,14 @@ export default function TourApp({ catalog }: { catalog: ClientCatalog }) {
   const [help, setHelp] = useState(false);
   const [settings, setSettings] = useState(false);
   const [notice, setNotice] = useState<string | null>(() =>
-    caps.webgl ? null : "Your browser can't display the 3D office, so you're seeing the simple navigator. Everything works the same.",
+    // No notice when the visitor (or a test) picked a view explicitly via ?view=.
+    new URLSearchParams(location.search).has("view")
+      ? null
+      : !caps.webgl
+      ? "Your browser can't display the 3D office, so you're seeing the simple navigator. Everything works the same."
+      : caps.software
+        ? "This device has no graphics acceleration, so you're seeing the simple navigator. You can try the 3D office in Settings."
+        : null,
   );
   const root = useRef<HTMLElement>(null);
   const view = useTour((s) => s.prefs.view);
@@ -189,8 +206,13 @@ export default function TourApp({ catalog }: { catalog: ClientCatalog }) {
   const setPrefs = useTour((s) => s.setPrefs);
 
   useEffect(() => {
-    hydratePrefs(caps.reduced, suggestQuality(), caps.webgl);
-    if (new URLSearchParams(location.search).get("view") === "2d") setPrefs({ view: "2d" });
+    hydratePrefs(caps.reduced, caps.software ? "low" : suggestQuality(), caps.webgl, caps.software);
+    const forced = new URLSearchParams(location.search).get("view");
+    if (forced === "2d") setPrefs({ view: "2d" });
+    if (forced === "3d" && caps.webgl) setPrefs({ view: "3d" });
+    // Support/debug override: ?quality=low|medium|high (also pins it, disabling auto-adjust).
+    const q = new URLSearchParams(location.search).get("quality");
+    if (q === "low" || q === "medium" || q === "high") setPrefs({ quality: q, autoQuality: false });
     // Prefs live in an external store; flip `ready` after they are applied so the
     // first canvas is created with the right quality.
     const id = requestAnimationFrame(() => setReady(true));
@@ -198,13 +220,23 @@ export default function TourApp({ catalog }: { catalog: ClientCatalog }) {
   }, [setPrefs, caps]);
 
   useUrlSync(ready);
+  // When the intro/entry overlays close, give keyboard users a predictable focus point.
+  const phase = useTour((s) => s.state.phase);
+  const prevPhase = useRef(phase);
+  useEffect(() => {
+    const was = prevPhase.current;
+    prevPhase.current = phase;
+    if ((was === "intro" || was === "entry") && phase !== "intro" && phase !== "entry" && phase !== "panel" && phase !== "dialogue") {
+      root.current?.focus({ preventScroll: true });
+    }
+  }, [phase]);
   useShortcuts(setMapOpen, setHelp);
   useWheelStepping(root);
   useAmbientSound(sound, scene === "rooftop");
 
   return (
     <CatalogProvider value={catalog}>
-      <section ref={root} id="top" aria-label="Softgress virtual headquarters tour" className="relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-midnight text-white">
+      <section ref={root} id="top" tabIndex={-1} aria-label="Softgress virtual headquarters tour" className="outline-none relative h-[100svh] min-h-[560px] w-full overflow-hidden bg-midnight text-white">
         {ready && view === "3d" && webgl && (
           <WorldBoundary
             onError={() => {
@@ -213,12 +245,18 @@ export default function TourApp({ catalog }: { catalog: ClientCatalog }) {
             }}
           >
             <div className="absolute inset-0">
-              <World onReady={() => setLoaded(true)} />
+              <World
+                onReady={() => {
+                  (window as unknown as { __sgReadyMs?: number }).__sgReadyMs = Math.round(performance.now());
+                  setLoaded(true);
+                }}
+              />
             </div>
             <HotspotLayer />
           </WorldBoundary>
         )}
-        {ready && view === "2d" && <Navigator2D />}
+        {ready && view === "2d" && <Navigator2D introVideo={catalog.config.introVideo} />}
+        {ready && view === "2d" && catalog.config.introVideo && <IntroVideo />}
         {(!ready || (view === "3d" && webgl && !loaded)) && (
           <div className="absolute inset-0 z-40 grid place-items-center bg-midnight" role="status" aria-live="polite">
             <div className="text-center">
@@ -237,9 +275,10 @@ export default function TourApp({ catalog }: { catalog: ClientCatalog }) {
             <TopBar onHelp={() => setHelp(true)} onSettings={() => setSettings(true)} mapOpen={mapOpen} setMapOpen={setMapOpen} />
             <MiniMap open={mapOpen} onClose={() => setMapOpen(false)} />
             {view === "3d" && <RoomPanel />}
-            <IntroOverlay />
+            {view === "3d" && <IntroOverlay />}
             <EntryChoice />
             <TourControls />
+            <RooftopFinale />
             <ChatDrawer />
             <ConsentNotice />
             <PanelHost />

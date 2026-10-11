@@ -6,7 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:all": "pnpm lint && pnpm typecheck && pnpm test && pnpm build && pnpm test:e2e",
+    "db:migrate": "tsx --tsconfig tsconfig.json scripts/db-migrate.mts",
+    "db:reset-local": "rm -rf .data/pglite",
+    "admin:hash": "tsx --tsconfig tsconfig.json scripts/hash-password.mts",
+    "eval:ai": "tsx --tsconfig tsconfig.json scripts/eval-ai.mts",
+    "media:render": "pnpm --filter remotion render:intro && pnpm --filter remotion publish:media"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",

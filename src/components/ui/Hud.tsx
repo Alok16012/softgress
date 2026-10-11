@@ -487,3 +487,36 @@ export function ConsentNotice() {
     </div>
   );
 }
+
+// ── Rooftop finale ─────────────────────────────────────────────────────────
+export function RooftopFinale() {
+  const show = useTour((s) => s.state.scene === "rooftop" && s.state.phase === "idle");
+  const dispatch = useTour((s) => s.dispatch);
+  const { config } = useCatalog();
+  if (!show) return null;
+  return (
+    <section aria-labelledby="finale-title" className="pointer-events-auto absolute z-20 left-1/2 -translate-x-1/2 top-24 w-[min(640px,calc(100%-24px))] text-center animate-in">
+      <h2 id="finale-title" className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]">
+        Your next chapter starts here.
+      </h2>
+      <div className="mt-5 flex flex-wrap justify-center gap-3">
+        <button type="button" className="btn-primary" onClick={() => dispatch({ type: "OPEN_PANEL", panel: { type: "request", kind: "quote" } })}>
+          Request a proposal
+        </button>
+        <button type="button" className="btn-ghost glass" onClick={() => dispatch({ type: "OPEN_PANEL", panel: { type: "request", kind: "consultation" } })}>
+          Book a consultation
+        </button>
+        {config.whatsappNumber && (
+          <a className="btn-ghost glass" href={`https://wa.me/${config.whatsappNumber.replace(/^\+/, "")}`} target="_blank" rel="noopener noreferrer">
+            WhatsApp
+          </a>
+        )}
+        {config.contactEmail && (
+          <a className="btn-ghost glass" href={`mailto:${config.contactEmail}`}>
+            Email
+          </a>
+        )}
+      </div>
+    </section>
+  );
+}

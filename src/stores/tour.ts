@@ -51,12 +51,13 @@ export const useTour = create<TourStore>((set, get) => ({
   },
 }));
 
-export function hydratePrefs(systemReducedMotion: boolean, suggested: Quality, webgl: boolean) {
+export function hydratePrefs(systemReducedMotion: boolean, suggested: Quality, webgl: boolean, softwareGl = false) {
   const stored = loadPrefs();
   useTour.getState().setPrefs({
     ...stored,
     reducedMotion: systemReducedMotion,
-    quality: stored.autoQuality === false && stored.quality ? stored.quality : suggested,
-    view: webgl ? (stored.view ?? "3d") : "2d",
+    quality: softwareGl ? "low" : stored.autoQuality === false && stored.quality ? stored.quality : suggested,
+    // Without GPU acceleration default to 2D; an explicit earlier choice of 3D is respected.
+    view: !webgl ? "2d" : softwareGl ? (stored.view === "3d" ? "3d" : "2d") : (stored.view ?? "3d"),
   });
 }

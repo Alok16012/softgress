@@ -176,8 +176,8 @@ export const SCENES: Record<SceneId, SceneDef> = {
     id: "rooftop",
     label: "Rooftop",
     department: null,
-    pose: { position: [-7, 11.15, -5.6], target: [3, 6.2, 40] },
-    bounds: { min: [-12, 10.2, -30], max: [12, 12.5, -4] },
+    pose: { position: [0, 11.5, -2.4], target: [3, 7.4, 40] },
+    bounds: { min: [-12, 10.2, -30], max: [12, 12.5, -1.2] },
     caption: {
       en: "The rooftop at sunset. Your next chapter starts here: request a proposal, book a consultation or send us your brief.",
     },
@@ -214,7 +214,7 @@ const WAYPOINTS: Record<Exclude<NodeId, SceneId>, Vec3> = {
   ceDoor: [10, 2.25, -23],
   stDoor: [0, 2.35, -26],
   atrium: [0, 6.5, -8],
-  skylight: [0, 10.4, -8],
+  skylight: [0, 10.6, -6],
 };
 
 const EDGES: [NodeId, NodeId][] = [

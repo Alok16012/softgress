@@ -12,6 +12,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Lets an isolated E2E server run next to the dev server.
+  distDir: process.env.NEXT_DIST_DIR ?? ".next",
   // Embedded Postgres (WASM) and the Postgres driver must stay as runtime Node modules.
   serverExternalPackages: ["@electric-sql/pglite", "postgres"],
   outputFileTracingIncludes: { "/**": ["./supabase/**/*.sql"] },

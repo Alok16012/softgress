@@ -8,6 +8,11 @@ import { SCENES, railPoints, type Pose, type Vec3 } from "@/lib/tour/scenes";
 import { conversationPose } from "@/lib/tour/placements";
 import { useTour } from "@/stores/tour";
 
+// Camera rails must finish in wall-clock time even on very slow GPUs. GSAP's default
+// lag smoothing caps each tick at ~33 ms when frames are slow, which would stretch a
+// 4 s walk into minutes on a 1-fps device.
+gsap.ticker.lagSmoothing(0);
+
 const v = (a: Vec3) => new THREE.Vector3(...a);
 const LOOK_DIST = 0.6; // near-target "head turn" model for free look
 
@@ -76,7 +81,14 @@ export function CameraRig({ onIntroProgress }: { onIntroProgress?: (p: number) =
     c.mouseButtons.right = 0;
     c.touches.two = 0;
     c.touches.three = 0;
-    settle(useTour.getState().state.phase === "intro" && !reduced ? INTRO_START : SCENES.campus.pose, false);
+    // Start from wherever the tour state already is (deep links can JUMP before the canvas mounts).
+    const st = useTour.getState().state;
+    if (st.phase === "intro" && !reduced) settle(INTRO_START, false);
+    else if (st.phase === "dialogue" && st.staffId && conversationPose(st.staffId)) settle(conversationPose(st.staffId)!, false);
+    else {
+      settle(SCENES[st.phase === "transit" && st.target ? st.target : st.scene].pose, false);
+      if (st.phase === "idle") applyBounds(st.scene);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -185,6 +197,20 @@ export function CameraRig({ onIntroProgress }: { onIntroProgress?: (p: number) =
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [transitId, phase === "transit"]);
 
+  // Instant relocation (JUMP: deep links, "skip animation", reduced-motion recovery).
+  const lastTransit = useRef(transitId);
+  useEffect(() => {
+    if (lastTransit.current === transitId) return;
+    lastTransit.current = transitId;
+    if (phase === "transit") return; // rails handle it
+    tween.current?.kill();
+    const c = controls.current;
+    if (c) c.enabled = true;
+    settle(SCENES[scene].pose, false);
+    applyBounds(scene);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transitId, phase]);
+
   // Conversation framing and return.
   const wasDialogue = useRef(false);
   useEffect(() => {
@@ -230,6 +256,18 @@ export function CameraRig({ onIntroProgress }: { onIntroProgress?: (p: number) =
       window.removeEventListener("blur", blur);
     };
   }, []);
+
+  // Keep at least ~70° horizontal field of view on narrow/portrait screens.
+  const lastAspect = useRef(0);
+  useFrame(({ camera: cam, size }) => {
+    const aspect = size.width / size.height;
+    if (Math.abs(aspect - lastAspect.current) < 0.001 || !(cam instanceof THREE.PerspectiveCamera)) return;
+    lastAspect.current = aspect;
+    const minHFov = THREE.MathUtils.degToRad(70);
+    const vForH = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(minHFov / 2) / aspect));
+    cam.fov = THREE.MathUtils.clamp(Math.max(52, vForH), 52, 88);
+    cam.updateProjectionMatrix();
+  });
 
   useFrame((_, dt) => {
     const c = controls.current;

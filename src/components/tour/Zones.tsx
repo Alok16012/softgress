@@ -328,6 +328,31 @@ export function CreativeStudio() {
           </mesh>
         ))}
       </group>
+      {/* Central review table with prints and laptops */}
+      <group position={[-19.5, 0, -27.5]}>
+        <B p={[0, 0.9, 0]} s={[3.6, 0.06, 1.4]} m={m.woodDark} />
+        {[-1.6, 1.6].map((x) => (
+          <B key={x} p={[x, 0.45, 0]} s={[0.08, 0.9, 1.2]} m={m.metalDark} />
+        ))}
+        {mood.slice(0, 4).map((mt, i) => (
+          <mesh key={i} position={[-1.2 + i * 0.8, 0.935, (i % 2) * 0.3 - 0.15]} rotation={[-Math.PI / 2, 0, (i - 1.5) * 0.12]} material={mt}>
+            <planeGeometry args={[0.6, 0.42]} />
+          </mesh>
+        ))}
+        <Monitor p={[1.2, 0.93, -0.4]} rot={Math.PI} kind="design" seed={3} w={0.5} />
+        <Character p={[-0.8, 0, 1.05]} rot={Math.PI} look={extra(6)} seed={44} />
+        <Character p={[0.6, 0, -1.05]} look={extra(1)} seed={45} />
+      </group>
+      {/* Clothes rail for shoots */}
+      <group position={[-27.2, 0, -30.2]} rotation={[0, Math.PI / 2, 0]}>
+        <B p={[0, 1.6, 0]} s={[1.6, 0.04, 0.04]} m={m.chrome} />
+        {[-0.78, 0.78].map((x) => (
+          <B key={x} p={[x, 0.8, 0]} s={[0.04, 1.6, 0.4]} m={m.chrome} />
+        ))}
+        {[-0.5, -0.2, 0.1, 0.4].map((x, i) => (
+          <B key={x} p={[x, 1.15, 0]} s={[0.22, 0.8, 0.06]} m={colorMat(["#B0563A", "#29C6C0", "#E9E3D6", "#2E3B4E"][i], 0.95)} />
+        ))}
+      </group>
       <Guide id="rohan-creative" />
       <Sofa p={[-12.4, 0, -31]} rot={-Math.PI / 2} color="#B0563A" w={2.2} />
       <Plant p={[-11, 0, -39]} s={1.4} />
@@ -427,7 +452,7 @@ export function Rooftop() {
       <Slab min={[-30, deckY + 0.5, -0.1]} max={[30, deckY + 1.6, -0.05]} m={m.glass} cast={false} />
       <Slab min={[-30, deckY + 1.6, -0.14]} max={[30, deckY + 1.66, 0]} m={m.chrome} cast={false} />
       {/* Planters with trees */}
-      {[-14, -9, 9, 14].map((x) => (
+      {[-14, -8.5, 8.5, 14].map((x) => (
         <group key={x} position={[x, deckY, -2.4]}>
           <B p={[0, 0.45, 0]} s={[2.4, 0.9, 1.0]} m={m.concreteDark} />
           <mesh position={[0, 1.6, 0]} material={m.foliage} castShadow>
