@@ -23,7 +23,7 @@ export async function seed(db: Db) {
       await tx.query(
         `insert into public.services (department_id, slug, title, summary, description, deliverables,
            process, what_we_need, keywords, pricing_type, starting_price, currency, active, sort_order)
-         select d.id, $2, $3, $4, $5, $6::jsonb, $7::jsonb, $8::jsonb, $9::jsonb, $10, $11, $12, $13, $14
+         select d.id, $2, $3, $4, $5, $6::text::jsonb, $7::text::jsonb, $8::text::jsonb, $9::text::jsonb, $10, $11, $12, $13, $14
          from public.departments d where d.slug = $1
          on conflict (slug) do nothing`,
         [
@@ -36,7 +36,7 @@ export async function seed(db: Db) {
     for (const r of staff) {
       await tx.query(
         `insert into public.virtual_staff (id, department_id, display_name, role_title, config)
-         select $1, d.id, $3, $4, $5::jsonb from public.departments d where d.slug = $2
+         select $1, d.id, $3, $4, $5::text::jsonb from public.departments d where d.slug = $2
          on conflict (id) do nothing`,
         [r.id, r.departmentSlug, r.displayName, r.roleTitle, JSON.stringify(r)],
       );
@@ -52,7 +52,7 @@ export async function seed(db: Db) {
     for (const p of projects) {
       await tx.query(
         `insert into public.projects (slug, title, summary, body, industry, service_slugs, is_sample, published)
-         values ($1,$2,$3,$4,$5, array(select jsonb_array_elements_text($6::jsonb)), $7, $8)
+         values ($1,$2,$3,$4,$5, array(select jsonb_array_elements_text($6::text::jsonb)), $7, $8)
          on conflict (slug) do nothing`,
         [p.slug, p.title, p.summary, p.body, p.industry, JSON.stringify(p.serviceSlugs), p.isSample, p.published],
       );

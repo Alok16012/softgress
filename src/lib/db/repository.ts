@@ -328,7 +328,7 @@ export async function createSubmission(db: Db, input: SubmissionInput): Promise<
       const [request] = await tx.query<{ id: string; status: string }>(
         `insert into public.service_requests (lead_id, service_id, department_id, kind, brief_json, reference_code, idempotency_key)
          values ($1, (select id from public.services where slug=$2), (select id from public.departments where slug=$3),
-                 $4, $5::jsonb, $6, $7)
+                 $4, $5::text::jsonb, $6, $7)
          returning id, status`,
         [lead.id, input.primaryServiceSlug, input.departmentSlug, input.kind, JSON.stringify(input.brief), input.referenceCode, input.idempotencyKey],
       );
@@ -341,7 +341,7 @@ export async function createSubmission(db: Db, input: SubmissionInput): Promise<
         await tx.query(
           `insert into public.consultations (lead_id, service_request_id, start_at, end_at, timezone, preferred_window,
              status, provider, provider_event_id, idempotency_key)
-           values ($1,$2,$3,$4,$5,$6::jsonb,$7,$8,$9,$10)`,
+           values ($1,$2,$3,$4,$5,$6::text::jsonb,$7,$8,$9,$10)`,
           [
             lead.id, request.id,
             c.mode === "slot" ? c.startAt : null,
@@ -359,7 +359,7 @@ export async function createSubmission(db: Db, input: SubmissionInput): Promise<
       }
 
       await tx.query(
-        `insert into public.lead_events (lead_id, type, metadata_json) values ($1, 'created', $2::jsonb)`,
+        `insert into public.lead_events (lead_id, type, metadata_json) values ($1, 'created', $2::text::jsonb)`,
         [lead.id, JSON.stringify({ kind: input.kind, reference: input.referenceCode, possibleDuplicate: Boolean(dup[0]) })],
       );
 
@@ -659,7 +659,7 @@ export async function updateLeadStage(db: Db, id: string, stage: LeadStage, acto
     if (before.status === stage) return true;
     await tx.query(`update public.leads set status=$2 where id=$1`, [id, stage]);
     await tx.query(
-      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'status_changed',$2::jsonb,$3)`,
+      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'status_changed',$2::text::jsonb,$3)`,
       [id, JSON.stringify({ from: before.status, to: stage }), actorId],
     );
     await audit(tx, actorId, "lead.stage", "lead", id, { from: before.status, to: stage });
@@ -676,7 +676,7 @@ export async function addLeadEvent(
 ) {
   return db.tx(async (tx) => {
     const [row] = await tx.query<{ id: string }>(
-      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,$2,$3::jsonb,$4) returning id`,
+      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,$2,$3::text::jsonb,$4) returning id`,
       [leadId, type, JSON.stringify(metadata), actorId],
     );
     if (actorId) await audit(tx, actorId, `lead.${type}`, "lead", leadId, metadata);
@@ -687,12 +687,12 @@ export async function addLeadEvent(
 export async function updateRequestBrief(db: Db, requestId: string, brief: ProjectBrief, actorId: string) {
   return db.tx(async (tx) => {
     const [r] = await tx.query<{ lead_id: string }>(
-      `update public.service_requests set brief_json=$2::jsonb where id=$1 returning lead_id`,
+      `update public.service_requests set brief_json=$2::text::jsonb where id=$1 returning lead_id`,
       [requestId, JSON.stringify(brief)],
     );
     if (!r) return false;
     await tx.query(
-      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'brief_edited',$2::jsonb,$3)`,
+      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'brief_edited',$2::text::jsonb,$3)`,
       [r.lead_id, JSON.stringify({ requestId }), actorId],
     );
     await audit(tx, actorId, "request.brief_edit", "service_request", requestId, {});
@@ -704,7 +704,7 @@ export async function setLeadSummary(db: Db, id: string, summary: string, nextAc
   await db.tx(async (tx) => {
     await tx.query(`update public.leads set ai_summary=$2, ai_next_action=$3, ai_summary_at=now() where id=$1`, [id, summary, nextAction]);
     await tx.query(
-      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'summary_generated',$2::jsonb,$3)`,
+      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'summary_generated',$2::text::jsonb,$3)`,
       [id, JSON.stringify({ model }), actorId],
     );
   });
@@ -725,7 +725,7 @@ export async function updateConsultation(
       [id, patch.status, patch.startAt ?? null, patch.endAt ?? null],
     );
     await tx.query(
-      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'consultation_updated',$2::jsonb,$3)`,
+      `insert into public.lead_events (lead_id, type, metadata_json, actor_id) values ($1,'consultation_updated',$2::text::jsonb,$3)`,
       [c.lead_id, JSON.stringify({ consultationId: id, from: c.status, to: patch.status, startAt: patch.startAt ?? null }), actorId],
     );
     await audit(tx, actorId, "consultation.update", "consultation", id, { from: c.status, ...patch });
@@ -766,7 +766,7 @@ export async function upsertAdminUser(db: Db, email: string, role: string) {
 
 export async function audit(db: Db, actorId: string | null, action: string, entityType: string, entityId: string, diff: unknown) {
   await db.query(
-    `insert into public.audit_logs (actor_id, action, entity_type, entity_id, diff) values ($1,$2,$3,$4,$5::jsonb)`,
+    `insert into public.audit_logs (actor_id, action, entity_type, entity_id, diff) values ($1,$2,$3,$4,$5::text::jsonb)`,
     [actorId, action, entityType, entityId, JSON.stringify(diff ?? {})],
   );
 }

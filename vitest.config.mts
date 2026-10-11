@@ -15,6 +15,6 @@ export default defineConfig({
     include: ["tests/unit/**/*.test.ts", "tests/integration/**/*.test.ts"],
     testTimeout: 30000,
     hookTimeout: 60000,
-    env: { NODE_ENV: "test" },
+    env: { NODE_ENV: "test", SESSION_SECRET: "test-secret-test-secret-test-secret-0123", ADMIN_EMAIL: "owner@example.com", ADMIN_PASSWORD: "test-only-password", ADMIN_ROLE: "owner" },
   },
 });
