@@ -6,6 +6,7 @@ import { ClientShell } from "@/components/site/ClientShell";
 import { ContactClient } from "@/components/site/ContactClient";
 import { loadClientCatalog } from "@/lib/data";
 import { REQUEST_KINDS, type RequestKind } from "@/lib/types";
+import { catalogOnly } from "@/lib/env";
 
 export const metadata: Metadata = {
   title: "Start a project",
@@ -19,16 +20,23 @@ async function Flow({ searchParams }: { searchParams: PageProps<"/contact">["sea
   const kind = rawKind && (REQUEST_KINDS as readonly string[]).includes(rawKind) ? (rawKind as RequestKind) : null;
   const service = typeof sp.service === "string" && /^[a-z0-9-]{2,60}$/.test(sp.service) ? sp.service : null;
   const catalog = await loadClientCatalog();
+  const available = !catalogOnly();
   return (
     <ClientShell catalog={catalog}>
-      <ContactClient kind={kind} service={service} />
+      {available ? <ContactClient kind={kind} service={service} /> : (
+        <div className="rounded-2xl border border-white/15 p-6">
+          <h2 className="text-xl font-semibold">Online requests are opening soon</h2>
+          <p className="mt-3 text-white/75">Please check back soon to request a quote, consultation or callback.</p>
+          <Link href="/services" className="mt-5 inline-block underline text-teal">Explore our services</Link>
+        </div>
+      )}
       <div className="mt-8 grid sm:grid-cols-2 gap-4 text-sm text-white/75">
         {catalog.config.contactEmail ? (
           <p>
             Prefer email? <a className="underline text-white" href={`mailto:${catalog.config.contactEmail}`}>{catalog.config.contactEmail}</a>
           </p>
         ) : (
-          <p>The request form above is the way to reach the team from this website.</p>
+          available && <p>The request form above is the way to reach the team from this website.</p>
         )}
         {catalog.config.whatsappNumber && (
           <p>
@@ -44,7 +52,7 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
   return (
     <>
       <PageHero eyebrow="Contact us" title="Start a project">
-        Tell us what you need. You&apos;ll get a reference code, and a Softgress team member will reply. Prefer to browse first?{" "}
+        Explore how Softgress can help with your next project. Prefer to browse first?{" "}
         <Link href="/services" className="underline underline-offset-4 text-teal">See our services</Link>.
       </PageHero>
       <main id="main" className="flex-1 bg-[#050711] text-white">

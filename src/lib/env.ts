@@ -68,6 +68,9 @@ export function env(): Env {
 
 export const isProduction = () => env().NODE_ENV === "production";
 
+/** Public pages can run before a persistent production database is connected. */
+export const catalogOnly = () => isProduction() && !env().DATABASE_URL && !env().ALLOW_PGLITE_IN_PRODUCTION;
+
 export function aiMode(): "anthropic" | "demo" {
   const e = env();
   // Without a key we never claim to be live, whatever AI_PROVIDER says.

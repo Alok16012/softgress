@@ -57,3 +57,15 @@ passwords are ignored; `SESSION_SECRET` is required.
 - Submit a test request, check it in `/admin`, then delete or mark it lost.
 - Confirm `/robots.txt` and `/sitemap.xml` use the production `SITE_URL`.
 - Re-run `pnpm eval:ai` with the production key before enabling live AI.
+
+## Netlify before database setup
+
+Netlify can build the GitHub `main` branch with `pnpm build` and its automatic Next.js runtime.
+Without `DATABASE_URL`, production public pages use the bundled department, service and
+sample project content. Online requests and request tracking show an availability message;
+CRM, chat and persistence still require a database. Health checks return 503 until it is connected.
+Do not enable embedded PGlite on serverless hosting to store customer requests.
+
+To enable the full app later, migrate a persistent Postgres database as described above,
+set `DATABASE_URL`, `SESSION_SECRET`, `SITE_URL` and admin credentials in Netlify's environment
+variables, and deploy again. The public catalogue then reads from Postgres automatically.

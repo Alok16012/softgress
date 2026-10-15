@@ -4,11 +4,13 @@ import { connection } from "next/server";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { StatusClient } from "@/components/site/StatusClient";
 import { getPublicConfig } from "@/lib/server";
+import { catalogOnly } from "@/lib/env";
 
 export const metadata: Metadata = { title: "Request status", robots: { index: false } };
 
 async function Form() {
   await connection();
+  if (catalogOnly()) return <p className="text-white/75">Online request tracking is opening soon. Please check back later.</p>;
   return <StatusClient devOutbox={getPublicConfig().codeDelivery === "dev_outbox"} />;
 }
 
