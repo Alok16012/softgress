@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Suspense, type ReactNode } from "react";
 import { LogoutButton } from "@/components/admin/AdminClient";
@@ -19,7 +20,10 @@ export default function CrmLayout({ children }: { children: ReactNode }) {
     <div className="flex-1 flex flex-col bg-paper">
       <header className="bg-midnight text-white">
         <div className="mx-auto max-w-7xl px-4 h-14 flex items-center gap-6">
-          <Link href="/admin" className="font-extrabold tracking-[0.18em] text-sm">SOFTGRESS CRM</Link>
+          <Link href="/admin" className="flex items-center gap-2 font-extrabold tracking-[0.18em] text-sm">
+            <Image src="/brand/softgress-mark.png" alt="" width={24} height={24} className="h-6 w-6" />
+            SOFTGRESS CRM
+          </Link>
           <nav aria-label="CRM" className="flex items-center gap-1 text-sm">
             {[
               ["/admin", "Inbox"],

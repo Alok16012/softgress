@@ -209,12 +209,6 @@ export async function setKnowledgeApproval(db: Db, id: string, approved: boolean
   });
 }
 
-export async function listAssets(db: Db) {
-  return db.query<{ id: string; zone: string; name: string; kind: string; status: string; source: string; license: string; triangle_budget: number | null; notes: string }>(
-    `select id, zone, name, kind, status, source, license, triangle_budget, notes from public.asset_manifest order by zone, id`,
-  );
-}
-
 // ─────────────────────────────────────────────────────────────
 // Visitor sessions & conversation metadata (no message bodies)
 // ─────────────────────────────────────────────────────────────

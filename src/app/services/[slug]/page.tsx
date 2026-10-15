@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { SiteFooter, SiteHeader } from "@/components/site/SiteChrome";
+import { ArrowRight, Check } from "lucide-react";
+import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { loadCatalog } from "@/lib/data";
 import { priceLabel } from "@/lib/pricing";
-import { staffByDepartment } from "@/content/staff";
 
 export async function generateMetadata({ params }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const { slug } = await params;
@@ -21,7 +21,6 @@ async function Detail({ params }: { params: PageProps<"/services/[slug]">["param
   const s = services.find((x) => x.slug === slug);
   if (!s) notFound();
   const d = departments.find((x) => x.slug === s.departmentSlug);
-  const guide = staffByDepartment.get(s.departmentSlug);
   const ld = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -30,47 +29,66 @@ async function Detail({ params }: { params: PageProps<"/services/[slug]">["param
     provider: { "@type": "Organization", name: "Softgress" },
   };
   return (
-    <article>
+    <article className="flex-1 flex flex-col">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld).replace(/</g, "\\u003c") }} />
-      <nav aria-label="Breadcrumb" className="text-sm text-ink/60">
-        <Link href="/services" className="hover:underline">Services</Link> ›{" "}
-        <Link href={`/departments/${s.departmentSlug}`} className="hover:underline">{d?.shortName}</Link>
-      </nav>
-      <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight text-ink">{s.title}</h1>
-      <p className="mt-4 text-xl text-ink/75 max-w-3xl">{s.summary}</p>
-      <p className="mt-4 text-ink/70 max-w-3xl">{s.description}</p>
-      <div className="mt-10 grid md:grid-cols-2 gap-8">
-        <section>
-          <h2 className="text-lg font-bold text-ink">Typical deliverables</h2>
-          <ul className="mt-3 list-disc pl-5 space-y-1.5 text-ink/80">{s.deliverables.map((x) => <li key={x}>{x}</li>)}</ul>
-        </section>
-        <section>
-          <h2 className="text-lg font-bold text-ink">What we&apos;ll need from you</h2>
-          <ul className="mt-3 list-disc pl-5 space-y-1.5 text-ink/80">{s.whatWeNeed.map((x) => <li key={x}>{x}</li>)}</ul>
-        </section>
-      </div>
-      <section className="mt-10">
-        <h2 className="text-lg font-bold text-ink">How it works</h2>
-        <ol className="mt-3 flex flex-wrap gap-2">
-          {s.process.map((p, i) => (
-            <li key={p} className="rounded-full border border-ink/15 px-4 py-1.5 text-sm text-ink/80"><span className="font-bold text-teal-dark">{i + 1}</span> {p}</li>
-          ))}
-        </ol>
-      </section>
-      <div className="mt-10 rounded-2xl bg-paper border border-ink/10 p-6 flex flex-wrap items-center justify-between gap-4">
-        <div>
-          <p className="text-sm text-ink/60">Pricing</p>
-          <p className="text-lg font-bold text-ink">{priceLabel(s)}</p>
+      <PageHero
+        artworkSlug={s.departmentSlug}
+        title={s.title}
+        accent={s.summary}
+        crumbs={
+          <nav aria-label="Breadcrumb">
+            <Link href="/services" className="hover:text-white">Services</Link> ›{" "}
+            <Link href={`/departments/${s.departmentSlug}`} className="hover:text-white">{d?.shortName}</Link>
+          </nav>
+        }
+      >
+        {s.description}
+      </PageHero>
+      <main id="main" className="flex-1 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+          <div className="grid md:grid-cols-2 gap-6">
+            <section className="rounded-[20px] border border-ink/10 p-8">
+              <h2 className="font-display text-2xl font-bold text-ink">Typical deliverables</h2>
+              <ul className="mt-5 space-y-3 text-steel">
+                {s.deliverables.map((x) => (
+                  <li key={x} className="flex gap-3"><Check size={18} className="mt-0.5 flex-none text-teal-dark" aria-hidden />{x}</li>
+                ))}
+              </ul>
+            </section>
+            <section className="rounded-[20px] border border-ink/10 p-8">
+              <h2 className="font-display text-2xl font-bold text-ink">What we&apos;ll need from you</h2>
+              <ul className="mt-5 space-y-3 text-steel">
+                {s.whatWeNeed.map((x) => (
+                  <li key={x} className="flex gap-3"><Check size={18} className="mt-0.5 flex-none text-teal-dark" aria-hidden />{x}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+          <section className="mt-16">
+            <h2 className="font-display text-[28px] sm:text-[36px] font-bold text-ink">How it works</h2>
+            <ol className="mt-8 grid sm:grid-cols-3 lg:grid-cols-5 gap-4">
+              {s.process.map((p, i) => (
+                <li key={p} className="rounded-[20px] bg-paper p-6">
+                  <span className="font-display text-[30px] font-bold text-teal-dark">{String(i + 1).padStart(2, "0")}</span>
+                  <p className="mt-2 font-medium text-ink">{p}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+          <div className="sky mt-16 rounded-[32px] p-8 sm:p-10 text-white flex flex-wrap items-center justify-between gap-6">
+            <div>
+              <p className="eyebrow text-teal">Pricing</p>
+              <p className="mt-2 font-display text-2xl font-bold">{priceLabel(s)}</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link href={`/contact?service=${s.slug}`} className="pill">Request a quote <ArrowRight size={16} aria-hidden /></Link>
+              <Link href={`/contact?kind=consultation&service=${s.slug}`} className="pill pill-line text-white">
+                Book a consultation
+              </Link>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-wrap gap-3">
-          <Link href={`/contact?service=${s.slug}`} className="inline-flex items-center rounded-xl bg-midnight text-white px-5 py-3 font-semibold hover:bg-midnight-3">Request a quote</Link>
-          {guide && (
-            <Link href={`/?scene=${d?.sceneId ?? "reception"}`} className="inline-flex items-center rounded-xl border border-ink/15 px-5 py-3 font-semibold text-ink hover:border-teal">
-              Ask {guide.displayName} (AI guide)
-            </Link>
-          )}
-        </div>
-      </div>
+      </main>
     </article>
   );
 }
@@ -78,15 +96,10 @@ async function Detail({ params }: { params: PageProps<"/services/[slug]">["param
 export default function ServicePage({ params }: PageProps<"/services/[slug]">) {
   return (
     <>
-      <SiteHeader />
-      <main id="main" className="flex-1 bg-white">
-        <div className="mx-auto max-w-5xl px-4 py-14">
-          <Suspense fallback={<p className="text-ink/60">Loading…</p>}>
-            <Detail params={params} />
-          </Suspense>
-        </div>
-      </main>
-      <SiteFooter />
+      <Suspense fallback={<PageHero title="Loading…" />}>
+        <Detail params={params} />
+      </Suspense>
+      <SiteFooter cta={false} />
     </>
   );
 }

@@ -1,55 +1,165 @@
 import Link from "next/link";
+import Image from "next/image";
+import { Suspense, type ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
+import { loadCatalog } from "@/lib/data";
+import { getPublicConfig } from "@/lib/server";
+import { HeaderBar, HeaderFallback, type MenuGroup } from "./HeaderBar";
+import { Logo } from "./Logo";
 
+/** Fixed navigation; the Services mega menu is filled from the live catalogue. */
 export function SiteHeader() {
   return (
-    <header className="border-b border-ink/10 bg-white">
-      <div className="mx-auto max-w-6xl px-4 h-16 flex items-center gap-6">
-        <Link href="/" className="flex items-center gap-2 font-extrabold tracking-[0.18em] text-sm text-ink">
-          <span className="grid place-items-center w-7 h-7 rounded-lg bg-teal text-midnight text-xs">S</span>
-          SOFTGRESS
-        </Link>
-        <nav aria-label="Main" className="ml-auto flex items-center gap-1 text-sm font-medium text-ink/80">
-          <Link className="px-3 py-2 rounded-lg hover:bg-ink/5" href="/services">
-            Services
-          </Link>
-          <Link className="px-3 py-2 rounded-lg hover:bg-ink/5 hidden sm:inline" href="/work">
-            Work
-          </Link>
-          <Link className="px-3 py-2 rounded-lg hover:bg-ink/5 hidden sm:inline" href="/status">
-            Request status
-          </Link>
-          <Link className="ml-2 inline-flex items-center rounded-xl bg-midnight text-white px-4 py-2 font-semibold hover:bg-midnight-3" href="/contact">
-            Start a project
-          </Link>
-        </nav>
-      </div>
-    </header>
+    <Suspense fallback={<HeaderFallback />}>
+      <HeaderWithMenu />
+    </Suspense>
   );
 }
 
-export function SiteFooter() {
+async function HeaderWithMenu() {
+  const { departments, services } = await loadCatalog();
+  const menu: MenuGroup[] = departments
+    .filter((d) => d.slug !== "reception" && d.active)
+    .map((d) => ({ slug: d.slug, name: d.name, services: services.filter((s) => s.departmentSlug === d.slug).map((s) => ({ slug: s.slug, title: s.title })) }));
+  return <HeaderBar menu={menu} />;
+}
+
+/** Inner-page banner: night-sky backdrop, breadcrumb, big headline and a pale-blue subline. */
+export function PageHero({
+  eyebrow,
+  title,
+  accent,
+  children,
+  crumbs,
+  artworkSlug,
+}: {
+  eyebrow?: string;
+  title: ReactNode;
+  accent?: ReactNode;
+  children?: ReactNode;
+  crumbs?: ReactNode;
+  artworkSlug?: string;
+}) {
   return (
-    <footer className="bg-midnight text-white/80">
-      <div className="mx-auto max-w-6xl px-4 py-12 grid gap-8 sm:grid-cols-3 text-sm">
-        <div>
-          <p className="font-extrabold tracking-[0.18em] text-white">SOFTGRESS</p>
-          <p className="mt-2">Ideas engineered. Growth accelerated.</p>
-          <p className="mt-2 text-white/55">Digital marketing &amp; software development agency.</p>
-        </div>
-        <nav aria-label="Footer">
-          <ul className="space-y-2">
-            <li><Link href="/services" className="hover:text-white">All services</Link></li>
-            <li><Link href="/work" className="hover:text-white">Work &amp; samples</Link></li>
-            <li><Link href="/contact" className="hover:text-white">Request a quote or consultation</Link></li>
-            <li><Link href="/status" className="hover:text-white">Check request status</Link></li>
-          </ul>
-        </nav>
-        <div>
-          <ul className="space-y-2">
-            <li><Link href="/privacy" className="hover:text-white">Privacy notice</Link></li>
-            <li><Link href="/?view=2d" className="hover:text-white">Simple 2D tour</Link></li>
-          </ul>
-          <p className="mt-4 text-xs text-white/45">The AI guides in the virtual office are AI assistants, not employees.</p>
+    <section className="sky relative overflow-hidden text-white">
+      <Image
+        src={`/images/${artworkSlug && ["software", "marketing", "creative", "automation", "strategy"].includes(artworkSlug) ? artworkSlug : "hero"}.webp`}
+        alt=""
+        fill
+        sizes="(max-width: 639px) 1000px, 100vw"
+        className="object-cover object-right opacity-65 sm:object-center"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,6,15,0.98)_0%,rgba(4,6,15,0.85)_45%,rgba(4,6,15,0.4)_100%)]" />
+      <SiteHeader />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 pt-36 pb-20 sm:pt-44 sm:pb-28">
+        {crumbs && <div className="mb-5 text-sm text-white/60">{crumbs}</div>}
+        {eyebrow && <p className="eyebrow text-teal">{eyebrow}</p>}
+        <h1 className="mt-3 max-w-4xl text-[40px] leading-[1.05] sm:text-[60px] font-bold tracking-tight">{title}</h1>
+        {accent && <p className="mt-2 max-w-3xl text-2xl sm:text-[30px] leading-tight font-display font-bold text-teal">{accent}</p>}
+        {children && <div className="mt-6 max-w-2xl text-lg text-white/85 leading-relaxed">{children}</div>}
+      </div>
+    </section>
+  );
+}
+
+/** Section heading in the Apexon style: big bold title with an optional round arrow link. */
+export function SectionTitle({ id, children, href, dark = false }: { id?: string; children: ReactNode; href?: string; dark?: boolean }) {
+  const cls = `font-display text-[32px] sm:text-[44px] leading-tight font-bold tracking-tight ${dark ? "text-white" : "text-ink"}`;
+  if (!href)
+    return (
+      <h2 id={id} className={cls}>
+        {children}
+      </h2>
+    );
+  return (
+    <h2 id={id} className={cls}>
+      <Link href={href} className="group inline-flex items-center gap-4">
+        {children}
+        <span className="arrow-dot w-11 h-11">
+          <ArrowRight size={20} aria-hidden />
+        </span>
+      </Link>
+    </h2>
+  );
+}
+
+async function FooterSitemap() {
+  const { departments, services } = await loadCatalog();
+  const { contactEmail } = getPublicConfig();
+  const depts = departments.filter((d) => d.slug !== "reception" && d.active);
+  return (
+    <>
+      {contactEmail && (
+        <a href={`mailto:${contactEmail}`} className="mt-8 inline-block text-[22px] font-semibold text-white hover:text-teal">
+          {contactEmail}
+        </a>
+      )}
+      <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        {depts.map((d) => (
+          <div key={d.slug}>
+            <Link href={`/departments/${d.slug}`} className="font-display text-2xl sm:text-[28px] font-bold text-teal hover:text-white">
+              {d.name}
+            </Link>
+            <ul className="mt-4 space-y-2">
+              {services
+                .filter((s) => s.departmentSlug === d.slug)
+                .map((s) => (
+                  <li key={s.slug}>
+                    <Link href={`/services/${s.slug}`} className="text-[15px] font-medium text-white hover:text-teal">
+                      {s.title}
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+/** `cta={false}` drops the "How can we help you?" band on pages that already are the contact flow. */
+export function SiteFooter({ cta = true }: { cta?: boolean }) {
+  return (
+    <footer className="bg-[#050711] text-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-20 pb-10">
+        {cta && (
+          <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] items-end border-b border-white/10 pb-14">
+            <div>
+              <h2 className="font-display text-[36px] sm:text-[48px] leading-tight font-bold">How can we help you?</h2>
+              <p className="mt-4 max-w-xl text-white/70 text-lg">
+                Tell us about your project. You&apos;ll get a reference code, and a Softgress team member will reply.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 lg:justify-end">
+              <Link href="/contact" className="pill">
+                Request a quote <ArrowRight size={16} aria-hidden />
+              </Link>
+              <Link href="/contact?kind=consultation" className="pill pill-line text-white">
+                Book a consultation
+              </Link>
+            </div>
+          </div>
+        )}
+
+        <Suspense fallback={null}>
+          <FooterSitemap />
+        </Suspense>
+
+        <div className="mt-16 grid gap-6 sm:grid-cols-[auto_1fr] items-center border-t border-white/10 pt-8">
+          <Logo />
+          <div className="sm:text-right text-[12px] text-white/40 space-y-1">
+            <p>
+              <span className="text-white/70">Ideas engineered. Growth accelerated.</span> · Digital marketing &amp; software development agency.
+            </p>
+            <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-1 sm:justify-end pt-1 text-white">
+              <Link href="/services" className="hover:text-teal">All services</Link>
+              <Link href="/work" className="hover:text-teal">Work &amp; samples</Link>
+              <Link href="/contact" className="hover:text-teal">Request a quote or consultation</Link>
+              <Link href="/status" className="hover:text-teal">Check request status</Link>
+              <Link href="/privacy" className="hover:text-teal">Privacy notice</Link>
+            </nav>
+          </div>
         </div>
       </div>
     </footer>

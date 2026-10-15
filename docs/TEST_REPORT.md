@@ -1,5 +1,9 @@
 # Test report
 
+> **Superseded in part (2026-10-14):** the 3D virtual-office tour, its HUD, the Remotion
+> cinematics and their tests were removed. Sections about the tour, scenes, camera rails and
+> the intro clip are historical; the site is now a server-rendered marketing site.
+
 Run on 2026-10-11, macOS (Apple Silicon), Node 26.7, Next.js 16.4, Chromium (Playwright 1.64).
 All numbers below come from the final runs; nothing is estimated.
 

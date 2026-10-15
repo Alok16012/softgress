@@ -1,22 +1,31 @@
 @import "tailwindcss";
 
+/*
+ * Apexon-inspired palette. Token names are kept from the original theme so the
+ * request form and CRM pick the new colours up unchanged: "teal" is now the
+ * pale accent blue, "teal-dark" the deep link blue.
+ */
 @theme inline {
-  --color-midnight: #07111f;
-  --color-midnight-2: #0c1a2c;
-  --color-midnight-3: #12243a;
-  --color-teal: #29c6c0;
-  --color-teal-dark: #1a9a95;
-  --color-mint: #a8f0d3;
-  --color-ink: #0b1522;
-  --color-paper: #f6f7f5;
+  --color-midnight: #04060f;
+  --color-midnight-2: #0a1226;
+  --color-midnight-3: #172440;
+  --color-navy: #010d27;
+  --color-teal: #b7dfff;
+  --color-teal-dark: #004b8d;
+  --color-mint: #b7dfff;
+  --color-sky: #1d6ee4;
+  --color-steel: #575756;
+  --color-ink: #0b0d12;
+  --color-paper: #f3f6fa;
   --color-warn: #ffc400;
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-roboto), Roboto, ui-sans-serif, system-ui, sans-serif;
+  --font-display: Arial, "Helvetica Neue", Helvetica, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #0b1522;
+  --foreground: #0b0d12;
   color-scheme: light;
 }
 
@@ -43,9 +52,16 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+}
+
 /* Focus visibility everywhere (keyboard users) */
 :focus-visible {
-  outline: 3px solid #29c6c0;
+  outline: 3px solid #b7dfff;
   outline-offset: 2px;
   border-radius: 6px;
 }
@@ -55,7 +71,7 @@ body {
   left: 12px;
   top: -100px;
   z-index: 100;
-  background: #07111f;
+  background: #04060f;
   color: #fff;
   padding: 10px 14px;
   border-radius: 10px;
@@ -67,17 +83,11 @@ body {
 
 /* ── HUD surfaces ─────────────────────────────────────────────── */
 .glass {
-  background: rgba(7, 17, 31, 0.78);
+  background: rgba(4, 6, 15, 0.78);
   -webkit-backdrop-filter: blur(14px) saturate(140%);
   backdrop-filter: blur(14px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
-}
-.glass-light {
-  background: rgba(255, 255, 255, 0.92);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(7, 17, 31, 0.08);
 }
 
 .hud-btn {
@@ -98,8 +108,8 @@ body {
   background: rgba(255, 255, 255, 0.1);
 }
 .hud-btn[aria-pressed="true"] {
-  background: rgba(41, 198, 192, 0.2);
-  color: #a8f0d3;
+  background: rgba(183, 223, 255, 0.2);
+  color: #b7dfff;
 }
 
 .btn-primary {
@@ -108,15 +118,16 @@ body {
   justify-content: center;
   gap: 8px;
   min-height: 44px;
-  padding: 0 18px;
-  border-radius: 12px;
-  background: #29c6c0;
-  color: #07111f;
+  padding: 0 24px;
+  border-radius: 30px;
+  background: #b7dfff;
+  color: #000;
   font-weight: 700;
-  transition: background 0.15s, transform 0.15s;
+  font-size: 15px;
+  transition: background 0.2s, transform 0.2s;
 }
 .btn-primary:hover {
-  background: #a8f0d3;
+  background: #fff;
 }
 .btn-primary:disabled {
   opacity: 0.55;
@@ -128,30 +139,14 @@ body {
   justify-content: center;
   gap: 8px;
   min-height: 44px;
-  padding: 0 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 22px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: #fff;
   font-weight: 600;
 }
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.08);
-}
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 44px;
-  padding: 0 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(7, 17, 31, 0.18);
-  color: #07111f;
-  font-weight: 600;
-  background: #fff;
-}
-.btn-outline:hover {
-  border-color: #29c6c0;
 }
 
 .chip {
@@ -163,18 +158,18 @@ body {
   font-size: 13px;
   font-weight: 500;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #e7f6f4;
+  color: #e8f3ff;
   background: rgba(255, 255, 255, 0.04);
   text-align: left;
 }
 .chip:hover {
-  border-color: #29c6c0;
-  background: rgba(41, 198, 192, 0.12);
+  border-color: #b7dfff;
+  background: rgba(183, 223, 255, 0.12);
 }
 .chip[aria-pressed="true"],
 .chip[aria-checked="true"] {
-  border-color: #29c6c0;
-  background: rgba(41, 198, 192, 0.22);
+  border-color: #b7dfff;
+  background: rgba(183, 223, 255, 0.22);
   color: #fff;
 }
 
@@ -187,11 +182,6 @@ body {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.02em;
-}
-.badge-ai {
-  background: rgba(41, 198, 192, 0.18);
-  color: #a8f0d3;
-  border: 1px solid rgba(41, 198, 192, 0.4);
 }
 .badge-warn {
   background: rgba(255, 196, 0, 0.16);
@@ -219,14 +209,14 @@ body {
 }
 .field:focus {
   outline: none;
-  border-color: #29c6c0;
-  box-shadow: 0 0 0 3px rgba(41, 198, 192, 0.25);
+  border-color: #b7dfff;
+  box-shadow: 0 0 0 3px rgba(183, 223, 255, 0.25);
 }
 .field[aria-invalid="true"] {
   border-color: #ff7b7b;
 }
 select.field option {
-  color: #07111f;
+  color: #04060f;
 }
 .label {
   display: block;
@@ -241,133 +231,97 @@ select.field option {
   margin-top: 4px;
 }
 
-/* ── 3D overlays (rendered through drei <Html>) ───────────────── */
-.sg-hotspot {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 4px 6px;
-  border-radius: 999px;
-  background: rgba(7, 17, 31, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  color: #fff;
-  font: 600 13px/1 var(--font-sans);
-  white-space: nowrap;
-  cursor: pointer;
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  transition: background 0.15s, border-color 0.15s;
-}
-.sg-hotspot__dot {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 999px;
-  background: #29c6c0;
-  color: #07111f;
-  font-size: 13px;
-  font-weight: 800;
-  box-shadow: 0 0 0 0 rgba(41, 198, 192, 0.6);
-  animation: sg-pulse 2.4s infinite;
-}
-.sg-hotspot__label {
-  max-width: 0;
-  overflow: hidden;
-  opacity: 0;
-  transition: max-width 0.25s, opacity 0.2s, padding 0.2s;
-}
-.sg-hotspot:hover .sg-hotspot__label,
-.sg-hotspot--door .sg-hotspot__label,
-.sg-hotspot--cta .sg-hotspot__label {
-  max-width: 260px;
-  opacity: 1;
-  padding-right: 6px;
-}
-.sg-hotspot:hover {
-  border-color: #29c6c0;
-  background: rgba(7, 17, 31, 0.9);
-}
-.sg-hotspot--door .sg-hotspot__dot {
-  background: #fff;
-}
-.sg-hotspot--cta .sg-hotspot__dot {
-  background: #a8f0d3;
-}
-@keyframes sg-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(41, 198, 192, 0.55);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(41, 198, 192, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(41, 198, 192, 0);
-  }
-}
-
-.sg-staff-tag {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  padding: 8px 12px;
-  border-radius: 12px;
-  background: rgba(7, 17, 31, 0.86);
-  border: 1px solid rgba(41, 198, 192, 0.55);
-  color: #fff;
-  font: 600 14px/1.2 var(--font-sans);
-  white-space: nowrap;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-}
-.sg-staff-tag span {
-  font-size: 11px;
-  font-weight: 600;
-  color: #a8f0d3;
-}
-
-/* Native modal dialogs */
-dialog.sg-dialog {
-  padding: 0;
-  border: none;
-  background: transparent;
-  max-width: min(760px, calc(100vw - 24px));
-  width: 100%;
-  max-height: calc(100dvh - 24px);
-  color: inherit;
-}
-dialog.sg-dialog::backdrop {
-  background: rgba(3, 8, 15, 0.55);
-  -webkit-backdrop-filter: blur(3px);
-  backdrop-filter: blur(3px);
-}
-
 .scrollbar-thin {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
 }
 
-@keyframes sg-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
+/* ── Marketing site (Apexon-style) ────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border-radius: 30px;
+  background: #b7dfff;
+  color: #000;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
-.animate-in {
-  animation: sg-fade-in 0.35s ease both;
+.pill:hover {
+  background: #fff;
+  box-shadow: 0 0 0 1px #b7dfff inset;
 }
-@keyframes sg-caret {
-  50% {
-    opacity: 0;
-  }
+.pill-dark {
+  background: #04060f;
+  color: #fff;
 }
-.typing-caret::after {
-  content: "▍";
-  margin-left: 2px;
-  color: #29c6c0;
-  animation: sg-caret 1s steps(1) infinite;
+.pill-dark:hover {
+  background: #172440;
+  color: #fff;
+  box-shadow: none;
+}
+.pill-line {
+  background: transparent;
+  color: inherit;
+  box-shadow: 0 0 0 1px currentColor inset;
+}
+.pill-line:hover {
+  background: #b7dfff;
+  color: #000;
+  box-shadow: none;
+}
+
+/* Round arrow button that sits under cards */
+.arrow-dot {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 999px;
+  background: #b7dfff;
+  color: #04060f;
+  transition: transform 0.25s, background 0.2s;
+}
+.group:hover .arrow-dot {
+  transform: translateX(4px);
+  background: #1d6ee4;
+  color: #fff;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Night-sky backdrop used in hero banners */
+.sky {
+  background-color: #04060f;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+    radial-gradient(1px 1px at 28% 62%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 44% 28%, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+    radial-gradient(1px 1px at 63% 12%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+    radial-gradient(1px 1px at 72% 48%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 86% 22%, rgba(255, 255, 255, 0.85) 50%, transparent 51%),
+    radial-gradient(1px 1px at 92% 70%, rgba(255, 255, 255, 0.5) 50%, transparent 51%),
+    radial-gradient(1px 1px at 6% 80%, rgba(255, 255, 255, 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 52% 84%, rgba(255, 255, 255, 0.4) 50%, transparent 51%),
+    radial-gradient(ellipse 70% 60% at 75% 110%, rgba(29, 110, 228, 0.45), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 10% -10%, rgba(183, 223, 255, 0.16), transparent 70%),
+    linear-gradient(180deg, #04060f 0%, #0a1226 55%, #172440 100%);
+}
+
+.card-lift {
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -18px rgba(4, 6, 15, 0.35);
 }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
-import { SiteFooter, SiteHeader } from "@/components/site/SiteChrome";
+import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { ClientShell } from "@/components/site/ClientShell";
 import { ContactClient } from "@/components/site/ContactClient";
 import { loadClientCatalog } from "@/lib/data";
@@ -43,22 +43,20 @@ async function Flow({ searchParams }: { searchParams: PageProps<"/contact">["sea
 export default function ContactPage({ searchParams }: PageProps<"/contact">) {
   return (
     <>
-      <SiteHeader />
-      <main id="main" className="flex-1 bg-midnight text-white">
-        <div className="mx-auto max-w-3xl px-4 py-14">
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">Start a project</h1>
-          <p className="mt-3 text-lg text-white/75">
-            Tell us what you need. You&apos;ll get a reference code, and a Softgress team member will reply. Prefer to explore first?{" "}
-            <Link href="/" className="underline">Visit the virtual office</Link>.
-          </p>
-          <div className="mt-8">
+      <PageHero eyebrow="Contact us" title="Start a project">
+        Tell us what you need. You&apos;ll get a reference code, and a Softgress team member will reply. Prefer to browse first?{" "}
+        <Link href="/services" className="underline underline-offset-4 text-teal">See our services</Link>.
+      </PageHero>
+      <main id="main" className="flex-1 bg-[#050711] text-white">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 py-16">
+          <div>
             <Suspense fallback={<p className="text-white/60">Loading the form…</p>}>
               <Flow searchParams={searchParams} />
             </Suspense>
           </div>
         </div>
       </main>
-      <SiteFooter />
+      <SiteFooter cta={false} />
     </>
   );
 }

@@ -1,8 +1,11 @@
 import type { Page } from "@playwright/test";
-import { test, expect, openTour } from "./helpers";
+import { test, expect } from "./helpers";
+
+/** The request form lives inline on /contact. */
+const form = (page: Page) => page.locator("main");
 
 async function fillContact(page: Page, opts: { email?: string; consent?: boolean } = {}) {
-  const d = page.getByRole("dialog", { name: "Start a request" });
+  const d = form(page);
   await d.getByLabel("Your name *").fill("E2E Visitor");
   await d.getByLabel("Email").fill(opts.email ?? `visitor+${Date.now()}@example.com`);
   if (opts.consent !== false) await d.getByLabel(/I agree that Softgress may contact me/).check();
@@ -10,10 +13,8 @@ async function fillContact(page: Page, opts: { email?: string; consent?: boolean
 }
 
 async function startRequest(page: Page, kind: RegExp) {
-  await page.getByRole("button", { name: "Book a project call" }).click();
-  const d = page.getByRole("dialog", { name: "Start a request" });
-  // The top-bar CTA preselects consultation; go back to choose explicitly.
-  await d.getByRole("button", { name: "Back" }).click();
+  await page.goto("/contact");
+  const d = form(page);
   await d.getByRole("radio", { name: kind }).click();
   await d.getByRole("button", { name: "Continue" }).click();
   return d;
@@ -21,10 +22,12 @@ async function startRequest(page: Page, kind: RegExp) {
 
 test.describe("lead capture", () => {
   test("quote request: edit brief, consent, submit, reference shown; duplicate submit replays", async ({ page }) => {
-    await openTour(page, { scene: "software" });
-    await page.getByRole("button", { name: /E-commerce/ }).first().click();
-    await page.getByRole("button", { name: /Request a quote/ }).first().click();
-    const d = page.getByRole("dialog", { name: "Start a request" });
+    await page.goto("/services/ecommerce-development");
+    await page.locator("main").getByRole("link", { name: /Request a quote/ }).click();
+    await expect(page).toHaveURL(/\/contact\?service=ecommerce-development/);
+    const d = form(page);
+    await d.getByRole("radio", { name: /Request a quote/ }).click();
+    await d.getByRole("button", { name: "Continue" }).click();
     await expect(d.getByRole("button", { name: "E-commerce Development" })).toHaveAttribute("aria-pressed", "true");
     await d.getByLabel("Goals").fill("Sell handmade products online");
     await d.getByRole("button", { name: "Continue" }).click();
@@ -42,7 +45,6 @@ test.describe("lead capture", () => {
   });
 
   test("validation: missing consent and invalid email are blocked with clear messages", async ({ page }) => {
-    await openTour(page, { scene: "reception" });
     const d = await startRequest(page, /Request a callback/);
     await d.getByRole("button", { name: "Continue" }).click();
     await fillContact(page, { email: "not-an-email", consent: false });
@@ -57,7 +59,6 @@ test.describe("lead capture", () => {
   });
 
   test("consultation with the dev mock calendar books a real slot (badged as development)", async ({ page }) => {
-    await openTour(page, { scene: "strategy" });
     const d = await startRequest(page, /Book a consultation/);
     await d.getByRole("button", { name: "Continue" }).click();
     await expect(d.getByText("Mock calendar · development only")).toBeVisible();
@@ -72,7 +73,6 @@ test.describe("lead capture", () => {
 
   test("unconfigured calendar → preferred time saved as pending confirmation", async ({ page }) => {
     await page.route("**/api/consultations/slots", (r) => r.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, connected: false, slots: [] }) }));
-    await openTour(page, { scene: "strategy" });
     const d = await startRequest(page, /Book a consultation/);
     await d.getByRole("button", { name: "Continue" }).click();
     await expect(d.getByText(/Live booking isn't connected/)).toBeVisible();
@@ -88,7 +88,6 @@ test.describe("lead capture", () => {
 
   test("database/save failure never shows a false success", async ({ page }) => {
     await page.route("**/api/leads", (r) => r.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ ok: false, error: { code: "save_failed", message: "We couldn't save your request. Nothing was submitted, so please try again." } }) }));
-    await openTour(page, { scene: "reception" });
     const d = await startRequest(page, /Submit project brief/);
     await d.getByRole("button", { name: "Continue" }).click();
     await fillContact(page);
@@ -99,10 +98,8 @@ test.describe("lead capture", () => {
   });
 
   test("WhatsApp is hidden when not configured", async ({ page }) => {
-    await openTour(page, { scene: "rooftop" });
-    await expect(page.getByRole("region", { name: "Softgress virtual headquarters tour" }).getByRole("heading", { name: "Your next chapter starts here." })).toBeVisible();
-    await expect(page.getByRole("link", { name: "WhatsApp", exact: true })).toHaveCount(0);
     const d = await startRequest(page, /Request a callback/);
+    await expect(page.getByRole("link", { name: "WhatsApp", exact: true })).toHaveCount(0);
     await d.getByRole("button", { name: "Continue" }).click();
     await expect(d.getByLabel("Preferred reply channel").locator("option", { hasText: "WhatsApp" })).toHaveCount(0);
   });
@@ -146,7 +143,7 @@ test.describe("lead capture", () => {
     expect((await request.post("/api/status/verify", { headers: { origin }, data: { reference, code } })).status()).toBe(401);
   });
 
-  test("contact page works without the 3D tour", async ({ page }) => {
+  test("contact page preselects kind and service from the URL", async ({ page }) => {
     await page.goto("/contact?kind=brief&service=ui-ux-design");
     await expect(page.getByRole("heading", { name: "Start a project" })).toBeVisible();
     await expect(page.getByRole("button", { name: "UI/UX Design" })).toHaveAttribute("aria-pressed", "true");

@@ -3,7 +3,6 @@ import { services } from "@/content/services";
 import { staff } from "@/content/staff";
 import { knowledgeDocuments } from "@/content/knowledge";
 import { projects } from "@/content/projects";
-import { assetManifest } from "@/content/assets";
 import type { Db } from "./driver";
 
 /**
@@ -55,13 +54,6 @@ export async function seed(db: Db) {
          values ($1,$2,$3,$4,$5, array(select jsonb_array_elements_text($6::text::jsonb)), $7, $8)
          on conflict (slug) do nothing`,
         [p.slug, p.title, p.summary, p.body, p.industry, JSON.stringify(p.serviceSlugs), p.isSample, p.published],
-      );
-    }
-    for (const a of assetManifest) {
-      await tx.query(
-        `insert into public.asset_manifest (id, zone, name, kind, status, source, license, url, triangle_budget, notes)
-         values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) on conflict (id) do nothing`,
-        [a.id, a.zone, a.name, a.kind, a.status, a.source, a.license, a.url, a.triangleBudget, a.notes],
       );
     }
   });

@@ -1,17 +1,15 @@
-# Softgress Virtual HQ
+# Softgress
 
-An interactive, cinematic virtual tour of the Softgress headquarters (digital marketing &
-software development agency). Visitors walk from the access road into reception, through
-Software, Marketing, Creative, AI & Automation and the Strategy boardroom up to a sunset
-rooftop. Along the way they chat with **AI guides** (clearly labelled as AI), build an editable
-project brief, and submit quote, consultation, callback or brief requests that land in a
-secure CRM.
+Marketing website for Softgress, a digital marketing & software development agency, styled
+after apexon.com (dark navy + white sections, pale-blue pill buttons, Arial/Roboto). Visitors
+browse the Software, Marketing, Creative, AI & Automation and Strategy departments and every
+service, then submit quote, consultation, callback or brief requests that land in a secure CRM.
 
-> **What's real vs placeholder.** The 3D world is a **procedural blockout** (no licensed
-> models yet); see [docs/ASSETS.md](docs/ASSETS.md). Without an `ANTHROPIC_API_KEY` the
-> guides run in a **demo mode** that is labelled in the UI. Seed knowledge, services and
-> "work" are **demo seed content** to review before launch. Sample projects are always labelled
-> "Sample concept".
+> **What's real vs placeholder.** Card artwork is generated in code (night sky + mountains +
+> icon) until real photography is supplied (`src/components/site/Art.tsx`). Seed knowledge,
+> services and "work" are **demo seed content** to review before launch. Sample projects are
+> always labelled "Sample concept". The original 3D virtual-office tour was removed; it is in
+> git history (commit `b0a3b08`) if it is ever needed again.
 
 ## Quick start (local demo, no accounts needed)
 
@@ -33,8 +31,7 @@ ADMIN_EMAIL=admin@softgress.local
 ADMIN_PASSWORD=...            # dev only; production needs ADMIN_PASSWORD_HASH
 ```
 
-Then sign in at `/admin`. To use live Claude replies, set `ANTHROPIC_API_KEY` (the model
-defaults to `claude-opus-5-5`; check `/api/health?model=1`).
+Then sign in at `/admin`.
 
 ## Scripts
 
@@ -47,25 +44,21 @@ defaults to `claude-opus-5-5`; check `/api/health?model=1`).
 | `pnpm eval:ai` | EN/HI/Hinglish AI evals (live Claude if a key is set, else demo) |
 | `pnpm db:migrate` | Apply migrations + seed to `DATABASE_URL` |
 | `pnpm admin:hash` | Create an scrypt hash for `ADMIN_PASSWORD_HASH` |
-| `pnpm --filter remotion studio` | Open the cinematic compositions |
-| `pnpm media:render` | Render the intro clip and publish it to `public/media` |
 
 ## How it fits together
 
-- **Tour:** React Three Fiber + Drei world (`src/components/tour`), GSAP camera rails through
-  doorway waypoints, and a pure state machine (`src/lib/tour/machine.ts`) shared by 3D
-  hotspots, the 2D navigator, keyboard shortcuts and browser back/forward.
-- **AI guides:** `src/lib/ai`. Retrieval over approved knowledge + catalogue, guardrails,
-  Anthropic streaming provider, labelled demo provider. Models can only *suggest* brief
-  fields or a department; visitors accept, and only deterministic API routes write data.
+- **Site:** server-rendered pages in `src/app` with shared chrome in `src/components/site`
+  (header, footer, page hero, card art). Theme tokens live in `src/app/globals.css`.
+- **AI backend (no UI at the moment):** `src/lib/ai` and `/api/chat` remain from the tour's AI
+  guides. Retrieval over approved knowledge + catalogue, guardrails, Anthropic and demo
+  providers. Set `ANTHROPIC_API_KEY` for live replies (`/api/health?model=1`).
 - **Requests & CRM:** `src/lib/leads`, `src/app/api/*`, `src/app/admin`. Zod validation,
   honeypot + time trap, rate limits, idempotency keys, reference codes, verified status
   lookup, consultation booking that is confirmed only by a connected calendar.
 - **Data:** `supabase/migrations` (RLS: anonymous clients can read only the active catalogue).
   PGlite locally, Postgres/Supabase via `DATABASE_URL` in production.
-- **Accessibility & SEO:** every service/department is server-rendered HTML; a 2D navigator
-  replaces WebGL on weak devices; captions, reduced motion, keyboard-only operation.
+- **Accessibility & SEO:** every service/department is server-rendered HTML with JSON-LD,
+  a skip link, visible focus rings and reduced-motion support.
 
-More: [Architecture](docs/ARCHITECTURE.md) · [Storyboard](docs/STORYBOARD.md) ·
-[Assets](docs/ASSETS.md) · [Deployment](docs/DEPLOYMENT.md) · [Test report](docs/TEST_REPORT.md) ·
+More: [Architecture](docs/ARCHITECTURE.md) · [Deployment](docs/DEPLOYMENT.md) · [Test report](docs/TEST_REPORT.md) ·
 [Assumptions](docs/ASSUMPTIONS.md) · [Limitations & roadmap](docs/ROADMAP.md)

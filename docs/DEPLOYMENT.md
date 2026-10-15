@@ -51,15 +51,7 @@ passwords are ignored; `SESSION_SECRET` is required.
   the provider *and* commit the DB row (unique index `consultations_confirmed_slot_uniq`)
   before the UI may say "confirmed".
 
-## 4. Media / asset CDN
-
-- Rendered clips live in `public/media` (`pnpm media:render`). For large files, upload
-  `intro.mp4`, `intro.webm`, `intro-poster.jpg` and `intro.vtt` to your CDN (Vercel Blob,
-  Cloudflare R2, Bunny) and change the `src`s in `src/components/ui/IntroVideo.tsx`.
-- Future GLB models: serve from the CDN with long-lived immutable cache headers, KTX2 textures
-  and Meshopt compression (see `docs/ASSETS.md`).
-
-## 5. Post-deploy checklist
+## 4. Post-deploy checklist
 
 - `GET /api/health` → `database.status: ok`, expected `ai.mode`, calendar/notify as intended.
 - Submit a test request, check it in `/admin`, then delete or mark it lost.

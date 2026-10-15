@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { SiteFooter, SiteHeader } from "@/components/site/SiteChrome";
+import { ArrowRight } from "lucide-react";
+import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
+import { ServiceList } from "@/components/site/ServiceList";
 import { loadCatalog } from "@/lib/data";
-import { priceLabel } from "@/lib/pricing";
-import { staffByDepartment } from "@/content/staff";
 
 export async function generateMetadata({ params }: PageProps<"/departments/[slug]">): Promise<Metadata> {
   const { slug } = await params;
@@ -19,34 +19,37 @@ async function Dept({ params }: { params: PageProps<"/departments/[slug]">["para
   const { departments, services } = await loadCatalog();
   const d = departments.find((x) => x.slug === slug);
   if (!d) notFound();
-  const guide = staffByDepartment.get(d.slug);
   const list = services.filter((s) => s.departmentSlug === d.slug);
   return (
     <>
-      <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-ink">{d.name}</h1>
-      <p className="mt-4 text-lg text-ink/70 max-w-3xl">{d.description}</p>
-      {guide && (
-        <aside className="mt-8 rounded-2xl bg-midnight text-white p-6 flex flex-wrap items-center gap-4 justify-between">
-          <div>
-            <p className="text-mint text-xs font-semibold tracking-widest">AI GUIDE</p>
-            <p className="mt-1 text-lg font-bold">{guide.displayName}, {guide.roleTitle}</p>
-            <p className="mt-1 text-sm text-white/70 max-w-xl">{guide.scope}</p>
-            <p className="mt-2 text-xs text-white/50">An AI assistant, not a human employee. A real team member reviews every request.</p>
-          </div>
-          <Link href={`/?scene=${d.sceneId}`} className="inline-flex items-center rounded-xl bg-teal text-midnight px-5 py-3 font-bold">Visit &amp; chat in the virtual office</Link>
-        </aside>
-      )}
-      {list.length > 0 && (
-        <ul className="mt-10 grid sm:grid-cols-2 gap-4">
-          {list.map((s) => (
-            <li key={s.slug} className="rounded-2xl border border-ink/10 p-5">
-              <h2 className="font-semibold text-ink"><Link href={`/services/${s.slug}`} className="hover:text-teal-dark">{s.title}</Link></h2>
-              <p className="mt-1 text-sm text-ink/65">{s.summary}</p>
-              <p className="mt-3 text-xs text-ink/50">{priceLabel(s)}</p>
-            </li>
-          ))}
-        </ul>
-      )}
+      <PageHero
+        artworkSlug={d.slug}
+        eyebrow="Department"
+        title={d.name}
+        crumbs={
+          <>
+            <Link href="/services" className="hover:text-white">Services</Link> › {d.shortName}
+          </>
+        }
+      >
+        {d.description}
+      </PageHero>
+      <main id="main" className="flex-1 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+          {list.length > 0 && <ServiceList services={list} cols={3} headingLevel="h2" />}
+          <aside className="sky mt-16 rounded-[32px] text-white p-8 sm:p-10 flex flex-wrap items-center gap-6 justify-between">
+            <div>
+              <p className="eyebrow text-teal">{d.shortName}</p>
+              <p className="mt-2 font-display text-2xl sm:text-3xl font-bold">Talk to our {d.shortName.toLowerCase()} team.</p>
+              <p className="mt-2 text-white/75 max-w-xl">Tell us about your project. You&apos;ll get a reference code, and a Softgress team member will reply.</p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/contact" className="pill">Request a quote <ArrowRight size={16} aria-hidden /></Link>
+              <Link href="/contact?kind=consultation" className="pill pill-line text-white">Book a consultation</Link>
+            </div>
+          </aside>
+        </div>
+      </main>
     </>
   );
 }
@@ -54,15 +57,10 @@ async function Dept({ params }: { params: PageProps<"/departments/[slug]">["para
 export default function DepartmentPage({ params }: PageProps<"/departments/[slug]">) {
   return (
     <>
-      <SiteHeader />
-      <main id="main" className="flex-1 bg-white">
-        <div className="mx-auto max-w-5xl px-4 py-14">
-          <Suspense fallback={<p className="text-ink/60">Loading…</p>}>
-            <Dept params={params} />
-          </Suspense>
-        </div>
-      </main>
-      <SiteFooter />
+      <Suspense fallback={<PageHero title="Loading…" />}>
+        <Dept params={params} />
+      </Suspense>
+      <SiteFooter cta={false} />
     </>
   );
 }

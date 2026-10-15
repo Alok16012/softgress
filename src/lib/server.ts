@@ -1,6 +1,4 @@
 import "server-only";
-import { existsSync } from "node:fs";
-import path from "node:path";
 import { aiMode, env, isProduction } from "@/lib/env";
 import { mockCalendar, noneCalendar, type CalendarAdapter } from "@/lib/calendar/adapter";
 import { makeNotifier, type Notifier } from "@/lib/notify/adapter";
@@ -23,14 +21,6 @@ export interface PublicConfig {
   whatsappNumber: string | null;
   contactEmail: string | null;
   codeDelivery: "delivers" | "dev_outbox" | "none";
-  /** Pre-rendered Remotion intro is present in public/media (fallback for constrained devices). */
-  introVideo: boolean;
-}
-
-let introVideoCache: boolean | null = null;
-function hasIntroVideo() {
-  introVideoCache ??= existsSync(path.join(/*turbopackIgnore: true*/ process.cwd(), "public/media/intro.mp4"));
-  return introVideoCache;
 }
 
 export function getPublicConfig(): PublicConfig {
@@ -43,6 +33,5 @@ export function getPublicConfig(): PublicConfig {
     whatsappNumber: e.WHATSAPP_NUMBER ?? null,
     contactEmail: e.CONTACT_EMAIL ?? null,
     codeDelivery: n.delivers ? "delivers" : n.devOutbox ? "dev_outbox" : "none",
-    introVideo: hasIntroVideo(),
   };
 }

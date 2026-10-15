@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { connection } from "next/server";
-import { SiteFooter, SiteHeader } from "@/components/site/SiteChrome";
+import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { StatusClient } from "@/components/site/StatusClient";
 import { getPublicConfig } from "@/lib/server";
 
@@ -15,19 +15,19 @@ async function Form() {
 export default function StatusPage() {
   return (
     <>
-      <SiteHeader />
-      <main id="main" className="flex-1 bg-midnight text-white">
-        <div className="mx-auto max-w-xl px-4 py-14">
-          <h1 className="text-4xl font-extrabold tracking-tight">Check your request</h1>
-          <p className="mt-3 text-white/75">For your security we verify you with a one-time code sent to the contact you used. Reference codes alone never reveal request details.</p>
-          <div className="mt-8">
+      <PageHero eyebrow="Request status" title="Check your request">
+        For your security we verify you with a one-time code sent to the contact you used. Reference codes alone never reveal request details.
+      </PageHero>
+      <main id="main" className="flex-1 bg-[#050711] text-white">
+        <div className="mx-auto max-w-xl px-4 sm:px-6 py-16">
+          <div>
             <Suspense fallback={null}>
               <Form />
             </Suspense>
           </div>
         </div>
       </main>
-      <SiteFooter />
+      <SiteFooter cta={false} />
     </>
   );
 }

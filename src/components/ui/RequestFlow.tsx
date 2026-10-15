@@ -32,8 +32,8 @@ function fmt(iso: string, tz: string) {
   return new Intl.DateTimeFormat("en-IN", { timeZone: tz, weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }).format(new Date(iso));
 }
 
-/** Submission flow. Shared by the tour (modal) and the /contact page (inline). */
-export function RequestFlow({ initialKind, onDone, inline }: { initialKind?: RequestKind; onDone?: () => void; inline?: boolean }) {
+/** Submission flow used by the /contact page. */
+export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
   const { config } = useCatalog();
   const brief = useBrief((b) => b.brief);
   const resetBrief = useBrief((b) => b.reset);
@@ -215,11 +215,6 @@ export function RequestFlow({ initialKind, onDone, inline }: { initialKind?: Req
           <Link href="/status" className="btn-ghost">
             Check status later
           </Link>
-          {onDone && (
-            <button type="button" className="btn-primary" onClick={onDone}>
-              Continue exploring
-            </button>
-          )}
         </div>
       </div>
     );
@@ -227,17 +222,15 @@ export function RequestFlow({ initialKind, onDone, inline }: { initialKind?: Req
 
   return (
     <div>
-      {!inline && (
-        <ol className="flex items-center gap-2 text-xs text-white/60 mb-5" aria-label="Progress">
-          {steps.map((s, i) => (
-            <li key={s} className={`flex items-center gap-2 ${i === idx ? "text-mint font-semibold" : ""}`} aria-current={i === idx ? "step" : undefined}>
-              <span className={`grid place-items-center w-6 h-6 rounded-full border ${i <= idx ? "border-teal bg-teal/20" : "border-white/25"}`}>{i + 1}</span>
-              <span className="hidden sm:inline capitalize">{s === "kind" ? "Request type" : s === "brief" ? "Review brief" : s === "schedule" ? "Time" : "Contact"}</span>
-              {i < steps.length - 1 && <span className="w-5 h-px bg-white/20" aria-hidden />}
-            </li>
-          ))}
-        </ol>
-      )}
+      <ol className="flex items-center gap-2 text-xs text-white/60 mb-5" aria-label="Progress">
+        {steps.map((s, i) => (
+          <li key={s} className={`flex items-center gap-2 ${i === idx ? "text-mint font-semibold" : ""}`} aria-current={i === idx ? "step" : undefined}>
+            <span className={`grid place-items-center w-6 h-6 rounded-full border ${i <= idx ? "border-teal bg-teal/20" : "border-white/25"}`}>{i + 1}</span>
+            <span className="hidden sm:inline capitalize">{s === "kind" ? "Request type" : s === "brief" ? "Review brief" : s === "schedule" ? "Time" : "Contact"}</span>
+            {i < steps.length - 1 && <span className="w-5 h-px bg-white/20" aria-hidden />}
+          </li>
+        ))}
+      </ol>
 
       {formError && (
         <div role="alert" className="mb-4 rounded-xl border border-red-300/40 bg-red-400/10 px-4 py-3 text-sm text-red-100">

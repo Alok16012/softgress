@@ -1,0 +1,55 @@
+{
+  "generator": "Built-in image_gen tool",
+  "assets": [
+    {
+      "name": "hero",
+      "prompt": "A cinematic wide 16:9 editorial 3D illustration for a digital agency website hero. A beautifully crafted luminous architectural ecosystem of glass modular structures, flowing fiber-optic connections, subtle interface planes and sculptural blue arcs representing software, marketing, design and AI working together. Objects concentrated in the upper right half and right edge, dark clean negative space across left half and lower left for white headline text. Midnight navy #04060f background, icy blue #b7dfff highlights, deep cobalt light, refined realistic materials and soft volumetric lighting. Sophisticated restrained premium art direction, no robots, no brains, no words, no letters, no logos, no watermark. Landscape.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-409c4706-dfa7-4bea-8d72-5f1844cfcb03.png"
+    },
+    {
+      "name": "software",
+      "prompt": "Premium editorial 3D still life for a software development agency service card. A slim open laptop and upright smartphone on architectural navy plinths, carefully crafted abstract app interface panels and modular glass code-like blocks floating just above the screens. Central composition with main objects in middle 60 percent so it crops well both portrait and landscape. Deep midnight navy background, cobalt and icy blue lighting, realistic brushed aluminum and glass, clean sophisticated studio render. No legible text, no letters, no logos, no watermark. Landscape 4:3.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-edbaec77-e87b-4bb3-90a4-1662a5ea2a78.png"
+    },
+    {
+      "name": "marketing",
+      "prompt": "Premium editorial 3D still life for a digital marketing agency service card. Sculptural translucent cobalt and violet ascending chart columns, a circular audience targeting ring, and a small set of floating rounded campaign tiles with abstract visuals only, arranged into a beautiful coherent physical studio installation. Central composition within middle 60 percent for portrait and landscape crops. Midnight navy background, icy blue with restrained violet accents, soft cinematic lighting, tactile glass and anodized metal. No numerical performance claims, no text, no letters, no logos, no watermark. Landscape 4:3.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-264c8a09-d561-4f70-bb84-264f8fbc3cc2.png"
+    },
+    {
+      "name": "creative",
+      "prompt": "Premium editorial photographic 3D still life for a creative production studio service card. Designer workspace composed of a sculptural camera lens, a folded warm coral paper sheet, blue and peach colour swatches, a typography-free geometric print, and a small glass abstract design frame. Central art-directed arrangement within middle 60 percent for portrait and landscape crops. Midnight navy background, cobalt shadows, warm coral highlights balanced with icy blue, beautiful tactile paper and matte materials, soft studio light. No text, no letters, no logos, no watermark. Landscape 4:3.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-892c2cbb-f073-4700-bf06-e9c4d1588335.png"
+    },
+    {
+      "name": "automation",
+      "prompt": "Premium editorial 3D still life for a practical AI and automation agency service card. A luminous frosted glass central processing cube connected via elegant illuminated blue pathways to several smaller rounded modular glass nodes, one with simple speech bubble relief, one with envelope relief, one with abstract data rows. A coherent physical installation representing connected business workflows. Central composition within middle 60 percent for portrait and landscape crops. Midnight navy, cyan and icy blue with subtle cobalt, realistic glass and metal, refined cinematic studio lighting. No humanoid robots, no brains, no text, no letters, no logos, no watermark. Landscape 4:3.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-817669e7-b1a7-4e5f-b7ad-ef79338aa78b.png"
+    },
+    {
+      "name": "strategy",
+      "prompt": "Premium editorial 3D still life for a business strategy and project planning agency service card. An elegant round dark blue meeting table seen from a three-quarter overhead angle, with abstract folded blueprint sheets, a precise glass architectural model and a few sculptural milestone markers connected by a fine blue line. Central composition within middle 60 percent for portrait and landscape crops. Midnight navy environment, soft icy blue illumination and restrained silver highlights, tactile paper and architectural materials, sophisticated cinematic studio rendering. No people, no words, no letters, no logos, no watermark. Landscape 4:3.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-bf7a2c0a-8113-4f8e-91b3-2b00d13ab35b.png"
+    },
+    {
+      "name": "storefront",
+      "prompt": "Use case: product-mockup. Original fictional portfolio concept artwork for a digital agency. An elegant open laptop showing a handmade ceramics ecommerce storefront composed of beautiful pottery product photography tiles and simple abstract interface lines, surrounded by two real tactile ceramic bowls and folded natural linen. Midnight navy studio backdrop, soft icy blue illumination, natural cream ceramics. Premium believable 3D product photography, not stock. Landscape 4:3, central composition. No readable words, no lettering, no logos, no watermark.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-246a9948-5854-4b2f-99c8-8c93c5df901f.png"
+    },
+    {
+      "name": "clinic",
+      "prompt": "Use case: product-mockup. Original fictional portfolio concept artwork for a digital agency. A slim upright smartphone and floating browser frame displaying an abstract healthcare appointment booking landing page, with simple calendar tiles, minimal profile silhouettes, an unobtrusive medical cross and a small location pin. Midnight navy studio backdrop with icy blue and soft mint light, frosted glass and realistic aluminum. Premium refined physical 3D still life, central composition, landscape 4:3. No medical outcome claims, no readable text, no letters, no logos, no watermark.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-018670f9-6f99-4c8c-9bfd-8eebf14c247a.png"
+    },
+    {
+      "name": "field-service",
+      "prompt": "Use case: product-mockup. Original fictional portfolio concept artwork for a digital agency. A refined desktop monitor and small smartphone showing an abstract field service scheduling dashboard, crisp calendar grid with blue and orange job blocks, minimal route map and task cards without words. Midnight navy studio background, realistic anodized metal and glass, icy blue lighting and restrained orange accents. Premium physical 3D editorial still life, central composition, landscape 4:3. No text, no numbers, no letters, no logos, no watermark.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-40e973b9-e056-4ee3-a457-2ec1f7658c90.png"
+    },
+    {
+      "name": "cafe",
+      "prompt": "Use case: product-mockup. Original fictional cafe rebrand portfolio concept artwork for a digital agency. A beautifully art-directed cafe identity still life: takeaway coffee cup, folded menu, small coffee bean pouch and circular coaster, all in warm terracotta, buttercream and dark blue, with a simple original abstract sunrise motif and no lettering. Midnight navy studio backdrop, soft warm light with cool blue shadows, tactile uncoated paper and realistic coffee beans. Premium editorial product photography, central composition, landscape 4:3. No readable text, no letters, no logos of existing brands, no watermark.",
+      "source": "/Users/alokkumar/.codex/generated_images/01a13a87-35f9-7231-9ea5-5069011aa702/exec-2e4d461c-3985-4d3f-a31c-cc8b66271ec7.png"
+    }
+  ]
+}
