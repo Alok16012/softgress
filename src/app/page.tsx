@@ -1,18 +1,23 @@
 import Link from "next/link";
 import { Suspense } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { enquiryGroups } from "@/lib/enquiry";
+import { catalogOnly } from "@/lib/env";
+import { getPublicConfig } from "@/lib/server";
 import { DeptArt, ProjectArt } from "@/components/site/Art";
 import { ServiceList } from "@/components/site/ServiceList";
 import { HomeHero } from "@/components/site/HomeHero";
 import { SectionTitle, SiteFooter } from "@/components/site/SiteChrome";
 import { loadCatalog } from "@/lib/data";
-import { office, officeLd } from "@/content/company";
+import { office, officeLd, whatsappUrl } from "@/content/company";
 
 /** Server-rendered company overview: departments, every service, process and work. */
 async function Directory() {
   const { departments, services, projects } = await loadCatalog();
   const depts = departments.filter((d) => d.slug !== "reception" && d.active);
   const deptOf = (serviceSlug?: string) => services.find((s) => s.slug === serviceSlug)?.departmentSlug ?? "strategy";
+  const { contactEmail, whatsappNumber } = getPublicConfig();
   const orgLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -158,6 +163,69 @@ async function Directory() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Customer enquiry */}
+      <section id="enquiry" aria-labelledby="enquiry-heading" className="relative overflow-hidden bg-navy text-white scroll-mt-20">
+        <div aria-hidden className="pointer-events-none absolute -left-40 top-20 h-[460px] w-[460px] rounded-full bg-sky/15 blur-[120px]" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-24 grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div>
+            <p className="eyebrow text-teal">Customer enquiry</p>
+            <h2 id="enquiry-heading" className="mt-3 font-display text-[34px] sm:text-[48px] leading-[1.08] font-bold tracking-tight">
+              Have a question? Send us an enquiry.
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-white/75">
+              Tell us what you need in a few lines. The Softgress team will get back to you on call, WhatsApp or email, whichever you prefer.
+            </p>
+            <ul className="mt-10 space-y-5">
+              <li>
+                <a href={`tel:${office.phone.tel}`} className="group flex items-center gap-4">
+                  <span className="grid h-12 w-12 flex-none place-items-center rounded-full bg-teal text-midnight"><Phone size={20} aria-hidden /></span>
+                  <span>
+                    <span className="block text-sm text-white/55">Call us</span>
+                    <span className="font-display text-[20px] font-bold group-hover:text-teal">{office.phone.display}</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href={whatsappUrl(whatsappNumber ?? office.phone.tel)} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                  <span className="grid h-12 w-12 flex-none place-items-center rounded-full border border-white/20 text-teal"><MessageCircle size={20} aria-hidden /></span>
+                  <span>
+                    <span className="block text-sm text-white/55">WhatsApp</span>
+                    <span className="font-display text-[20px] font-bold group-hover:text-teal">Chat with us</span>
+                  </span>
+                </a>
+              </li>
+              {contactEmail && (
+                <li>
+                  <a href={`mailto:${contactEmail}`} className="group flex items-center gap-4">
+                    <span className="grid h-12 w-12 flex-none place-items-center rounded-full border border-white/20 text-teal"><Mail size={20} aria-hidden /></span>
+                    <span>
+                      <span className="block text-sm text-white/55">Email</span>
+                      <span className="font-display text-[20px] font-bold group-hover:text-teal">{contactEmail}</span>
+                    </span>
+                  </a>
+                </li>
+              )}
+              <li>
+                <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4">
+                  <span className="grid h-12 w-12 flex-none place-items-center rounded-full border border-white/20 text-teal"><MapPin size={20} aria-hidden /></span>
+                  <span>
+                    <span className="block text-sm text-white/55">Visit us</span>
+                    <span className="text-[15px] leading-relaxed text-white/85 group-hover:text-teal">{office.lines.join(", ")}</span>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <EnquiryForm
+            groups={enquiryGroups(departments, services)}
+            whatsappNumber={whatsappNumber}
+            mode={catalogOnly() ? "direct" : "save"}
+            directWhatsapp={whatsappNumber ?? office.phone.tel}
+            directEmail={contactEmail}
+          />
         </div>
       </section>
 

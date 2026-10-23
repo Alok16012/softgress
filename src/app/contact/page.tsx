@@ -6,6 +6,9 @@ import { Suspense } from "react";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { ClientShell } from "@/components/site/ClientShell";
 import { ContactClient } from "@/components/site/ContactClient";
+import { ContactTabs } from "@/components/site/ContactTabs";
+import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { enquiryGroups } from "@/lib/enquiry";
 import { loadClientCatalog } from "@/lib/data";
 import { REQUEST_KINDS, type RequestKind } from "@/lib/types";
 import { catalogOnly } from "@/lib/env";
@@ -26,15 +29,37 @@ async function Flow({ searchParams }: { searchParams: PageProps<"/contact">["sea
   const service = typeof sp.service === "string" && /^[a-z0-9-]{2,60}$/.test(sp.service) ? sp.service : null;
   const catalog = await loadClientCatalog();
   const available = !catalogOnly();
+  const { contactEmail, whatsappNumber } = catalog.config;
+  // Links that name a request type, a service or ?form=project open the full flow; everything else starts with the quick enquiry.
+  const initial = kind || service || sp.form === "project" ? "project" : "enquiry";
   return (
     <ClientShell catalog={catalog}>
-      {available ? <ContactClient kind={kind} service={service} /> : (
-        <div className="rounded-2xl border border-white/15 p-6">
-          <h2 className="text-xl font-semibold">Online requests are opening soon</h2>
-          <p className="mt-3 text-white/75">Please check back soon to request a quote, consultation or callback.</p>
-          <Link href="/services" className="mt-5 inline-block underline text-teal">Explore our services</Link>
-        </div>
-      )}
+      <ContactTabs
+        initial={initial}
+        enquiry={
+          <EnquiryForm
+            groups={enquiryGroups(catalog.departments, catalog.services)}
+            whatsappNumber={whatsappNumber}
+            mode={available ? "save" : "direct"}
+            directWhatsapp={whatsappNumber ?? office.phone.tel}
+            directEmail={contactEmail}
+            initialService={service ?? ""}
+          />
+        }
+        project={
+          available ? (
+            <ContactClient kind={kind} service={service} />
+          ) : (
+            <div className="glass rounded-[28px] p-6 sm:p-8">
+              <h3 className="text-xl font-semibold">Online project requests are opening soon</h3>
+              <p className="mt-3 text-white/75">
+                Until then, use the quick enquiry form, call us on {office.phone.display} or message us on WhatsApp, and we&apos;ll help you scope your project.
+              </p>
+              <Link href="/services" className="mt-5 inline-block underline text-teal">Explore our services</Link>
+            </div>
+          )
+        }
+      />
     </ClientShell>
   );
 }
@@ -236,12 +261,12 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20 grid gap-12 lg:grid-cols-[1fr_380px] lg:gap-14">
           <section aria-labelledby="start-project">
-            <p className="eyebrow text-teal">Send a request</p>
+            <p className="eyebrow text-teal">Send an enquiry</p>
             <h2 id="start-project" className="mt-3 font-display text-[32px] sm:text-[44px] leading-tight font-bold tracking-tight">
               Start a project
             </h2>
             <p className="mt-3 mb-8 max-w-2xl text-lg text-white/70">
-              Request a quote, book a consultation, ask for a callback or send a brief. Prefer to browse first?{" "}
+              Ask us anything with the quick enquiry form, or switch to a full project request for a quote, consultation, callback or brief. Prefer to browse first?{" "}
               <Link href="/services" className="underline underline-offset-4 text-teal">
                 See our services
               </Link>

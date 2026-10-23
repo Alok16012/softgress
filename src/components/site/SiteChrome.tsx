@@ -6,6 +6,9 @@ import { office, whatsappUrl } from "@/content/company";
 import { loadCatalog } from "@/lib/data";
 import { getPublicConfig } from "@/lib/server";
 import { HeaderBar, HeaderFallback, type MenuGroup } from "./HeaderBar";
+import { EnquiryPopup } from "./EnquiryPopup";
+import { enquiryGroups } from "@/lib/enquiry";
+import { catalogOnly } from "@/lib/env";
 import { Logo } from "./Logo";
 
 /** Fixed navigation; the Services mega menu is filled from the live catalogue. */
@@ -22,7 +25,22 @@ async function HeaderWithMenu() {
   const menu: MenuGroup[] = departments
     .filter((d) => d.slug !== "reception" && d.active)
     .map((d) => ({ slug: d.slug, name: d.name, services: services.filter((s) => s.departmentSlug === d.slug).map((s) => ({ slug: s.slug, title: s.title })) }));
-  return <HeaderBar menu={menu} />;
+  const { contactEmail, whatsappNumber } = getPublicConfig();
+  return (
+    <>
+      <HeaderBar menu={menu} />
+      {/* Short enquiry pop-up: opens shortly after a visitor lands on any public page. */}
+      <EnquiryPopup
+        groups={enquiryGroups(departments, services)}
+        whatsappNumber={whatsappNumber}
+        mode={catalogOnly() ? "direct" : "save"}
+        directWhatsapp={whatsappNumber ?? office.phone.tel}
+        directEmail={contactEmail}
+        phoneDisplay={office.phone.display}
+        phoneTel={office.phone.tel}
+      />
+    </>
+  );
 }
 
 /** Inner-page banner: night-sky backdrop, breadcrumb, big headline and a pale-blue subline. */
@@ -170,6 +188,7 @@ export function SiteFooter({ cta = true }: { cta?: boolean }) {
               <span className="text-white/70">Ideas engineered. Growth accelerated.</span> · Digital marketing &amp; software development agency.
             </p>
             <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-1 sm:justify-end pt-1 text-white">
+              <Link href="/get-started" className="hover:text-teal">Get started</Link>
               <Link href="/about" className="hover:text-teal">About us</Link>
               <Link href="/about#founder-corner" className="hover:text-teal">Founder corner</Link>
               <Link href="/services" className="hover:text-teal">All services</Link>

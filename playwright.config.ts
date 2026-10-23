@@ -37,6 +37,9 @@ export default defineConfig({
       ADMIN_PASSWORD: "e2e-only-password",
       ADMIN_ROLE: "owner",
       EXTRA_ADMINS: "",
+      // Override .env.local so contact-channel tests see the unconfigured defaults.
+      CONTACT_EMAIL: "",
+      WHATSAPP_NUMBER: "",
     },
   },
 });

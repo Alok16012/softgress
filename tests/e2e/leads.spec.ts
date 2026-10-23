@@ -13,7 +13,8 @@ async function fillContact(page: Page, opts: { email?: string; consent?: boolean
 }
 
 async function startRequest(page: Page, kind: RegExp) {
-  await page.goto("/contact");
+  // /contact opens on the quick enquiry tab; ?form=project opens the full request flow.
+  await page.goto("/contact?form=project");
   const d = form(page);
   await d.getByRole("radio", { name: kind }).click();
   await d.getByRole("button", { name: "Continue" }).click();
@@ -141,6 +142,40 @@ test.describe("lead capture", () => {
     expect((await ok.json()).status.reference).toBe(reference);
     // Codes are single-use.
     expect((await request.post("/api/status/verify", { headers: { origin }, data: { reference, code } })).status()).toBe(401);
+  });
+
+  test("quick enquiry: validates, submits and shows a reference code", async ({ page }) => {
+    await page.goto("/contact");
+    const d = form(page);
+    await expect(d.getByRole("tab", { name: /Quick enquiry/ })).toHaveAttribute("aria-selected", "true");
+    await d.getByRole("button", { name: /Send enquiry/ }).click();
+    await expect(d.getByText("Please enter your name")).toBeVisible();
+    await d.getByLabel("Full name *").fill("Enquiry Visitor");
+    await d.getByLabel("Phone / WhatsApp number *").fill("+91 98765 43210");
+    await d.getByLabel("I'm interested in").selectOption("seo");
+    await d.getByLabel("Your enquiry *").fill("We need SEO for our clinic website in Pune.");
+    await d.getByLabel(/I agree that Softgress may contact me about this enquiry/).check();
+    await page.waitForTimeout(2600); // the server rejects forms filled faster than a person could
+    await d.getByRole("button", { name: /Send enquiry/ }).click();
+    await expect(d.getByTestId("enquiry-reference")).toHaveText(/^SG-/);
+  });
+
+  test("quick enquiry payload is accepted by the leads API", async ({ request }) => {
+    const res = await request.post("/api/leads", {
+      headers: { origin: "http://localhost:3100", "x-forwarded-for": "10.9.9.10" },
+      data: {
+        idempotencyKey: crypto.randomUUID(),
+        kind: "brief",
+        contact: { name: "API Enquiry", email: "", phone: "+91 98765 43210", preferredChannel: "phone" },
+        consent: { contact: true, marketing: false },
+        brief: { projectType: "Website enquiry", serviceSlugs: ["seo"], notes: "Need SEO for a clinic website." },
+        primaryServiceSlug: "seo",
+        website: "",
+        elapsedMs: 5000,
+      },
+    });
+    expect(res.status()).toBe(201);
+    expect((await res.json()).reference).toBeTruthy();
   });
 
   test("contact page preselects kind and service from the URL", async ({ page }) => {

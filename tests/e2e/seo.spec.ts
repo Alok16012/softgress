@@ -32,6 +32,15 @@ test.describe("SEO & semantic parity", () => {
     expect(html).toContain('"@type":"ContactPage"');
   });
 
+  test("landing page renders hero, enquiry form and FAQ for crawlers", async ({ request }) => {
+    const html = await (await request.get("/get-started")).text();
+    expect(html).toContain("Grow your business online");
+    expect(html).toContain('id="landing-form"');
+    expect(html).toContain('"@type":"FAQPage"');
+    const seo = await (await request.get("/get-started?service=seo")).text();
+    expect(seo).toContain("Expert Search Engine Optimisation (SEO)");
+  });
+
   test("sitemap and robots", async ({ request }) => {
     expect(await (await request.get("/sitemap.xml")).text()).toContain("/services/website-development");
     expect(await (await request.get("/sitemap.xml")).text()).toContain("/about");
