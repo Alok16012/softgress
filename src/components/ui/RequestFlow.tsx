@@ -1,8 +1,8 @@
 "use client";
-import { ArrowLeft, ArrowRight, CalendarClock, CheckCircle2, Copy, FileText, Loader2, PhoneCall, Receipt } from "lucide-react";
+import { ArrowLeft, ArrowRight, CalendarClock, CheckCircle2, Copy, FileText, Loader2, Mail, MessageCircle, PhoneCall, Receipt } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { RequestKind } from "@/lib/types";
+import { BUDGET_LABELS, type ProjectBrief, type RequestKind } from "@/lib/types";
 import { useBrief, briefIsEmpty } from "@/stores/brief";
 import { useChat } from "@/stores/chat";
 import { useCatalog } from "./CatalogContext";
@@ -32,9 +32,65 @@ function fmt(iso: string, tz: string) {
   return new Intl.DateTimeFormat("en-IN", { timeZone: tz, weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" }).format(new Date(iso));
 }
 
-/** Submission flow used by the /contact page. */
-export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
-  const { config } = useCatalog();
+const KIND_ASK: Record<RequestKind, string> = {
+  quote: "request a quote",
+  consultation: "book a consultation",
+  callback: "request a callback",
+  brief: "share a project brief",
+};
+
+/** Where to hand the request when there is no database to save it to. */
+export interface DirectChannels {
+  whatsapp: string;
+  email: string | null;
+}
+
+const clip = (t: string, n = 500) => (t.length > n ? `${t.slice(0, n - 1)}…` : t);
+
+/** The whole request written out as a plain message for WhatsApp or email. */
+function requestText(opts: {
+  kind: RequestKind;
+  contact: { name: string; company: string; phone: string; email: string; channel: string };
+  brief: ProjectBrief;
+  serviceTitles: string[];
+  consultation: string | null;
+}) {
+  const { kind, contact: c, brief: b } = opts;
+  const line = (label: string, v: string | undefined | null) => (v && v.trim() ? [`${label}: ${clip(v.trim())}`] : []);
+  const text = [
+    `Hi Softgress, I'd like to ${KIND_ASK[kind]}.`,
+    "",
+    ...line("Name", c.name),
+    ...line("Company", c.company),
+    ...line("Phone", c.phone),
+    ...line("Email", c.email),
+    ...line("Preferred reply", c.channel === "phone" ? "Phone call" : c.channel === "whatsapp" ? "WhatsApp" : "Email"),
+    "",
+    ...line("Project type", b.projectType),
+    ...line("Services", opts.serviceTitles.join(", ")),
+    ...line("Industry", b.industry),
+    ...line("Goals", b.goals),
+    ...line("Scope", b.scope),
+    ...line("Key features", b.features.join(", ")),
+    ...line("Platforms", b.platforms.join(", ")),
+    ...line("Budget", b.budget ? BUDGET_LABELS[b.budget] : ""),
+    ...line("Target date", b.targetDate),
+    ...line("Notes", b.notes),
+    ...(opts.consultation ? ["", opts.consultation] : []),
+  ]
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+  return clip(text, 3500);
+}
+
+/**
+ * Submission flow used by the /contact page.
+ * With `direct`, nothing is stored: the last step opens WhatsApp or the mail app
+ * with the request written out, for sites running without a database.
+ */
+export function RequestFlow({ initialKind, direct = null }: { initialKind?: RequestKind; direct?: DirectChannels | null }) {
+  const { config, services } = useCatalog();
   const brief = useBrief((b) => b.brief);
   const resetBrief = useBrief((b) => b.reset);
   const chat = useChat();
@@ -70,6 +126,7 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [formError, setFormError] = useState<string | null>(null);
   const [success, setSuccess] = useState<Success | null>(null);
+  const [sentVia, setSentVia] = useState<"whatsapp" | "email" | null>(null);
   const hasChat = Object.values(chat.threads).some((t) => t.messages.some((m) => !m.note && m.role === "user"));
 
   const loadSlots = async () => {
@@ -101,7 +158,7 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
 
   const scheduleValid = kind !== "consultation" || (config.calendar.connected && slots && slots.length ? Boolean(slot) : Boolean(prefDate));
 
-  const submit = async () => {
+  const validateContact = () => {
     setFormError(null);
     setErrors({});
     const local: Record<string, string> = {};
@@ -109,11 +166,44 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
     if (!email.trim() && !phone.trim()) local["contact.email"] = "Add an email or a phone number so we can reply";
     if (channel === "email" && !email.trim()) local["contact.email"] = "Email is required for email replies";
     if (channel !== "email" && !phone.trim()) local["contact.phone"] = "Phone is required for phone/WhatsApp replies";
-    if (!consent) local["consent.contact"] = "Please confirm we may contact you about this request";
-    if (Object.keys(local).length) {
-      setErrors(local);
+    if (!direct && !consent) local["consent.contact"] = "Please confirm we may contact you about this request";
+    setErrors(local);
+    return Object.keys(local).length === 0;
+  };
+
+  /** Direct mode: hand the request to WhatsApp or the mail app. Runs inside the click so pop-up blockers allow it. */
+  const sendDirect = (via: "whatsapp" | "email") => {
+    if (!direct || !kind || !validateContact()) return;
+    const consultation =
+      kind !== "consultation"
+        ? null
+        : slot
+          ? `Requested consultation slot: ${fmt(slot, visitorTz)} (${visitorTz})`
+          : prefDate
+            ? `Preferred consultation time: ${prefDate}, ${prefTime} (${visitorTz})${prefNote.trim() ? `. ${prefNote.trim()}` : ""}`
+            : null;
+    const text = requestText({
+      kind,
+      contact: { name, company, phone, email, channel },
+      brief,
+      serviceTitles: brief.serviceSlugs.map((slug) => services.find((x) => x.slug === slug)?.title ?? slug),
+      consultation,
+    });
+    if (via === "whatsapp") {
+      window.open(`https://wa.me/${direct.whatsapp.replace(/^\+/, "")}?text=${encodeURIComponent(text)}`, "_blank", "noopener,noreferrer");
+    } else if (direct.email) {
+      window.location.href = `mailto:${direct.email}?subject=${encodeURIComponent(`Website ${kind} request from ${name.trim()}`)}&body=${encodeURIComponent(text)}`;
+    }
+    setSentVia(via);
+    setStep("done");
+  };
+
+  const submit = async () => {
+    if (direct) {
+      sendDirect("whatsapp");
       return;
     }
+    if (!validateContact()) return;
     setSubmitting(true);
     const useSlot = kind === "consultation" && config.calendar.connected && slot;
     const payload = {
@@ -172,6 +262,35 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
       setSubmitting(false);
     }
   };
+
+  if (step === "done" && sentVia) {
+    return (
+      <div className="text-center py-4" role="status" aria-live="polite">
+        <CheckCircle2 size={52} className="mx-auto text-teal" aria-hidden />
+        <h3 className="mt-3 text-2xl font-bold">Almost done, {name.trim().split(/\s+/)[0]}!</h3>
+        <p className="mx-auto mt-2 max-w-md text-white/75">
+          {sentVia === "whatsapp"
+            ? "We opened WhatsApp with your request written out. Press send in WhatsApp to deliver it to the Softgress team."
+            : "We opened your email app with your request written out. Press send there to deliver it to the Softgress team."}
+        </p>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <button type="button" className="btn-primary" onClick={() => sendDirect(sentVia)}>
+            {sentVia === "whatsapp" ? <MessageCircle size={17} aria-hidden /> : <Mail size={17} aria-hidden />} Open {sentVia === "whatsapp" ? "WhatsApp" : "email"} again
+          </button>
+          <button
+            type="button"
+            className="btn-ghost"
+            onClick={() => {
+              setSentVia(null);
+              setStep("contact");
+            }}
+          >
+            Edit my request
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (step === "done" && success) {
     const c = success.consultation;
@@ -313,7 +432,13 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
           {(!config.calendar.connected || (slots !== null && slots.length === 0 && slotsState !== "loading")) && (
             <div className="space-y-4">
               <div className="rounded-xl border border-warn/40 bg-warn/10 px-4 py-3 text-sm text-[#ffe08a]">
-                Live booking isn&apos;t connected. Tell us a preferred time: it will be saved as <strong>pending confirmation</strong> and a team member will confirm.
+                {direct ? (
+                  <>Tell us a preferred time. A team member will confirm the slot with you; it isn&apos;t booked yet.</>
+                ) : (
+                  <>
+                    Live booking isn&apos;t connected. Tell us a preferred time: it will be saved as <strong>pending confirmation</strong> and a team member will confirm.
+                  </>
+                )}
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
@@ -409,7 +534,7 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
               <select id="c-channel" className="field" value={channel} onChange={(e) => setChannel(e.target.value as typeof channel)}>
                 <option value="email">Email</option>
                 <option value="phone">Phone call</option>
-                {config.whatsappNumber && <option value="whatsapp">WhatsApp</option>}
+                {(config.whatsappNumber || direct) && <option value="whatsapp">WhatsApp</option>}
               </select>
             </div>
           </div>
@@ -419,6 +544,7 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
             <input id="c-website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
           </div>
 
+          {!direct && (
           <fieldset className="mt-5 space-y-3 text-sm">
             <legend className="sr-only">Consent</legend>
             <label className="flex gap-3 items-start">
@@ -439,8 +565,9 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
               </label>
             )}
           </fieldset>
+          )}
           <p className="mt-4 text-xs text-white/55">
-            We use these details only to respond to this request. See our{" "}
+            {direct ? "Your request opens in WhatsApp or email; nothing is stored on this website. " : "We use these details only to respond to this request. "}See our{" "}
             <Link href="/privacy" className="underline">
               privacy notice
             </Link>
@@ -450,6 +577,18 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
             <button type="button" className="btn-ghost" onClick={back} disabled={submitting}>
               <ArrowLeft size={18} aria-hidden /> Back
             </button>
+            {direct ? (
+              <div className="flex flex-wrap justify-end gap-3">
+                {direct.email && (
+                  <button type="button" className="btn-ghost" onClick={() => sendDirect("email")}>
+                    <Mail size={17} aria-hidden /> Send by email
+                  </button>
+                )}
+                <button type="submit" className="btn-primary">
+                  <MessageCircle size={17} aria-hidden /> Send on WhatsApp
+                </button>
+              </div>
+            ) : (
             <button type="submit" className="btn-primary" disabled={submitting}>
               {submitting ? (
                 <>
@@ -459,6 +598,7 @@ export function RequestFlow({ initialKind }: { initialKind?: RequestKind }) {
                 <>Submit {kind === "quote" ? "quote request" : kind === "consultation" ? "consultation request" : kind === "callback" ? "callback request" : "brief"}</>
               )}
             </button>
+            )}
           </div>
         </form>
       )}

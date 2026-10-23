@@ -1,10 +1,10 @@
 "use client";
 import { useEffect } from "react";
-import { RequestFlow } from "@/components/ui/RequestFlow";
+import { RequestFlow, type DirectChannels } from "@/components/ui/RequestFlow";
 import { useBrief } from "@/stores/brief";
 import type { RequestKind } from "@/lib/types";
 
-export function ContactClient({ kind, service }: { kind: RequestKind | null; service: string | null }) {
+export function ContactClient({ kind, service, direct = null }: { kind: RequestKind | null; service: string | null; direct?: DirectChannels | null }) {
   const set = useBrief((b) => b.set);
   useEffect(() => {
     if (!service) return;
@@ -13,7 +13,7 @@ export function ContactClient({ kind, service }: { kind: RequestKind | null; ser
   }, [service, set]);
   return (
     <div className="glass rounded-3xl p-6 sm:p-8">
-      <RequestFlow initialKind={kind ?? undefined} />
+      <RequestFlow initialKind={kind ?? undefined} direct={direct} />
     </div>
   );
 }

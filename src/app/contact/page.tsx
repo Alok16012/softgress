@@ -47,17 +47,12 @@ async function Flow({ searchParams }: { searchParams: PageProps<"/contact">["sea
           />
         }
         project={
-          available ? (
-            <ContactClient kind={kind} service={service} />
-          ) : (
-            <div className="glass rounded-[28px] p-6 sm:p-8">
-              <h3 className="text-xl font-semibold">Online project requests are opening soon</h3>
-              <p className="mt-3 text-white/75">
-                Until then, use the quick enquiry form, call us on {office.phone.display} or message us on WhatsApp, and we&apos;ll help you scope your project.
-              </p>
-              <Link href="/services" className="mt-5 inline-block underline text-teal">Explore our services</Link>
-            </div>
-          )
+          <ContactClient
+            kind={kind}
+            service={service}
+            // Without a database the request is handed to WhatsApp or email instead of being saved.
+            direct={available ? null : { whatsapp: whatsappNumber ?? office.phone.tel, email: contactEmail }}
+          />
         }
       />
     </ClientShell>
