@@ -29,7 +29,7 @@
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, `ADMIN_ROLE` | from `pnpm admin:hash` |
 | `ANTHROPIC_API_KEY` | optional; without it guides stay in labelled demo mode |
 | `AI_MODEL` | defaults to `claude-opus-5-5`; verify with `/api/health?model=1` |
-| `CONTACT_EMAIL`, `WHATSAPP_NUMBER` | optional; CTAs appear only when set |
+| `CONTACT_EMAIL`, `WHATSAPP_NUMBER` | optional; CTAs appear only when set. Softgress uses `CONTACT_EMAIL=info@softgress.com` and `WHATSAPP_NUMBER=+917447207700` |
 | `CALENDAR_PROVIDER` | `none` until a real calendar adapter is added |
 | `NOTIFY_PROVIDER` | `none` until a real email/SMS adapter is added |
 

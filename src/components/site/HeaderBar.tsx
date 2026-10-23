@@ -13,6 +13,7 @@ export interface MenuGroup {
 }
 
 const LINKS = [
+  { href: "/about", label: "About Us" },
   { href: "/work", label: "Work" },
   { href: "/status", label: "Request status" },
   { href: "/contact", label: "Contact Us" },

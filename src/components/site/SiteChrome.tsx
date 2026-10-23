@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Suspense, type ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin, MessageCircle, Phone } from "lucide-react";
+import { office, whatsappUrl } from "@/content/company";
 import { loadCatalog } from "@/lib/data";
 import { getPublicConfig } from "@/lib/server";
 import { HeaderBar, HeaderFallback, type MenuGroup } from "./HeaderBar";
@@ -85,7 +86,7 @@ export function SectionTitle({ id, children, href, dark = false }: { id?: string
 
 async function FooterSitemap() {
   const { departments, services } = await loadCatalog();
-  const { contactEmail } = getPublicConfig();
+  const { contactEmail, whatsappNumber } = getPublicConfig();
   const depts = departments.filter((d) => d.slug !== "reception" && d.active);
   return (
     <>
@@ -94,6 +95,22 @@ async function FooterSitemap() {
           {contactEmail}
         </a>
       )}
+      <div className="mt-4 flex flex-wrap gap-x-8 gap-y-2 text-[15px]">
+        <a href={`tel:${office.phone.tel}`} className="inline-flex items-center gap-2 font-medium text-white hover:text-teal">
+          <Phone size={17} aria-hidden className="text-teal" /> {office.phone.display}
+        </a>
+        {whatsappNumber && (
+          <a href={whatsappUrl(whatsappNumber)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-medium text-white hover:text-teal">
+            <MessageCircle size={17} aria-hidden className="text-teal" /> WhatsApp us
+          </a>
+        )}
+      </div>
+      <address className="mt-3 not-italic">
+        <a href={office.mapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 text-[15px] leading-relaxed text-white/70 hover:text-teal">
+          <MapPin size={18} aria-hidden className="mt-0.5 flex-none text-teal" />
+          <span>{office.lines.join(", ")}</span>
+        </a>
+      </address>
       <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
         {depts.map((d) => (
           <div key={d.slug}>
@@ -153,6 +170,8 @@ export function SiteFooter({ cta = true }: { cta?: boolean }) {
               <span className="text-white/70">Ideas engineered. Growth accelerated.</span> · Digital marketing &amp; software development agency.
             </p>
             <nav aria-label="Footer" className="flex flex-wrap gap-x-4 gap-y-1 sm:justify-end pt-1 text-white">
+              <Link href="/about" className="hover:text-teal">About us</Link>
+              <Link href="/about#founder-corner" className="hover:text-teal">Founder corner</Link>
               <Link href="/services" className="hover:text-teal">All services</Link>
               <Link href="/work" className="hover:text-teal">Work &amp; samples</Link>
               <Link href="/contact" className="hover:text-teal">Request a quote or consultation</Link>

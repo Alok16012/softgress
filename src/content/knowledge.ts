@@ -13,7 +13,8 @@ const seeds: Seed[] = [
     title: "About Softgress",
     body: `Softgress is a digital marketing and software development agency. Tagline: "Ideas engineered. Growth accelerated."
 Softgress has five delivery teams: Software Development, Digital Marketing, Creative Production, AI & Automation, and Client Strategy. Reception helps visitors find the right team.
-Approved facts about founding year, team size, office address, certifications, awards and client names have not been published on this site. If asked, say that information is not available here and offer to connect the visitor with the team.`,
+Softgress is led by two directors: Bhagwan Shinde, Director – Operations (bhagwan.shinde@softgress.com), and SB Suryawanshi, Director – Technology & AI (sb.suryawanshi@softgress.com). General enquiries: info@softgress.com. Office: Softgress Pvt Ltd, Akurdi Chowk, Shubhashri Residency, Ganga Nagar, Akurdi, Pimpri-Chinchwad, Maharashtra 411035. Phone and WhatsApp: +91 74472 07700. The leadership note and the promise to every client (a clear written brief before any code, one accountable team, no invented numbers) are on the About Us page at /about#founder-corner.
+Approved facts about founding year, team size, certifications, awards and client names have not been published on this site. If asked, say that information is not available here and offer to connect the visitor with the team.`,
   },
   {
     id: "kb-process",

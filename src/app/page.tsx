@@ -6,6 +6,7 @@ import { ServiceList } from "@/components/site/ServiceList";
 import { HomeHero } from "@/components/site/HomeHero";
 import { SectionTitle, SiteFooter } from "@/components/site/SiteChrome";
 import { loadCatalog } from "@/lib/data";
+import { office, officeLd } from "@/content/company";
 
 /** Server-rendered company overview: departments, every service, process and work. */
 async function Directory() {
@@ -19,6 +20,8 @@ async function Directory() {
     slogan: "Ideas engineered. Growth accelerated.",
     description: "Digital marketing and software development agency.",
     url: process.env.SITE_URL ?? "http://localhost:3000",
+    address: officeLd,
+    telephone: office.phone.tel,
   };
   return (
     <>

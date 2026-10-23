@@ -11,7 +11,7 @@ one is easy to change.
 | Company facts | Founding year, team size, address, certifications, awards and clients are **not stated anywhere**; guides say they don't have that information | `/admin/knowledge` |
 | Portfolio | Four **sample concepts**, always labelled; no client names or results | `projects` table |
 | AI guides | Six synthetic characters (Aanya, Kabir, Meera, Rohan, Ira, Dev), always labelled "AI guide" | `src/content/staff.ts` |
-| Contact channels | No email/WhatsApp shown until `CONTACT_EMAIL` / `WHATSAPP_NUMBER` are set; the request form is the primary channel | `.env` |
+| Contact channels | Email shown when `CONTACT_EMAIL` is set (info@softgress.com); WhatsApp when `WHATSAPP_NUMBER` is set (+917447207700). Office address lives in `src/content/company.ts` | `.env`, `src/content/company.ts` |
 | Calendar | No real calendar. Production saves preferred times as *pending confirmation* | `CalendarAdapter` |
 | Email/SMS | No provider. Development uses the `/dev/outbox` | `Notifier` |
 | AI model | `claude-opus-5-5` (the model selected for this session), configurable and checked live via `/api/health?model=1` | `AI_MODEL` |
