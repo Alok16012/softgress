@@ -25,7 +25,8 @@
 |---|---|
 | `DATABASE_URL` | Supabase pooler URL |
 | `SESSION_SECRET` | `openssl rand -base64 48` |
-| `SITE_URL` | `https://your-domain` |
+| `SITE_URL` | `https://softgress.com` (canonicals, sitemap, robots, OG images) |
+| `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION` | optional Search Console / Bing Webmaster verification codes |
 | `ADMIN_EMAIL`, `ADMIN_PASSWORD_HASH`, `ADMIN_ROLE` | from `pnpm admin:hash` |
 | `ANTHROPIC_API_KEY` | optional; without it guides stay in labelled demo mode |
 | `AI_MODEL` | defaults to `claude-opus-5-5`; verify with `/api/health?model=1` |

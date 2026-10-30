@@ -26,13 +26,13 @@ import { loadCatalog } from "@/lib/data";
 import { enquiryGroups } from "@/lib/enquiry";
 import { catalogOnly } from "@/lib/env";
 import { getPublicConfig } from "@/lib/server";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Get Started: Websites, Apps, Marketing & AI Automation",
-  description:
-    "Grow your business with Softgress: websites, apps, SEO and ads, branding and AI automation from one team. Send a quick enquiry or call +91 74472 07700.",
-  alternates: { canonical: "/get-started" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Get Started: Websites, Apps, Marketing & AI",
+  description: "Grow your business with Softgress, Pune: websites, apps, SEO and ads, branding and AI automation from one team. Send a quick enquiry or call +91 74472 07700.",
+  path: "/get-started",
+});
 
 type SearchParams = Promise<Record<string, string | string[] | undefined>>;
 

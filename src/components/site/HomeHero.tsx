@@ -21,7 +21,7 @@ export function HomeHero() {
       <SiteHeader />
       <div className="relative mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-center gap-12 px-4 pt-28 pb-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:pb-24">
         <div className="max-w-2xl">
-          <p className="eyebrow text-teal">Softgress</p>
+          <p className="eyebrow text-teal">Softgress · Software &amp; digital marketing company in Pune, India</p>
           <h1 id="hero-title" className="mt-4 font-display text-[44px] leading-[1.02] sm:text-[64px] font-bold tracking-tight">
             Ideas engineered.
             <span className="block text-[26px] sm:text-[34px] leading-tight text-teal">Growth accelerated.</span>

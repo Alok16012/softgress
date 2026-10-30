@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Suspense, type ReactNode } from "react";
 import { ArrowRight, MapPin, MessageCircle, Phone } from "lucide-react";
 import { office, whatsappUrl } from "@/content/company";
+import { locations } from "@/content/locations";
 import { loadCatalog } from "@/lib/data";
 import { getPublicConfig } from "@/lib/server";
 import { HeaderBar, HeaderFallback, type MenuGroup } from "./HeaderBar";
@@ -130,6 +131,20 @@ async function FooterSitemap() {
         </a>
       </address>
       <div className="mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div>
+          <Link href="/locations" className="font-display text-2xl sm:text-[28px] font-bold text-teal hover:text-white">
+            Locations
+          </Link>
+          <ul className="mt-4 space-y-2">
+            {locations.map((l) => (
+              <li key={l.slug}>
+                <Link href={`/locations/${l.slug}`} className="text-[15px] font-medium text-white hover:text-teal">
+                  {l.name === "International" ? "International clients" : `Softgress in ${l.name}`}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
         {depts.map((d) => (
           <div key={d.slug}>
             <Link href={`/departments/${d.slug}`} className="font-display text-2xl sm:text-[28px] font-bold text-teal hover:text-white">
@@ -193,6 +208,7 @@ export function SiteFooter({ cta = true }: { cta?: boolean }) {
               <Link href="/about#founder-corner" className="hover:text-teal">Founder corner</Link>
               <Link href="/services" className="hover:text-teal">All services</Link>
               <Link href="/work" className="hover:text-teal">Work &amp; samples</Link>
+              <Link href="/locations" className="hover:text-teal">Locations</Link>
               <Link href="/contact" className="hover:text-teal">Request a quote or consultation</Link>
               <Link href="/status" className="hover:text-teal">Check request status</Link>
               <Link href="/privacy" className="hover:text-teal">Privacy notice</Link>

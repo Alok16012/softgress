@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
@@ -10,7 +11,14 @@ import { ServiceList } from "@/components/site/ServiceList";
 import { HomeHero } from "@/components/site/HomeHero";
 import { SectionTitle, SiteFooter } from "@/components/site/SiteChrome";
 import { loadCatalog } from "@/lib/data";
-import { office, officeLd, whatsappUrl } from "@/content/company";
+import { office, whatsappUrl } from "@/content/company";
+import { FaqSection } from "@/components/site/FaqSection";
+import { JsonLd } from "@/components/site/JsonLd";
+import { locations } from "@/content/locations";
+import { HOME_DESCRIPTION, HOME_TITLE, homeFaqs } from "@/content/seo";
+import { faqLd, graph, pageMeta } from "@/lib/seo";
+
+export const metadata: Metadata = pageMeta({ title: HOME_TITLE, description: HOME_DESCRIPTION, path: "/", absoluteTitle: true });
 
 /** Server-rendered company overview: departments, every service, process and work. */
 async function Directory() {
@@ -18,19 +26,9 @@ async function Directory() {
   const depts = departments.filter((d) => d.slug !== "reception" && d.active);
   const deptOf = (serviceSlug?: string) => services.find((s) => s.slug === serviceSlug)?.departmentSlug ?? "strategy";
   const { contactEmail, whatsappNumber } = getPublicConfig();
-  const orgLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Softgress",
-    slogan: "Ideas engineered. Growth accelerated.",
-    description: "Digital marketing and software development agency.",
-    url: process.env.SITE_URL ?? "http://localhost:3000",
-    address: officeLd,
-    telephone: office.phone.tel,
-  };
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd).replace(/</g, "\\u003c") }} />
+      <JsonLd data={graph(faqLd(homeFaqs))} />
 
       {/* Intro */}
       <section className="bg-white">
@@ -38,10 +36,10 @@ async function Directory() {
           <div>
             <p className="eyebrow text-teal-dark">Softgress</p>
             <h2 className="mt-3 font-display text-[34px] sm:text-[48px] leading-[1.08] font-bold tracking-tight text-ink">
-              A digital marketing &amp; software development agency.
+              Software development &amp; digital marketing company in Pune, India.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-steel">
-              Five teams under one roof: software, marketing, creative, AI automation and strategy. Explore every department and service below, then tell us what you need.
+              Five teams under one roof in Pimpri-Chinchwad, Pune: software, marketing, creative, AI automation and strategy. We work with businesses in Pune, Mumbai, Bangalore, across India and abroad. Explore every department and service below, then tell us what you need.
             </p>
             <p className="mt-4 text-lg font-medium text-teal-dark">Ideas engineered. Growth accelerated.</p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -166,6 +164,28 @@ async function Directory() {
         </div>
       </section>
 
+      {/* Locations */}
+      <section aria-labelledby="locations" className="bg-paper">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+          <SectionTitle id="locations" href="/locations">
+            Where we work
+          </SectionTitle>
+          <p className="mt-3 max-w-3xl text-steel text-lg">
+            Based in Pimpri-Chinchwad, Pune. Serving clients in Pune, Mumbai, Bangalore, across India and internationally.
+          </p>
+          <ul className="mt-8 flex flex-wrap gap-3">
+            {locations.map((l) => (
+              <li key={l.slug}>
+                <Link href={`/locations/${l.slug}`} className="pill pill-line text-ink">
+                  {l.name === "International" ? "International clients" : `Softgress in ${l.name}`}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <FaqSection faqs={homeFaqs} />
       {/* Customer enquiry */}
       <section id="enquiry" aria-labelledby="enquiry-heading" className="relative overflow-hidden bg-navy text-white scroll-mt-20">
         <div aria-hidden className="pointer-events-none absolute -left-40 top-20 h-[460px] w-[460px] rounded-full bg-sky/15 blur-[120px]" />

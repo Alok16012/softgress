@@ -3,12 +3,13 @@ import { Suspense } from "react";
 import { ProjectArt } from "@/components/site/Art";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { loadCatalog } from "@/lib/data";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Work",
-  description: "Softgress work: approved case studies and clearly labelled sample concepts.",
-  alternates: { canonical: "/work" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Work & Case Studies",
+  description: "Softgress work: approved case studies and clearly labelled sample concepts in software development, digital marketing, creative and AI automation.",
+  path: "/work",
+});
 
 async function Projects() {
   const { projects, services } = await loadCatalog();

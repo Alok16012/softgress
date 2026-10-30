@@ -5,12 +5,13 @@ import { DeptArt } from "@/components/site/Art";
 import { ServiceList } from "@/components/site/ServiceList";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { loadCatalog } from "@/lib/data";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description: "Software development, digital marketing, creative production, AI automation and project strategy services from Softgress.",
-  alternates: { canonical: "/services" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Services: Software, SEO, Ads, Branding & AI",
+  description: "All Softgress services: website, app, SaaS and CRM development, SEO, Google and Meta ads, social media, branding, video and AI automation, from our team in Pune for clients across India and abroad.",
+  path: "/services",
+});
 
 async function Catalogue() {
   const { departments, services } = await loadCatalog();

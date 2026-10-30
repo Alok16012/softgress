@@ -46,5 +46,29 @@ test.describe("SEO & semantic parity", () => {
     expect(await (await request.get("/sitemap.xml")).text()).toContain("/about");
     const robots = await (await request.get("/robots.txt")).text();
     expect(robots).toContain("Disallow: /admin");
+    expect(robots).toContain("User-Agent: GPTBot");
+    expect(await (await request.get("/sitemap.xml")).text()).toContain("/locations/pune");
+  });
+
+  test("location pages carry metadata in <head> and FAQ schema", async ({ request }) => {
+    const html = await (await request.get("/locations/pune")).text();
+    expect(html.indexOf("<title>")).toBeLessThan(html.indexOf("<body"));
+    expect(html).toContain("Digital marketing &amp; software development company in Pune");
+    expect(html).toMatch(/rel="canonical" href="[^"]*\/locations\/pune"/);
+    expect(html).toContain('"@type":"FAQPage"');
+    expect(html).toContain('"@type":"BreadcrumbList"');
+  });
+
+  test("service pages have a single H1 and FAQ schema", async ({ request }) => {
+    const html = await (await request.get("/services/seo")).text();
+    expect(html.match(/<h1[\s>]/g)?.length).toBe(1);
+    expect(html).toContain('"@type":"FAQPage"');
+  });
+
+  test("llms.txt summarises the company for AI assistants", async ({ request }) => {
+    const txt = await (await request.get("/llms.txt")).text();
+    expect(txt).toMatch(/^# Softgress/);
+    expect(txt).toContain("Pimpri-Chinchwad");
+    expect(txt).toContain("/locations/pune");
   });
 });

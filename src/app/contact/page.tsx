@@ -15,12 +15,13 @@ import { catalogOnly } from "@/lib/env";
 import { office, officeLd, whatsappUrl } from "@/content/company";
 import { leaders } from "@/content/leadership";
 import { getPublicConfig } from "@/lib/server";
+import { absUrl, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Contact Us",
-  description: "Contact Softgress: call or WhatsApp +91 74472 07700, email info@softgress.com, visit our office in Akurdi, Pimpri-Chinchwad, or send a project request.",
-  alternates: { canonical: "/contact" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "Contact Softgress, Pune: Get a Free Quote",
+  description: "Contact Softgress in Pimpri-Chinchwad, Pune: call or WhatsApp +91 74472 07700, email info@softgress.com, visit our Akurdi office, or send a project request for a free quote.",
+  path: "/contact",
+});
 
 async function Flow({ searchParams }: { searchParams: PageProps<"/contact">["searchParams"] }) {
   const sp = await searchParams;
@@ -219,7 +220,7 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "Contact Softgress",
-    url: `${process.env.SITE_URL ?? "http://localhost:3000"}/contact`,
+    url: absUrl("/contact"),
     mainEntity: {
       "@type": "Organization",
       name: office.name,

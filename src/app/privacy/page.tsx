@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Privacy notice", alternates: { canonical: "/privacy" } };
+export const metadata: Metadata = pageMeta({ title: "Privacy notice", description: "How Softgress handles the information you share when you contact us or submit a project request.", path: "/privacy" });
 
 export default function PrivacyPage() {
   return (

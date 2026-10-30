@@ -3,18 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import { ArrowRight, Compass, Handshake, Layers, LineChart, Mail, MapPin, MessageCircle, Phone, Quote, ShieldCheck } from "lucide-react";
-import { office, officeLd, whatsappUrl } from "@/content/company";
+import { office, whatsappUrl } from "@/content/company";
 import { DeptArt } from "@/components/site/Art";
 import { PageHero, SectionTitle, SiteFooter } from "@/components/site/SiteChrome";
 import { leaders, leadershipNote, leadershipPromises, type Leader } from "@/content/leadership";
 import { loadCatalog } from "@/lib/data";
 import { getPublicConfig } from "@/lib/server";
+import { JsonLd } from "@/components/site/JsonLd";
+import { ORG_ID, absUrl, breadcrumbLd, graph, pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description: `About Softgress: five teams under one roof for software, marketing, creative, AI automation and strategy, and the leadership team behind it: ${leaders.map((l) => `${l.name} (${l.role})`).join(" and ")}.`,
-  alternates: { canonical: "/about" },
-};
+export const metadata: Metadata = pageMeta({
+  title: "About Us: Software & Marketing Company, Pune",
+  description: `About Softgress, a software development and digital marketing company in Pimpri-Chinchwad, Pune: five teams under one roof, led by ${leaders.map((l) => `${l.name} (${l.role})`).join(" and ")}.`,
+  path: "/about",
+});
 
 const VALUES = [
   { icon: Compass, title: "Clarity before code", body: "Every engagement starts with a written brief: goals, scope and assumptions agreed before anyone builds." },
@@ -226,22 +228,11 @@ function FounderCorner() {
 }
 
 export default function AboutPage() {
-  const { contactEmail } = getPublicConfig();
-  const aboutLd = {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: "About Softgress",
-    url: `${process.env.SITE_URL ?? "http://localhost:3000"}/about`,
-    mainEntity: {
-      "@type": "Organization",
-      name: "Softgress",
-      slogan: "Ideas engineered. Growth accelerated.",
-      ...(contactEmail ? { email: contactEmail } : {}),
-      address: officeLd,
-      telephone: office.phone.tel,
-      employee: leaders.map((l) => ({ "@type": "Person", name: l.name, jobTitle: l.role, ...(l.email ? { email: l.email } : {}) })),
-    },
-  };
+  const aboutLd = graph(
+    { "@type": "AboutPage", name: "About Softgress", url: absUrl("/about"), mainEntity: { "@id": ORG_ID } },
+    ...leaders.map((l) => ({ "@type": "Person", name: l.name, jobTitle: l.role, worksFor: { "@id": ORG_ID }, ...(l.photo ? { image: absUrl(l.photo) } : {}), ...(l.email ? { email: l.email } : {}) })),
+    breadcrumbLd([{ name: "About", path: "/about" }]),
+  );
   return (
     <>
       <PageHero eyebrow="About Us" title="One roof for everything your business needs to grow." accent="Ideas engineered. Growth accelerated." artworkSlug="strategy">
@@ -256,7 +247,7 @@ export default function AboutPage() {
         </div>
       </PageHero>
       <main id="main" className="flex-1">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutLd).replace(/</g, "\\u003c") }} />
+        <JsonLd data={aboutLd} />
 
         {/* Who we are */}
         <section aria-labelledby="who-we-are" className="bg-paper">

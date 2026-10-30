@@ -12,6 +12,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  // Always put <title>, description and canonical in <head> (no streamed metadata), so
+  // AI crawlers and other bots that read only the initial HTML see them.
+  htmlLimitedBots: /.*/,
   // Lets an isolated E2E server run next to the dev server.
   distDir: process.env.NEXT_DIST_DIR ?? ".next",
   // Embedded Postgres (WASM) and the Postgres driver must stay as runtime Node modules.

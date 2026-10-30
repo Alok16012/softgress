@@ -3,40 +3,67 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { ArrowRight } from "lucide-react";
+import { JsonLd } from "@/components/site/JsonLd";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { ServiceList } from "@/components/site/ServiceList";
+import { departments as seedDepartments } from "@/content/departments";
+import { departmentTitle } from "@/content/seo";
 import { loadCatalog } from "@/lib/data";
+import { ORG_ID, absUrl, breadcrumbLd, graph, pageMeta } from "@/lib/seo";
+
+// Hero and metadata come from bundled content so they are in the initial HTML;
+// the live service list streams in below.
+const publicDepartments = seedDepartments.filter((d) => d.slug !== "reception");
+
+export function generateStaticParams() {
+  return publicDepartments.map((d) => ({ slug: d.slug }));
+}
 
 export async function generateMetadata({ params }: PageProps<"/departments/[slug]">): Promise<Metadata> {
   const { slug } = await params;
-  const { departments } = await loadCatalog();
-  const d = departments.find((x) => x.slug === slug);
-  return d ? { title: d.name, description: d.description, alternates: { canonical: `/departments/${d.slug}` } } : { title: "Department not found" };
+  const d = publicDepartments.find((x) => x.slug === slug);
+  if (!d) return { title: "Department not found" };
+  return pageMeta({ title: departmentTitle(d.slug, d.name), description: `${d.description} Softgress, Pimpri-Chinchwad, Pune: serving Pune, Mumbai, Bangalore, India and abroad.`, path: `/departments/${d.slug}` });
 }
 
-async function Dept({ params }: { params: PageProps<"/departments/[slug]">["params"] }) {
+async function Services({ slug }: { slug: string }) {
+  const { services } = await loadCatalog();
+  const list = services.filter((s) => s.departmentSlug === slug);
+  return list.length > 0 ? <ServiceList services={list} cols={3} headingLevel="h2" /> : null;
+}
+
+export default async function DepartmentPage({ params }: PageProps<"/departments/[slug]">) {
   const { slug } = await params;
-  const { departments, services } = await loadCatalog();
-  const d = departments.find((x) => x.slug === slug);
+  const d = publicDepartments.find((x) => x.slug === slug);
   if (!d) notFound();
-  const list = services.filter((s) => s.departmentSlug === d.slug);
+  const path = `/departments/${d.slug}`;
+  const ld = graph(
+    { "@type": "CollectionPage", "@id": `${absUrl(path)}#webpage`, url: absUrl(path), name: d.name, description: d.description, about: { "@id": ORG_ID } },
+    breadcrumbLd([
+      { name: "Services", path: "/services" },
+      { name: d.name, path },
+    ]),
+  );
   return (
     <>
+      <JsonLd data={ld} />
       <PageHero
         artworkSlug={d.slug}
         eyebrow="Department"
         title={d.name}
         crumbs={
-          <>
+          <nav aria-label="Breadcrumb">
             <Link href="/services" className="hover:text-white">Services</Link> › {d.shortName}
-          </>
+          </nav>
         }
       >
         {d.description}
       </PageHero>
       <main id="main" className="flex-1 bg-white">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
-          {list.length > 0 && <ServiceList services={list} cols={3} headingLevel="h2" />}
+          <Suspense fallback={<p className="text-steel">Loading services…</p>}>
+            <Services slug={d.slug} />
+          </Suspense>
           <aside className="sky mt-16 rounded-[32px] text-white p-8 sm:p-10 flex flex-wrap items-center gap-6 justify-between">
             <div>
               <p className="eyebrow text-teal">{d.shortName}</p>
@@ -50,16 +77,6 @@ async function Dept({ params }: { params: PageProps<"/departments/[slug]">["para
           </aside>
         </div>
       </main>
-    </>
-  );
-}
-
-export default function DepartmentPage({ params }: PageProps<"/departments/[slug]">) {
-  return (
-    <>
-      <Suspense fallback={<PageHero title="Loading…" />}>
-        <Dept params={params} />
-      </Suspense>
       <SiteFooter cta={false} />
     </>
   );
