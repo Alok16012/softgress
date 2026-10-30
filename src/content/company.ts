@@ -14,7 +14,7 @@ export const office = {
     addressCountry: "IN",
   },
   phone: { display: "+91 74472 07700", tel: "+917447207700" },
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Softgress+Pvt+Ltd+Akurdi+Chowk+Shubhashri+Residency+Pimpri-Chinchwad+411035",
+  mapsUrl: "https://maps.google.com/?cid=3826205672514681734",
 };
 
 /** schema.org PostalAddress for JSON-LD. */

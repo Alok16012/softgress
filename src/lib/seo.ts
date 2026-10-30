@@ -17,7 +17,14 @@ export const absUrl = (path = "/") => `${SITE_URL}${path === "/" ? "" : path}`;
  * Facebook, YouTube, Clutch...). Add each real URL here: search engines and AI
  * assistants use `sameAs` to connect the website to the Softgress entity.
  */
-export const SAME_AS: string[] = [];
+export const SAME_AS: string[] = [
+  "https://maps.google.com/?cid=3826205672514681734",
+  "https://www.youtube.com/@Softgress",
+];
+
+/** Map pin of the Google Business Profile and its published opening hours. */
+export const GEO = { latitude: 18.6483745, longitude: 73.7850242 };
+export const OPENING_HOURS = { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], opens: "09:30", closes: "18:30" };
 
 /** Places Softgress serves. The office is in Pimpri-Chinchwad, Pune; other cities are served remotely. */
 export const AREA_SERVED = [
@@ -62,7 +69,10 @@ export function organizationLd(contactEmail?: string) {
     telephone: office.phone.tel,
     ...(contactEmail ? { email: contactEmail } : {}),
     address: { "@type": "PostalAddress", ...office.postal },
-    hasMap: office.mapsUrl,
+    hasMap: SAME_AS[0] ?? office.mapsUrl,
+    geo: { "@type": "GeoCoordinates", ...GEO },
+    openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: OPENING_HOURS.days, opens: OPENING_HOURS.opens, closes: OPENING_HOURS.closes },
+    foundingDate: "2026-09",
     areaServed: AREA_SERVED,
     knowsAbout: services.map((s) => s.title),
     founder: leaders.map((l) => ({ "@type": "Person", name: l.name, jobTitle: l.role })),
