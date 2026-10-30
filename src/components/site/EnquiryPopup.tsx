@@ -13,7 +13,7 @@ const DISMISSED_KEY = "sg-enquiry-popup-dismissed"; // sessionStorage: closed in
 const SENT_KEY = "sg-enquiry-popup-sent"; // localStorage: timestamp of the last enquiry sent
 
 /** Pages where the pop-up never opens: the ad landing page (form above the fold) and pages not for visitors. */
-const HIDDEN_ON = ["/get-started", "/status", "/admin", "/dev"];
+const HIDDEN_ON = ["/get-started", "/status", "/admin", "/dev", "/review"];
 
 function read(store: () => Storage, key: string) {
   try {
