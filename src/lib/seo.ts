@@ -20,6 +20,7 @@ export const absUrl = (path = "/") => `${SITE_URL}${path === "/" ? "" : path}`;
 export const SAME_AS: string[] = [
   "https://maps.google.com/?cid=3826205672514681734",
   "https://www.youtube.com/@Softgress",
+  "https://www.instagram.com/softgress/",
 ];
 
 /** Map pin of the Google Business Profile and its published opening hours. */
