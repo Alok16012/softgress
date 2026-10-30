@@ -5,6 +5,9 @@ import { ArrowRight, Check } from "lucide-react";
 
 const WORDS = ["Excellent", "Professional", "Fast", "Creative", "Helpful", "Reliable", "Good", "Average"];
 
+/** Prompts that help visitors think of what to say; they are never inserted into the text. */
+const HINTS = ["Which service did you use? (website, app, SEO, ads, branding…)", "What did you like most?", "What changed for your business?"];
+
 /** One question, one word: the visitor picks or types their own word, copies it and opens Google's review form. */
 export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
   const [text, setText] = useState("");
@@ -30,9 +33,9 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
           <li key={w}>
             <button
               type="button"
-              onClick={() => setText(w)}
-              aria-pressed={text === w}
-              className={clsx("rounded-full border px-4 py-2 text-[15px] font-medium transition-colors", text === w ? "border-teal-dark bg-teal-dark text-white" : "border-ink/15 hover:border-teal-dark")}
+              onClick={() => setText((t) => (!t.trim() || WORDS.includes(t.trim()) ? w : t.startsWith(`${w}.`) ? t : `${w}. ${t}`))}
+              aria-pressed={text === w || text.startsWith(`${w}.`)}
+              className={clsx("rounded-full border px-4 py-2 text-[15px] font-medium transition-colors", text === w || text.startsWith(`${w}.`) ? "border-teal-dark bg-teal-dark text-white" : "border-ink/15 hover:border-teal-dark")}
             >
               {w}
             </button>
@@ -40,15 +43,21 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
         ))}
       </ul>
       <label className="mt-6 block text-sm text-steel" htmlFor="review-word">
-        Or write your own
+        Want to add a line? You could mention:
       </label>
-      <input
+      <ul className="mt-2 space-y-1 text-[15px] text-steel">
+        {HINTS.map((h) => (
+          <li key={h}>• {h}</li>
+        ))}
+      </ul>
+      <textarea
         id="review-word"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        maxLength={200}
-        placeholder="Your word or a few words"
-        className="mt-2 w-full rounded-2xl border border-ink/15 px-4 py-3 text-[17px] outline-none focus:border-teal-dark"
+        maxLength={1000}
+        rows={3}
+        placeholder="Write in your own words"
+        className="mt-3 w-full resize-y rounded-2xl border border-ink/15 px-4 py-3 text-[17px] outline-none focus:border-teal-dark"
       />
       <button type="button" onClick={go} className="pill pill-dark mt-6 w-full justify-center">
         {copied ? <Check size={16} aria-hidden /> : null} Copy &amp; review on Google <ArrowRight size={16} aria-hidden />
