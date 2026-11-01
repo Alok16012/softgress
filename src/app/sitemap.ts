@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { articles } from "@/content/blog";
 import { departments } from "@/content/departments";
 import { locations } from "@/content/locations";
 import { services } from "@/content/services";
@@ -8,7 +9,7 @@ import { SITE_URL } from "@/lib/seo";
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const url = (p: string) => `${SITE_URL}${p}`;
-  const pages = ["", "/services", "/locations", "/about", "/contact", "/get-started", "/work", "/privacy"].map((p) => ({
+  const pages = ["", "/services", "/locations", "/blog", "/about", "/contact", "/get-started", "/work", "/privacy"].map((p) => ({
     url: url(p),
     lastModified,
     changeFrequency: "weekly" as const,
@@ -16,7 +17,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
   return [
     ...pages,
-    ...locations.map((l) => ({ url: url(`/locations/${l.slug}`), lastModified, changeFrequency: "monthly" as const, priority: l.slug === "pune" ? 0.9 : 0.8 })),
+    ...locations.map((l) => ({ url: url(`/locations/${l.slug}`), lastModified, changeFrequency: "monthly" as const, priority: l.slug === "pune" || l.slug === "pimpri-chinchwad" ? 0.9 : 0.8 })),
+    ...articles.map((a) => ({ url: url(`/blog/${a.slug}`), lastModified: new Date(a.date), changeFrequency: "monthly" as const, priority: 0.7 })),
     ...departments.filter((d) => d.slug !== "reception").map((d) => ({ url: url(`/departments/${d.slug}`), lastModified, changeFrequency: "monthly" as const, priority: 0.7 })),
     ...services.map((s) => ({ url: url(`/services/${s.slug}`), lastModified, changeFrequency: "monthly" as const, priority: 0.8 })),
   ];

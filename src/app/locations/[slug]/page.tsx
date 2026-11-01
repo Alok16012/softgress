@@ -4,12 +4,16 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check, MapPin, Phone } from "lucide-react";
 import { FaqSection } from "@/components/site/FaqSection";
 import { JsonLd } from "@/components/site/JsonLd";
+import { OfficeMap } from "@/components/site/OfficeMap";
 import { ServiceList } from "@/components/site/ServiceList";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { office } from "@/content/company";
 import { locationBySlug, locations } from "@/content/locations";
 import { services } from "@/content/services";
 import { ORG_ID, absUrl, breadcrumbLd, faqLd, graph, pageMeta } from "@/lib/seo";
+
+/** Locations close enough to the office to show the map. */
+const LOCAL_MAP = ["pune", "pimpri-chinchwad"];
 
 // Built from bundled content, so every location page is prerendered with its metadata in <head>.
 export function generateStaticParams() {
@@ -103,6 +107,18 @@ export default async function LocationPage({ params }: PageProps<"/locations/[sl
             <Link href="/services" className="pill pill-line mt-8 text-ink">All services <ArrowRight size={16} aria-hidden /></Link>
           </div>
         </section>
+
+        {LOCAL_MAP.includes(l.slug) && (
+          <section aria-labelledby="loc-map" className="bg-white">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6 pt-16 sm:pt-20">
+              <h2 id="loc-map" className="font-display text-[28px] sm:text-[36px] leading-tight font-bold tracking-tight text-ink">
+                Visit our office in Akurdi
+              </h2>
+              <p className="mt-3 text-steel">{office.lines.join(", ")} · Mon–Sat, 9:30 am – 6:30 pm</p>
+              <OfficeMap className="mt-6" />
+            </div>
+          </section>
+        )}
 
         <section aria-labelledby="loc-industries" className="bg-white">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">

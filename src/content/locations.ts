@@ -74,6 +74,49 @@ export const locations: Location[] = [
     ],
   },
   {
+    slug: "pimpri-chinchwad",
+    name: "Pimpri-Chinchwad",
+    title: "Software & Digital Marketing Company in Pimpri-Chinchwad",
+    description:
+      "Softgress is a software and digital marketing company at Akurdi Chowk, Pimpri-Chinchwad (PCMC). Websites, apps, SEO, Google & Meta ads and WhatsApp automation for PCMC businesses. Visit or call +91 74472 07700.",
+    h1: "Software & digital marketing company in Pimpri-Chinchwad",
+    accent: "Our office is at Akurdi Chowk, PCMC. Drop in and meet the team.",
+    intro: [
+      "Softgress is based at Akurdi Chowk, Shubhashri Residency, Ganga Nagar, in the heart of Pimpri-Chinchwad. Businesses in Akurdi, Nigdi, Chinchwad, Pimpri, Bhosari, Ravet, Wakad, Thergaon, Chikhali, Moshi and Talawade can visit us in person to plan a website, an app or a marketing campaign.",
+      "PCMC is home to manufacturers, auto-component suppliers, engineering firms, schools and coaching classes, clinics, builders and fast-growing retail. We help these businesses get found on Google, generate enquiries online and automate follow-ups on WhatsApp, with one local team handling the website, the marketing and the software.",
+    ],
+    area: [
+      { "@type": "City", name: "Pimpri-Chinchwad" },
+      { "@type": "City", name: "Pune" },
+    ],
+    points: [
+      { title: "Office in Akurdi", body: "Meet us at Akurdi Chowk for discovery, reviews or launch. No need to explain your business over email." },
+      { title: "Built for PCMC industry", body: "Websites, catalogues and lead generation for manufacturers, suppliers and B2B companies across MIDC Bhosari, Chakan and Talawade." },
+      { title: "Google Maps and local SEO", body: "Google Business Profile, local keywords and location pages so nearby customers find you first." },
+      { title: "One accountable team", body: "Software, marketing, creative and automation planned together, with one point of contact." },
+    ],
+    industries: ["Manufacturing & auto components", "Engineering & B2B suppliers", "Schools & coaching institutes", "Clinics & hospitals", "Builders & real estate", "Retail, showrooms & restaurants"],
+    featured: ["website-development", "seo", "google-ads", "ecommerce-development", "crm-erp-development", "whatsapp-automation", "social-media-marketing", "brand-identity", "mobile-app-development"],
+    faqs: [
+      {
+        q: "Is there a software and digital marketing company in Pimpri-Chinchwad?",
+        a: "Yes. Softgress Pvt Ltd is at Akurdi Chowk, Shubhashri Residency, Ganga Nagar, Akurdi, Pimpri-Chinchwad 411035. We build websites, apps and custom software, and run SEO, Google Ads, Meta Ads and social media marketing for PCMC businesses.",
+      },
+      {
+        q: "Can I visit your office in Akurdi?",
+        a: "Yes. Our office is open Monday to Saturday, 9:30 am to 6:30 pm. Call or WhatsApp +91 74472 07700 before visiting so the right team member is available to meet you.",
+      },
+      {
+        q: "Do you build websites for manufacturing companies in PCMC?",
+        a: "Yes. We build B2B websites with product catalogues, enquiry forms and technical SEO for manufacturers and suppliers in Bhosari, Chakan, Talawade and across Pimpri-Chinchwad, and connect enquiries to WhatsApp or a CRM.",
+      },
+      {
+        q: "How can a PCMC business show up on Google Maps?",
+        a: "Claim and complete your Google Business Profile with the correct category, address, phone, hours and photos, collect genuine reviews from real customers, and keep your website's name, address and phone consistent. We set this up as part of our local SEO service.",
+      },
+    ],
+  },
+  {
     slug: "mumbai",
     name: "Mumbai",
     title: "Software & Digital Marketing Agency for Mumbai",

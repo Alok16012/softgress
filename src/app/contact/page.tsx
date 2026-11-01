@@ -8,6 +8,7 @@ import { ClientShell } from "@/components/site/ClientShell";
 import { ContactClient } from "@/components/site/ContactClient";
 import { ContactTabs } from "@/components/site/ContactTabs";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
+import { OfficeMap } from "@/components/site/OfficeMap";
 import { enquiryGroups } from "@/lib/enquiry";
 import { loadClientCatalog } from "@/lib/data";
 import { REQUEST_KINDS, type RequestKind } from "@/lib/types";
@@ -274,6 +275,13 @@ export default function ContactPage({ searchParams }: PageProps<"/contact">) {
           </section>
           <ContactAside />
         </div>
+        <section aria-labelledby="find-us" className="mx-auto max-w-7xl px-4 sm:px-6 pb-16 sm:pb-20">
+          <h2 id="find-us" className="font-display text-[28px] sm:text-[36px] leading-tight font-bold tracking-tight">
+            Find us in Akurdi, Pimpri-Chinchwad
+          </h2>
+          <p className="mt-3 text-white/70">{office.lines.join(", ")} · Mon–Sat, 9:30 am – 6:30 pm</p>
+          <OfficeMap className="mt-6 bg-white" />
+        </section>
       </main>
       <SiteFooter cta={false} />
     </>

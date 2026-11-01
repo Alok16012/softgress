@@ -1,4 +1,5 @@
 import { office } from "@/content/company";
+import { articles } from "@/content/blog";
 import { departments } from "@/content/departments";
 import { leaders } from "@/content/leadership";
 import { locations } from "@/content/locations";
@@ -40,6 +41,10 @@ export function GET() {
       ...services.filter((s) => s.departmentSlug === d.slug).map((s) => `- [${serviceSearchName(s)}](${absUrl(`/services/${s.slug}`)}): ${s.summary}`),
       "",
     ]),
+    "## Guides",
+    "",
+    ...articles.map((a) => `- [${a.title}](${absUrl(`/blog/${a.slug}`)}): ${a.description}`),
+    "",
     "## FAQ",
     "",
     ...homeFaqs.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
