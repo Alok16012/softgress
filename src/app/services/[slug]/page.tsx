@@ -6,6 +6,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { FaqSection } from "@/components/site/FaqSection";
 import { JsonLd } from "@/components/site/JsonLd";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
+import { guidesForService } from "@/content/blog";
 import { departments } from "@/content/departments";
 import { locations } from "@/content/locations";
 import { serviceDescription, serviceFaqs, serviceSearchName, serviceTitle } from "@/content/seo";
@@ -139,6 +140,18 @@ export default async function ServicePage({ params }: PageProps<"/services/[slug
                 </li>
               ))}
             </ul>
+            {guidesForService(s.slug).length > 0 && (
+              <>
+                <p className="eyebrow mt-10 text-teal-dark">Related guides</p>
+                <ul className="mt-4 space-y-3">
+                  {guidesForService(s.slug).map((g) => (
+                    <li key={g.slug}>
+                      <Link href={`/blog/${g.slug}`} className="font-display text-[19px] font-bold text-ink hover:text-teal-dark">{g.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
           </div>
         </main>
       </article>

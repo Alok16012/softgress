@@ -281,6 +281,229 @@ export const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: "mobile-app-development-in-pune-guide",
+    title: "Mobile App Development in Pune: A Practical Guide for Businesses",
+    description:
+      "Planning an Android or iOS app in Pune or Pimpri-Chinchwad? Native vs Flutter vs React Native, what to prepare, how the build works and what affects cost and timeline.",
+    date: "2026-11-02",
+    services: [
+      { slug: "mobile-app-development", label: "Mobile app development" },
+      { slug: "ui-ux-design", label: "UI/UX design" },
+      { slug: "saas-platform-development", label: "SaaS platforms" },
+    ],
+    intro:
+      "A mobile app can bring customers closer to your business, but only if it solves a clear problem and is built for the way people actually use their phones. This guide explains the main choices Pune businesses face when planning an app, and how to prepare so the project stays on time and on budget.",
+    sections: [
+      {
+        h: "Start with the problem, not the app",
+        body: [
+          "Write down who will use the app, what they need to do in it and why a website is not enough. Ordering, bookings, loyalty, field-team tracking and customer self-service are common reasons. If the same job can be done on a fast mobile website, start there.",
+        ],
+      },
+      {
+        h: "Native, Flutter or React Native?",
+        body: ["The technology affects speed, cost and long-term maintenance:"],
+        bullets: [
+          "Cross-platform (Flutter or React Native): one codebase for Android and iOS, usually the most cost-effective choice for business apps",
+          "Native (Kotlin for Android, Swift for iOS): best for apps that rely heavily on device features, complex animations or maximum performance",
+          "Progressive web app: installs from the browser, no app store, good for simple tools and internal teams",
+        ],
+      },
+      {
+        h: "What the app needs behind the scenes",
+        body: [
+          "Most apps need a backend: user accounts, a database, an admin panel to manage content and orders, notifications and integrations with payment gateways, CRMs or ERPs. Plan these early, because they are often a large part of the work.",
+        ],
+      },
+      {
+        h: "How the build usually works",
+        body: ["A typical app project moves through these stages:"],
+        bullets: [
+          "Discovery: goals, users, must-have features, integrations",
+          "Prototype: clickable screens to test the flow before coding",
+          "Iterative development in short sprints with regular demos",
+          "Beta testing with real users",
+          "Play Store and App Store submission and launch",
+        ],
+      },
+      {
+        h: "What affects cost and timeline",
+        body: [
+          "The number of screens and user roles, integrations, offline features, the admin panel, design complexity and app store review all affect effort. A clear written scope and a phased plan (launch a focused first version, then add features) keep projects predictable.",
+        ],
+      },
+      {
+        h: "After launch",
+        body: [
+          "Apps need updates for new Android and iOS versions, bug fixes, security patches and improvements based on how people use them. Budget for ongoing maintenance from the start.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I build my app in Flutter or native?",
+        a: "For most business apps, a cross-platform framework such as Flutter or React Native is the most cost-effective choice because one codebase runs on both Android and iOS. Native development suits apps that depend heavily on device hardware or need maximum performance.",
+      },
+      {
+        q: "How long does it take to build a mobile app in Pune?",
+        a: "It depends on the number of screens, user roles, integrations and the backend. A focused first version built in phases is the fastest route to launch. Softgress agrees the timeline in a written proposal after discovery.",
+      },
+      {
+        q: "Do you handle Play Store and App Store submission?",
+        a: "Yes. Softgress prepares the store listings and builds, submits the app to Google Play and the Apple App Store, and handles review feedback. Approval timelines are decided by Google and Apple.",
+      },
+    ],
+  },
+  {
+    slug: "google-ads-vs-meta-ads-for-pune-businesses",
+    title: "Google Ads vs Meta Ads: Which Is Right for Your Pune Business?",
+    description:
+      "Google Ads or Facebook and Instagram ads? A simple comparison for Pune and Pimpri-Chinchwad businesses: intent, targeting, creatives, tracking and when to use both.",
+    date: "2026-11-02",
+    services: [
+      { slug: "google-ads", label: "Google Ads management" },
+      { slug: "meta-ads", label: "Meta (Facebook & Instagram) ads" },
+      { slug: "performance-marketing", label: "Performance marketing" },
+    ],
+    intro:
+      "Google Ads and Meta Ads (Facebook and Instagram) both bring customers, but they work in very different ways. Choosing the right one, or the right mix, depends on whether people already search for what you sell and how visual your offer is.",
+    sections: [
+      {
+        h: "Google Ads: reach people who are already searching",
+        body: [
+          "Google Search ads appear when someone types a query such as \"website developer in Pune\" or \"dentist near me\". The person already has a need, so these ads often bring high-intent enquiries. They work best when there is clear search demand for your service.",
+        ],
+      },
+      {
+        h: "Meta Ads: create demand with the right audience",
+        body: [
+          "Facebook and Instagram ads appear while people scroll. You choose an audience by location, interests and behaviour, then catch their attention with images or video. They work well for visual products, offers, events, education and building awareness for a new brand.",
+        ],
+      },
+      {
+        h: "Side-by-side comparison",
+        body: ["The main differences at a glance:"],
+        bullets: [
+          "Intent: Google catches existing demand; Meta creates new demand",
+          "Creative: Google search ads are text-led; Meta depends on strong images and video",
+          "Targeting: Google uses keywords and location; Meta uses audiences, interests and lookalikes",
+          "Best for: services people search for (Google) vs visual or impulse offers and awareness (Meta)",
+        ],
+      },
+      {
+        h: "When to use both",
+        body: [
+          "Many Pune businesses use Google Ads to capture people ready to buy and Meta Ads to stay visible and retarget visitors who did not enquire the first time. Start with the channel that matches your customers, then add the other once tracking shows what works.",
+        ],
+      },
+      {
+        h: "Set up tracking before spending",
+        body: [
+          "Whichever channel you choose, set up conversion tracking for calls, forms and WhatsApp clicks first, and send ads to a fast, relevant landing page. Without tracking you cannot tell which ads bring customers.",
+        ],
+      },
+      {
+        h: "Budget and fees",
+        body: [
+          "Ad spend is paid directly to Google or Meta and is separate from any agency fee. Start with a test budget, measure cost per enquiry, and increase spend on what works. No agency can honestly guarantee a fixed number of leads.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is Google Ads better than Facebook ads for a Pune business?",
+        a: "Neither is better for everyone. Google Ads suits services people actively search for, while Meta (Facebook and Instagram) ads suit visual products, offers and building awareness. Many businesses use both, with conversion tracking to see which brings enquiries at a lower cost.",
+      },
+      {
+        q: "How much should I spend on ads?",
+        a: "Start with a test budget you are comfortable with, track the cost per enquiry for a few weeks, then increase spend on the campaigns that bring customers. Ad spend is paid directly to Google or Meta and is separate from agency fees.",
+      },
+      {
+        q: "Do I need a landing page for ads?",
+        a: "A focused landing page with a clear offer, fast loading and an easy way to call, WhatsApp or fill a form usually converts better than sending ad traffic to a general home page.",
+      },
+    ],
+  },
+  {
+    slug: "whatsapp-business-automation-guide",
+    title: "WhatsApp Business Automation: A Guide for Indian Businesses",
+    description:
+      "How Pune and Indian businesses use WhatsApp Business API automation for lead replies, follow-ups, order updates and support, plus what you need to get started.",
+    date: "2026-11-02",
+    services: [
+      { slug: "whatsapp-automation", label: "WhatsApp automation" },
+      { slug: "ai-chatbots", label: "AI chatbots" },
+      { slug: "crm-automation", label: "CRM automation" },
+    ],
+    intro:
+      "Most customers in India prefer WhatsApp to email. Automating the repetitive parts of WhatsApp conversations, such as first replies, follow-ups and order updates, helps businesses respond faster without adding staff. Here is how it works and what you need.",
+    sections: [
+      {
+        h: "WhatsApp Business app vs WhatsApp Business API",
+        body: ["There are two different products:"],
+        bullets: [
+          "WhatsApp Business app: free, runs on one phone, with basic quick replies and labels; good for small teams",
+          "WhatsApp Business API (WhatsApp Business Platform): for automation, multiple team members, chatbots and integration with your website, CRM or ERP, accessed through Meta or an approved provider",
+        ],
+      },
+      {
+        h: "What businesses automate",
+        body: ["Common, high-value automations include:"],
+        bullets: [
+          "Instant reply to every new enquiry from ads, the website or Google",
+          "Lead qualification questions and routing to the right salesperson",
+          "Appointment reminders and booking confirmations",
+          "Order, payment and delivery updates",
+          "Follow-ups for quotes that have not been answered",
+          "FAQs answered by a chatbot, with a hand-off to a person",
+        ],
+      },
+      {
+        h: "Templates, opt-in and Meta's rules",
+        body: [
+          "Messages a business starts must use message templates approved by Meta, and customers should opt in to receive them. Template approval can affect timelines, so plan templates early and keep them useful, not spammy.",
+        ],
+      },
+      {
+        h: "Connect WhatsApp to your CRM",
+        body: [
+          "The biggest gains come when WhatsApp is connected to the rest of your system: enquiries land in your CRM automatically, salespeople see the full conversation, and reports show which campaigns bring customers.",
+        ],
+      },
+      {
+        h: "How to get started",
+        body: ["A practical first step:"],
+        bullets: [
+          "List the questions your team answers again and again",
+          "Map your enquiry and follow-up process",
+          "Choose two or three automations that save the most time",
+          "Prepare message templates and an opt-in method",
+          "Launch, measure response times and conversions, then expand",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is WhatsApp Business API automation?",
+        a: "It is the use of the WhatsApp Business Platform to send automated, template-based messages and chatbot replies, connected to your website, CRM or ordering system, so enquiries, follow-ups and updates happen without manual work.",
+      },
+      {
+        q: "Is the WhatsApp Business API free?",
+        a: "Meta charges for business conversations depending on the message category and volume, and providers may add platform fees. Softgress explains the current charges during scoping; they are separate from our setup fee.",
+      },
+      {
+        q: "Can a WhatsApp chatbot hand over to a human?",
+        a: "Yes. A well-designed chatbot answers common questions and collects details, then hands the conversation to a team member when the customer needs help or is ready to buy.",
+      },
+    ],
+  },
 ];
 
 export const articleBySlug = (slug: string) => articles.find((a) => a.slug === slug);
+
+/** Guides that link to a service, newest first, for "related guides" on service pages. */
+export const guidesForService = (serviceSlug: string) => articles.filter((a) => a.services.some((s) => s.slug === serviceSlug));
+
+/** Newest guides first. */
+export const latestArticles = (n: number) => [...articles].sort((a, b) => b.date.localeCompare(a.date)).slice(0, n);

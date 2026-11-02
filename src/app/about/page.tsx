@@ -27,6 +27,19 @@ const VALUES = [
 
 const STEPS = ["Discovery", "Proposal", "Kick-off", "Phased delivery", "Launch", "Support"];
 
+/** Plain facts about the company, written so search engines and AI assistants can quote them directly. */
+const GLANCE: [string, string][] = [
+  ["Legal name", office.name],
+  ["What we do", "Software development and digital marketing: websites, e-commerce, mobile apps, SaaS and CRM/ERP systems, SEO, Google and Meta ads, social media, branding, video, AI chatbots and WhatsApp automation"],
+  ["Office", `${office.lines.join(", ")}, India`],
+  ["Founded", "September 2026"],
+  ["Leadership", leaders.map((l) => `${l.name} (${l.role})`).join("; ")],
+  ["Areas served", "Pune and Pimpri-Chinchwad (in person), Mumbai, Bangalore, across India and international clients (remote)"],
+  ["Office hours", "Monday to Saturday, 9:30 am to 6:30 pm"],
+  ["Languages", "English and Hindi"],
+  ["Contact", `${office.phone.display} (call or WhatsApp) · softgress.com/contact`],
+];
+
 function initials(name: string) {
   return name
     .split(/\s+/)
@@ -267,6 +280,22 @@ export default function AboutPage() {
             <Suspense fallback={<p className="text-steel">Loading teams…</p>}>
               <Teams />
             </Suspense>
+          </div>
+        </section>
+
+        <section aria-labelledby="at-a-glance" className="bg-white">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 py-16 sm:py-20">
+            <h2 id="at-a-glance" className="font-display text-[28px] sm:text-[36px] leading-tight font-bold tracking-tight text-ink">
+              Softgress at a glance
+            </h2>
+            <dl className="mt-8 divide-y divide-ink/10 border-y border-ink/10 text-[16px]">
+              {GLANCE.map(([k, v]) => (
+                <div key={k} className="grid gap-1 py-4 sm:grid-cols-[220px_1fr] sm:gap-6">
+                  <dt className="font-medium text-ink">{k}</dt>
+                  <dd className="text-steel">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 

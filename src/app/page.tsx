@@ -14,6 +14,7 @@ import { loadCatalog } from "@/lib/data";
 import { office, whatsappUrl } from "@/content/company";
 import { FaqSection } from "@/components/site/FaqSection";
 import { JsonLd } from "@/components/site/JsonLd";
+import { latestArticles } from "@/content/blog";
 import { locations } from "@/content/locations";
 import { HOME_DESCRIPTION, HOME_TITLE, homeFaqs } from "@/content/seo";
 import { faqLd, graph, pageMeta } from "@/lib/seo";
@@ -158,6 +159,28 @@ async function Directory() {
                 <p className="mt-5 eyebrow text-ink/50">{p.industry}</p>
                 <h3 className="mt-2 font-display text-xl font-bold text-ink">{p.title.replace(/^Sample concept:\s*/i, "")}</h3>
                 <p className="mt-2 text-[15px] text-steel">{p.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* Latest guides */}
+      <section aria-labelledby="guides" className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-16 sm:py-20">
+          <SectionTitle id="guides" href="/blog">
+            Guides for Pune businesses
+          </SectionTitle>
+          <ul className="mt-10 grid gap-6 md:grid-cols-3">
+            {latestArticles(3).map((a) => (
+              <li key={a.slug}>
+                <Link href={`/blog/${a.slug}`} className="group flex h-full flex-col rounded-[24px] border border-ink/10 bg-paper p-6 card-lift">
+                  <h3 className="font-display text-[19px] font-bold leading-snug text-ink group-hover:text-teal-dark">{a.title}</h3>
+                  <p className="mt-2 flex-1 text-[15px] leading-relaxed text-steel">{a.description}</p>
+                  <span className="mt-4 inline-flex items-center gap-2 font-medium text-teal-dark">
+                    Read the guide <ArrowRight size={16} aria-hidden />
+                  </span>
+                </Link>
               </li>
             ))}
           </ul>
