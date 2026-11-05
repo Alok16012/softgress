@@ -498,6 +498,207 @@ export const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: "custom-crm-vs-ready-made-crm-for-pune-businesses",
+    title: "Custom CRM vs Ready-Made CRM: What Pune Businesses Should Choose",
+    description:
+      "Should a Pune or Pimpri-Chinchwad business buy a ready-made CRM like Zoho or HubSpot, or build custom CRM software? A plain comparison of fit, cost factors, timeline and when each makes sense.",
+    date: "2026-11-05",
+    services: [
+      { slug: "crm-erp-development", label: "Custom CRM & ERP development" },
+      { slug: "crm-automation", label: "CRM automation & integration" },
+      { slug: "custom-integrations", label: "Custom integrations" },
+    ],
+    intro:
+      "Most small and growing businesses in Pune should start with a ready-made CRM and customise it, because it is faster to launch and cheaper to begin with. Custom CRM software makes sense when your sales, service or operations process is unusual, when you need the CRM tightly connected to billing, inventory or your own app, or when per-user subscription costs grow larger than the cost of owning your own system. This guide explains how to decide.",
+    sections: [
+      {
+        h: "What a CRM actually does for your business",
+        body: [
+          "A CRM (customer relationship management system) keeps every enquiry, customer, conversation and follow-up in one place. Instead of leads sitting in WhatsApp chats, notebooks and Excel sheets, your team sees who enquired, what they asked for, who is handling them and what the next step is.",
+          "For businesses in Pune and PCMC that get enquiries from Google, Instagram, IndiaMART, walk-ins and referrals, the biggest benefit is simple: fewer leads are forgotten, and the owner can see the pipeline without asking each salesperson.",
+        ],
+      },
+      {
+        h: "Ready-made CRM: when it is the right choice",
+        body: [
+          "Ready-made CRMs such as Zoho CRM, HubSpot, Salesforce, Freshsales or LeadSquared are mature products with mobile apps, reports, email and WhatsApp integrations already built in. You pay a subscription, usually per user per month.",
+        ],
+        bullets: [
+          "Your sales process is fairly standard: enquiry, follow-up, quotation, closing",
+          "You want to start within days or weeks, not months",
+          "Your team is small and the per-user cost is manageable",
+          "You are happy to adjust some of your process to how the software works",
+        ],
+      },
+      {
+        h: "Custom CRM software: when it is worth building",
+        body: [
+          "A custom CRM is built around your exact workflow. You own the software and the data, and it can include modules a ready-made product does not offer well, such as job cards, site visits, service contracts, batch tracking, dealer management or approvals specific to your industry.",
+        ],
+        bullets: [
+          "Your process has steps that ready-made CRMs handle badly or need many workarounds for",
+          "You need one system for sales plus billing, inventory, HR or service, instead of several apps",
+          "You want the CRM inside your own website, customer portal or mobile app",
+          "You have many users, so long-term subscription costs are high",
+          "Data ownership, hosting location or custom access rules matter to you",
+        ],
+      },
+      {
+        h: "The middle path: customise and integrate",
+        body: [
+          "Many businesses get the best result by keeping a ready-made CRM and connecting it to everything else. Website forms, Google and Meta ad leads, WhatsApp and IndiaMART enquiries can flow into the CRM automatically, follow-up reminders can be created on their own, and reports can be sent to the owner every morning.",
+          "This approach is usually quicker and lower risk than building from scratch, and it is a good first step even if you later move to a custom system.",
+        ],
+      },
+      {
+        h: "What affects the cost and timeline",
+        body: [
+          "There is no single price for a CRM project, because the scope varies so much. These are the factors that change it the most:",
+        ],
+        bullets: [
+          "Number of modules (leads, quotations, billing, inventory, service, HR)",
+          "Number of user roles and approval levels",
+          "Integrations with WhatsApp, payment gateways, accounting software, ads platforms or your existing systems",
+          "Mobile app or offline needs for field staff",
+          "Data migration from Excel or an old system",
+          "Reports and dashboards required at launch",
+        ],
+      },
+      {
+        h: "How to decide in one meeting",
+        body: [
+          "Write down your current process from first enquiry to payment, list the problems you face today, and note which other tools the CRM must talk to. With that, a development team can tell you honestly whether a ready-made CRM, an integration project or custom software is the better fit, and what a sensible first phase looks like.",
+          "Softgress, based in Akurdi, Pimpri-Chinchwad, builds custom CRM and ERP systems and also sets up and automates ready-made CRMs for businesses across Pune, Mumbai, Bangalore and beyond. A short discovery call is enough to point you in the right direction.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is custom CRM software better than Zoho or HubSpot?",
+        a: "Not always. Ready-made CRMs are faster and cheaper to start with and suit standard sales processes. Custom CRM software is better when your workflow is unusual, when you need sales, billing and operations in one system, or when you want to own the software and avoid growing per-user fees.",
+      },
+      {
+        q: "How long does it take to build a custom CRM?",
+        a: "It depends on the modules, integrations and number of user roles. A focused first version covering leads and follow-ups is much quicker than a full CRM with billing, inventory and a mobile app. A clear scope at the start keeps the timeline predictable.",
+      },
+      {
+        q: "Can my leads from WhatsApp, IndiaMART and Google ads go into the CRM automatically?",
+        a: "Yes. Most lead sources can be connected so that enquiries are created in the CRM automatically with the source recorded, and follow-up tasks are assigned to the right person.",
+      },
+      {
+        q: "Can I move my existing Excel data into a new CRM?",
+        a: "Yes. Customer and lead data from Excel or an older system can usually be cleaned and imported, so your team does not start from zero.",
+      },
+    ],
+  },
+  {
+    slug: "custom-crm-software-for-pune-businesses",
+    title: "Custom CRM Software for Pune Businesses: When to Build Instead of Buy",
+    description:
+      "Should a Pune or Pimpri-Chinchwad business build a custom CRM or use a ready-made one? A practical guide to the signs, the modules, the build process and what to prepare.",
+    date: "2026-11-05",
+    services: [
+      { slug: "crm-erp-development", label: "CRM & ERP development" },
+      { slug: "custom-integrations", label: "Custom integrations & APIs" },
+      { slug: "crm-automation", label: "CRM automation" },
+    ],
+    intro:
+      "A custom CRM makes sense when your sales, service or operations process does not fit a ready-made tool, when your team works around the software with spreadsheets and WhatsApp, or when you need the CRM to connect closely with billing, inventory or other in-house systems. If your process is simple and standard, a ready-made CRM, configured well, is usually enough. This guide helps business owners in Pune and Pimpri-Chinchwad decide, and explains what a custom build involves.",
+    sections: [
+      {
+        h: "What a CRM actually does for a business",
+        body: [
+          "A CRM (customer relationship management) system keeps every enquiry, customer, conversation, quote and follow-up in one place. Instead of leads sitting in different phones, notebooks and spreadsheets, the whole team works from the same record, and owners can see what is happening without asking around.",
+          "For many growing businesses in Pune and PCMC, the CRM becomes the centre of daily work: sales teams use it to follow up, managers use it to assign leads and review pipelines, and accounts or operations teams use it to move a confirmed order forward.",
+        ],
+      },
+      {
+        h: "Ready-made CRM vs custom CRM",
+        body: ["Both are valid choices. The right one depends on how unusual your process is:"],
+        bullets: [
+          "Ready-made CRM: quick to start, monthly per-user subscription, standard sales pipeline features; you adapt your process to the software",
+          "Customised ready-made CRM: an existing product configured or extended for your fields, stages and reports; a middle path for many businesses",
+          "Custom CRM: built around your own workflow, roles and data; you own the system and can extend it as the business changes",
+          "Custom CRM inside a wider ERP: sales connected with inventory, billing, HR or production in one internal system",
+        ],
+      },
+      {
+        h: "Signs your business may need a custom CRM",
+        body: ["Consider a custom or heavily customised system if several of these sound familiar:"],
+        bullets: [
+          "Your team still keeps important data in spreadsheets because the current tool cannot handle it",
+          "Your sales process has steps, approvals or product configurations that standard CRMs do not support",
+          "You need the CRM to talk to your billing, inventory, website or WhatsApp in real time",
+          "Different departments or branches need different views, permissions and reports",
+          "Per-user subscription costs keep rising as the team grows, while many features go unused",
+          "You want full control over your customer data and where it is stored",
+        ],
+      },
+      {
+        h: "Common modules in a custom CRM",
+        body: [
+          "A custom CRM does not need to do everything on day one. Most businesses start with the modules that save the most time, then add more in phases:",
+        ],
+        bullets: [
+          "Lead capture from the website, Google and Meta ads, WhatsApp and phone calls",
+          "Lead assignment and routing to the right salesperson or branch",
+          "Follow-up reminders, tasks and activity history",
+          "Quotations, orders and invoices linked to the customer record",
+          "Inventory, service tickets or project tracking, depending on the business",
+          "Role-based access for owners, managers and team members",
+          "Dashboards and reports for pipeline, conversions and team performance",
+        ],
+      },
+      {
+        h: "How a custom CRM is built",
+        body: [
+          "A good custom CRM project starts with your process, not with screens. At Softgress, CRM and ERP work follows a clear path: a process audit, written requirements, a phased build, data migration from your current tools, and a planned rollout with training and support.",
+          "Building in phases matters. The first phase should solve the most painful problem, for example missed follow-ups or scattered leads, and go live with real users. Feedback from that phase then shapes the next modules, so the system grows with how your team actually works.",
+        ],
+      },
+      {
+        h: "What to prepare before you talk to a developer",
+        body: ["You will get a clearer scope and a more realistic plan if you gather a few things first:"],
+        bullets: [
+          "The tools and spreadsheets your team uses today",
+          "The teams and roles that will use the CRM, and what each needs to see",
+          "Your key workflows, from first enquiry to payment and after-sales",
+          "Rough data volumes, such as number of leads, customers and products",
+          "Systems the CRM must connect with, such as accounting, website or WhatsApp",
+          "Your target go-live date",
+        ],
+      },
+      {
+        h: "Plan automation and integrations from the start",
+        body: [
+          "Much of the value of a CRM comes from what happens automatically: an enquiry from your website or ads creating a lead instantly, a WhatsApp reply going out within seconds, a reminder reaching the salesperson before a follow-up is missed, or a confirmed order flowing into billing. Plan these integrations at the start so the data structure supports them, rather than adding them later as patches.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "Is a custom CRM better than a ready-made CRM?",
+        a: "Not always. A ready-made CRM is often enough for a simple, standard sales process. A custom CRM is better when your workflow, approvals or integrations do not fit standard tools, or when you want full ownership and control of the system and data.",
+      },
+      {
+        q: "How long does it take to build a custom CRM?",
+        a: "It depends on the number of modules, users, integrations and the data to migrate. Softgress plans CRM work in phases, so the first useful version can go live earlier and further modules follow. A clear timeline is shared after the requirements stage.",
+      },
+      {
+        q: "Can our existing data be moved into a new CRM?",
+        a: "Yes. Data migration from spreadsheets or an existing tool is a standard part of a CRM project. The data is cleaned and mapped to the new structure before go-live.",
+      },
+      {
+        q: "Can a custom CRM connect with WhatsApp and our website?",
+        a: "Yes. Website forms, ad leads, WhatsApp Business API, accounting and other systems can be connected through integrations and APIs, so leads and updates flow into the CRM automatically.",
+      },
+      {
+        q: "Does Softgress also customise existing CRM or ERP products?",
+        a: "Yes. Along with building custom systems, Softgress can customise existing CRM and ERP products to fit your operations. The right approach is recommended after understanding your process.",
+      },
+    ],
+  },
 ];
 
 export const articleBySlug = (slug: string) => articles.find((a) => a.slug === slug);
