@@ -31,7 +31,7 @@ export const locations: Location[] = [
     name: "Pune",
     title: "Digital Marketing & Software Company in Pune",
     description:
-      "Softgress is a Pune digital marketing agency and software development company in Akurdi, Pimpri-Chinchwad. Website development, SEO, Google & Meta ads, apps and AI automation. Call +91 74472 07700.",
+      "Pune digital marketing agency and software company in Akurdi, Pimpri-Chinchwad: websites, SEO, Google & Meta ads, apps and AI automation. Call +91 74472 07700.",
     h1: "Digital marketing & software development company in Pune",
     accent: "Local team in Pimpri-Chinchwad. One roof for software, marketing, creative and AI.",
     intro: [
@@ -78,7 +78,7 @@ export const locations: Location[] = [
     name: "Pimpri-Chinchwad",
     title: "Software & Digital Marketing Company in Pimpri-Chinchwad",
     description:
-      "Softgress is a software and digital marketing company at Akurdi Chowk, Pimpri-Chinchwad (PCMC). Websites, apps, SEO, Google & Meta ads and WhatsApp automation for PCMC businesses. Visit or call +91 74472 07700.",
+      "Software and digital marketing company in Akurdi, Pimpri-Chinchwad (PCMC): websites, apps, SEO, Google & Meta ads and WhatsApp automation. Call +91 74472 07700.",
     h1: "Software & digital marketing company in Pimpri-Chinchwad",
     accent: "Our office is at Akurdi Chowk, PCMC. Drop in and meet the team.",
     intro: [
@@ -121,7 +121,7 @@ export const locations: Location[] = [
     name: "Mumbai",
     title: "Software & Digital Marketing Agency for Mumbai",
     description:
-      "Web development, mobile apps, SEO, performance marketing and AI automation for Mumbai and Thane businesses, delivered by Softgress from Pune. Get a written proposal and quote.",
+      "Web development, mobile apps, SEO, performance marketing and AI automation for Mumbai and Thane businesses, delivered by Softgress from Pune. Free quote.",
     h1: "Software development & digital marketing for Mumbai businesses",
     accent: "Agency-quality delivery from Pune, a short trip from Mumbai.",
     intro: [
@@ -165,7 +165,7 @@ export const locations: Location[] = [
     name: "Bangalore",
     title: "App, SaaS & Web Development for Bangalore",
     description:
-      "Softgress builds SaaS platforms, mobile apps, websites and AI automation, and runs growth marketing for Bangalore (Bengaluru) startups and companies. Get a scoped proposal from our Pune team.",
+      "SaaS platforms, mobile apps, websites, AI automation and growth marketing for Bangalore (Bengaluru) startups and companies, from Softgress in Pune.",
     h1: "App, SaaS & web development for Bangalore startups and companies",
     accent: "Product engineering, growth marketing and AI automation for Bengaluru.",
     intro: [
@@ -205,7 +205,7 @@ export const locations: Location[] = [
     name: "India",
     title: "Software & Digital Marketing Company in India",
     description:
-      "Softgress is an Indian software development and digital marketing company. Websites, apps, SaaS, CRM, SEO, Google & Meta ads, branding and AI automation for businesses across India.",
+      "Softgress is an Indian software and digital marketing company: websites, apps, SaaS, CRM, SEO, Google & Meta ads, branding and AI automation across India.",
     h1: "Software development & digital marketing company in India",
     accent: "One team for software, marketing, creative and AI, serving businesses across India.",
     intro: [
@@ -245,7 +245,7 @@ export const locations: Location[] = [
     name: "International",
     title: "Offshore Software & Marketing Partner in India",
     description:
-      "Outsource web, app and SaaS development, SEO, digital marketing and AI automation to Softgress in Pune, India. Working with clients in the USA, UK, UAE, Canada and Australia with overlapping hours.",
+      "Outsource web, app and SaaS development, SEO and digital marketing to Softgress in Pune, India, with clients in the USA, UK, UAE, Canada and Australia.",
     h1: "Your offshore software development & digital marketing partner in India",
     accent: "Serving clients in the USA, UK, UAE, Canada, Australia and beyond.",
     intro: [

@@ -20,7 +20,7 @@ import { absUrl, pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Contact Softgress, Pune: Get a Free Quote",
-  description: "Contact Softgress in Pimpri-Chinchwad, Pune: call or WhatsApp +91 74472 07700, email info@softgress.com, visit our Akurdi office, or send a project request for a free quote.",
+  description: "Contact Softgress in Pimpri-Chinchwad, Pune: call or WhatsApp +91 74472 07700, email info@softgress.com, or visit our Akurdi office for a free quote.",
   path: "/contact",
 });
 

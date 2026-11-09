@@ -14,7 +14,7 @@ import { ORG_ID, absUrl, breadcrumbLd, graph, pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "About Us: Software & Marketing Company, Pune",
-  description: `About Softgress, a software development and digital marketing company in Pimpri-Chinchwad, Pune: five teams under one roof, led by ${leaders.map((l) => `${l.name} (${l.role})`).join(" and ")}.`,
+  description: `About Softgress, a software and digital marketing company in Pimpri-Chinchwad, Pune: five teams under one roof, led by ${leaders.map((l) => l.name).join(" and ")}.`,
   path: "/about",
 });
 

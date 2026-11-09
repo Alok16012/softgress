@@ -9,7 +9,7 @@ import { breadcrumbLd, graph, pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Locations: Pune, Mumbai, Bangalore & Worldwide",
-  description: "Softgress is based in Pimpri-Chinchwad, Pune and delivers software development and digital marketing for clients in Pune, Mumbai, Bangalore, across India and internationally.",
+  description: "Softgress is based in Pimpri-Chinchwad, Pune and delivers software and digital marketing for clients in Pune, Mumbai, Bangalore, across India and abroad.",
   path: "/locations",
 });
 

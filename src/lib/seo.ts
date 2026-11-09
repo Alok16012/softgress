@@ -40,6 +40,12 @@ export const AREA_SERVED = [
 export const ORG_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
+/** Google cuts meta descriptions at roughly 155–160 characters. */
+export const MAX_DESCRIPTION = 160;
+
+/** The first candidate that fits in a search snippet, longest preferred; falls back to the last one. */
+export const fitDescription = (...candidates: string[]) => candidates.find((c) => c.length <= MAX_DESCRIPTION) ?? candidates.at(-1)!;
+
 /** Per-page metadata: canonical plus matching Open Graph and Twitter text. */
 export function pageMeta({ title, description, path, absoluteTitle = false }: { title: string; description: string; path: string; absoluteTitle?: boolean }): Metadata {
   const fullTitle = absoluteTitle ? title : `${title} · ${SITE_NAME}`;

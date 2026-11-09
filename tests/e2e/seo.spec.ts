@@ -70,5 +70,17 @@ test.describe("SEO & semantic parity", () => {
     expect(txt).toMatch(/^# Softgress/);
     expect(txt).toContain("Pimpri-Chinchwad");
     expect(txt).toContain("/locations/pune");
+    expect(txt).toContain("/llms-full.txt");
+  });
+
+  test("llms-full.txt carries the full text of services, locations and guides", async ({ request }) => {
+    const res = await request.get("/llms-full.txt");
+    expect(res.status()).toBe(200);
+    const txt = await res.text();
+    expect(txt).toMatch(/^# Softgress: full reference/);
+    expect(txt).toContain("#### SEO Services");
+    expect(txt).toContain("/locations/pimpri-chinchwad");
+    expect(txt).toContain("How Pune Businesses Can Get Found in ChatGPT and AI Search");
+    expect(txt).not.toContain("localhost");
   });
 });

@@ -1,26 +1,21 @@
-import { office } from "@/content/company";
 import { articles } from "@/content/blog";
 import { departments } from "@/content/departments";
-import { leaders } from "@/content/leadership";
 import { locations } from "@/content/locations";
 import { homeFaqs, serviceSearchName } from "@/content/seo";
 import { services } from "@/content/services";
+import { LLMS_SUMMARY, llmsFacts, textResponse } from "@/lib/llms";
 import { absUrl } from "@/lib/seo";
 
 // /llms.txt (llmstxt.org): a plain-markdown summary of Softgress for AI assistants and answer engines.
+// The full text of every page listed here is in /llms-full.txt.
 export function GET() {
   const depts = departments.filter((d) => d.slug !== "reception");
-  const body = [
+  return textResponse([
     "# Softgress",
     "",
-    "> Softgress (Softgress Pvt Ltd) is a software development and digital marketing company in Pimpri-Chinchwad, Pune, Maharashtra, India. Five teams under one roof (Software Development, Digital Marketing, Creative Production, AI & Automation, and Client Strategy) build websites, apps, SaaS and CRM systems, run SEO and Google and Meta ads, produce brand and video content, and set up AI chatbots and WhatsApp automation for businesses in Pune, Mumbai, Bangalore, across India and internationally.",
+    `> ${LLMS_SUMMARY}`,
     "",
-    `- Office: ${office.lines.join(", ")}, India`,
-    `- Phone and WhatsApp: ${office.phone.display}`,
-    `- Email: ${process.env.CONTACT_EMAIL || "info@softgress.com"}`,
-    `- Leadership: ${leaders.map((l) => `${l.name} (${l.role})`).join("; ")}`,
-    "- Tagline: Ideas engineered. Growth accelerated.",
-    "- Pricing: every project is quoted after scoping; quote and consultation requests are free. Softgress does not guarantee rankings, ad results or revenue.",
+    ...llmsFacts(),
     "",
     "## Key pages",
     "",
@@ -28,6 +23,7 @@ export function GET() {
     `- [All services](${absUrl("/services")})`,
     `- [About Softgress](${absUrl("/about")}): story, values and leadership`,
     `- [Contact / request a quote](${absUrl("/contact")})`,
+    `- [Full text for AI assistants](${absUrl("/llms-full.txt")}): every service, location page and guide in one markdown file`,
     "",
     "## Locations",
     "",
@@ -48,6 +44,5 @@ export function GET() {
     "## FAQ",
     "",
     ...homeFaqs.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
-  ].join("\n");
-  return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "public, max-age=3600" } });
+  ]);
 }

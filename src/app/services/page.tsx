@@ -9,7 +9,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Services: Software, SEO, Ads, Branding & AI",
-  description: "All Softgress services: website, app, SaaS and CRM development, SEO, Google and Meta ads, social media, branding, video and AI automation, from our team in Pune for clients across India and abroad.",
+  description: "All Softgress services: website, app, SaaS and CRM development, SEO, Google and Meta ads, social media, branding, video and AI automation, from Pune.",
   path: "/services",
 });
 

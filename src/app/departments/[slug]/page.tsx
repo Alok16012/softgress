@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/site/JsonLd";
 import { PageHero, SiteFooter } from "@/components/site/SiteChrome";
 import { ServiceList } from "@/components/site/ServiceList";
 import { departments as seedDepartments } from "@/content/departments";
-import { departmentTitle } from "@/content/seo";
+import { departmentDescription, departmentTitle } from "@/content/seo";
 import { loadCatalog } from "@/lib/data";
 import { ORG_ID, absUrl, breadcrumbLd, graph, pageMeta } from "@/lib/seo";
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/departments/[slug
   const { slug } = await params;
   const d = publicDepartments.find((x) => x.slug === slug);
   if (!d) return { title: "Department not found" };
-  return pageMeta({ title: departmentTitle(d.slug, d.name), description: `${d.description} Softgress, Pimpri-Chinchwad, Pune: serving Pune, Mumbai, Bangalore, India and abroad.`, path: `/departments/${d.slug}` });
+  return pageMeta({ title: departmentTitle(d.slug, d.name), description: departmentDescription(d.description), path: `/departments/${d.slug}` });
 }
 
 async function Services({ slug }: { slug: string }) {

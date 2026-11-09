@@ -200,7 +200,7 @@ export const articles: Article[] = [
   },
   {
     slug: "local-seo-checklist-for-pune-and-pcmc-businesses",
-    title: "Local SEO Checklist for Pune & PCMC Businesses (Google Business Profile Guide)",
+    title: "Local SEO Checklist for Pune & PCMC Businesses: Google Business Profile",
     description:
       "A step-by-step local SEO checklist for businesses in Pune and Pimpri-Chinchwad: set up your Google Business Profile, earn genuine reviews and rank higher on Google Maps.",
     date: "2026-11-01",
@@ -602,6 +602,112 @@ export const articles: Article[] = [
       {
         q: "Does Softgress also customise existing CRM or ERP products?",
         a: "Yes. Along with building custom systems, Softgress can customise existing CRM and ERP products to fit your operations. The right approach is recommended after understanding your process.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-get-found-in-chatgpt-and-ai-search",
+    title: "How Pune Businesses Can Get Found in ChatGPT and AI Search",
+    description:
+      "A practical GEO guide for Pune and PCMC businesses: how ChatGPT, Gemini, Perplexity and Google AI Overviews pick businesses to mention, and what to fix first.",
+    date: "2026-11-09",
+    services: [
+      { slug: "seo", label: "SEO services" },
+      { slug: "content-strategy", label: "Content strategy" },
+      { slug: "website-development", label: "Website development" },
+    ],
+    intro:
+      "To get your business mentioned by ChatGPT, Gemini, Perplexity or Google AI Overviews, make it easy for these tools to find clear, consistent and trusted information about you: a website that says plainly what you do and where, a complete Google Business Profile, matching details on directories, genuine reviews, and helpful content that answers your customers' questions. This is often called GEO (generative engine optimisation) or AEO (answer engine optimisation). This guide explains how it works and what business owners in Pune and Pimpri-Chinchwad can do first.",
+    sections: [
+      {
+        h: "What is AI search, and why does it matter for local businesses?",
+        body: [
+          "More people now ask an AI assistant instead of scrolling through ten blue links: \"best website developer in Pune\", \"which CA firm in PCMC handles GST for startups\", \"good physiotherapy clinic near Wakad\". The assistant writes one answer and usually names only a few businesses.",
+          "If your business is not among those names, the customer may never see you, even if you rank on Google. GEO is the work of making sure AI assistants have accurate, trustworthy information about your business, so they can describe it correctly and include it when it is relevant.",
+        ],
+      },
+      {
+        h: "How AI assistants decide which businesses to mention",
+        body: [
+          "AI assistants that search the web read pages and then summarise what several sources agree on. They do not take your word for it alone. The more independent places that describe your business consistently, the more confident an assistant can be about recommending you. Typical sources include:",
+        ],
+        bullets: [
+          "Your own website: services, location pages, FAQs and guides",
+          "Your Google Business Profile, its reviews and the business category you chose",
+          "Directories and listings such as JustDial, Sulekha, LinkedIn, Clutch and GoodFirms",
+          "\"Best agencies in Pune\" style articles, local news and industry associations",
+          "Discussions on forums and communities where real customers mention you",
+        ],
+      },
+      {
+        h: "Step 1: Make your website easy for AI to read",
+        body: ["Many business websites look good but never state the basic facts in plain text. Check that yours does:"],
+        bullets: [
+          "One clear sentence near the top: who you are, what you do and where, for example \"a software company in Akurdi, Pimpri-Chinchwad\"",
+          "A separate page for each main service, and for each city or area you genuinely serve",
+          "An FAQ on key pages, with the direct answer in the first sentence of each reply",
+          "Structured data (schema.org) for your organisation, address, opening hours and FAQs",
+          "Important text in the page itself, not only inside images or videos",
+          "A robots.txt file that does not block search and AI crawlers you want to be found by",
+        ],
+      },
+      {
+        h: "Step 2: Keep your business details identical everywhere",
+        body: [
+          "Your business name, address, phone number, website and category should match exactly on your website, Google Business Profile and every directory. Small differences, such as an old phone number or a shortened address, make it harder for search engines and AI tools to be sure all those listings belong to the same business.",
+          "Start with the listings that already appear on page one when you search for your service in your area. In many Pune and PCMC searches these are directories and job or company profiles, so being listed there also brings direct visibility.",
+        ],
+      },
+      {
+        h: "Step 3: Earn genuine reviews and mentions",
+        body: [
+          "Reviews and third-party mentions are signals you cannot write yourself, which is why they carry weight. Ask real customers for a review after finished work, one at a time and without incentives. Reply to every review politely.",
+          "Mentions in local news, business association pages, partner websites and well-researched \"best of\" lists also help. Never buy fake reviews or post reviews from staff or family accounts: Google removes them, and they can damage trust in your profile.",
+        ],
+      },
+      {
+        h: "Step 4: Publish content that answers real questions",
+        body: [
+          "AI assistants are built to answer questions, so pages that answer questions clearly are easy for them to use. Write down the questions customers ask you on calls and WhatsApp, and answer each one in a short, honest guide: what affects the cost, how long it takes, how to choose a provider, what to prepare.",
+          "Lead with the direct answer, then explain. Keep facts accurate and up to date, avoid exaggerated claims, and link each guide to the service page it relates to.",
+        ],
+      },
+      {
+        h: "Step 5: Check what AI assistants say about you",
+        body: ["Once a month, ask a few assistants the questions your customers would ask, and note what they say:"],
+        bullets: [
+          "\"What does [your business name] do?\", to check that the facts are correct",
+          "\"Best [your service] in Pune\" and \"[your service] near [your area]\", to see whether you are mentioned",
+          "\"[Your business] vs [competitor]\", to see how you are compared",
+        ],
+      },
+      {
+        h: "What not to do",
+        body: [
+          "Avoid shortcuts that try to trick AI tools: hidden text, pages stuffed with city names, copied content, or fake reviews and listings. They can get pages ignored or penalised in search, and they do not build the trust that recommendations depend on. Also be careful with anyone who promises a guaranteed place in ChatGPT or Google answers. No one controls those answers.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "What is GEO (generative engine optimisation)?",
+        a: "GEO is the work of making your business easy for AI assistants such as ChatGPT, Gemini, Perplexity and Google AI Overviews to find, understand and mention correctly. It builds on SEO and focuses on clear facts, consistent listings, reviews, third-party mentions and content that answers questions directly.",
+      },
+      {
+        q: "Is GEO different from SEO?",
+        a: "They overlap heavily. A fast, well-structured website, local SEO, reviews and helpful content help with both. GEO adds extra focus on plain, quotable facts, answer-first FAQs and consistent information across other websites, because AI assistants combine several sources into one answer.",
+      },
+      {
+        q: "How long does it take to appear in AI answers?",
+        a: "There is no fixed timeline. Fixing your website and listings can be done in weeks, but assistants update their sources at different speeds, and recommendations for competitive searches depend on reviews and mentions that build up over months. No one can guarantee a mention.",
+      },
+      {
+        q: "Should I block AI crawlers on my website?",
+        a: "If you want AI assistants to describe and recommend your business, do not block the search and AI crawlers that power them. Businesses with content they do not want reused can choose to block some crawlers, but this can reduce how often they are mentioned.",
+      },
+      {
+        q: "Can Softgress help my business show up in AI search?",
+        a: "Yes. Softgress works on the steps in this guide as part of its SEO, content and website services: website structure and schema, local SEO and Google Business Profile, consistent listings and answer-first content, from its office in Akurdi, Pimpri-Chinchwad.",
       },
     ],
   },

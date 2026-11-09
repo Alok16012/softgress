@@ -4,12 +4,12 @@
 // team size, awards, prices or guaranteed results.
 
 import { departments } from "@/content/departments";
-import type { Faq } from "@/lib/seo";
+import { fitDescription, type Faq } from "@/lib/seo";
 import type { Service } from "@/lib/types";
 
 export const HOME_TITLE = "Software & Digital Marketing Company in Pune | Softgress";
 export const HOME_DESCRIPTION =
-  "Softgress is a software development and digital marketing company in Pimpri-Chinchwad, Pune. Websites, apps, SEO, Google & Meta ads, branding and AI automation for businesses in Pune, Mumbai, Bangalore, India and abroad.";
+  "Software development and digital marketing company in Pimpri-Chinchwad, Pune: websites, apps, SEO, Google & Meta ads, branding and AI automation across India.";
 
 export const homeFaqs: Faq[] = [
   {
@@ -54,7 +54,21 @@ export function serviceTitle(s: Service) {
 }
 
 export function serviceDescription(s: Service) {
-  return `${s.summary} ${serviceSearchName(s)} by Softgress, Pimpri-Chinchwad, Pune, for businesses in Pune, Mumbai, Bangalore, India and abroad. Request a free quote.`;
+  const name = serviceSearchName(s);
+  return fitDescription(
+    `${s.summary} ${name} by Softgress in Pimpri-Chinchwad, Pune, for clients across India and abroad. Free quote.`,
+    `${s.summary} ${name} by Softgress in Pune, for clients across India and abroad.`,
+    `${s.summary} ${name} by Softgress in Pune, India.`,
+  );
+}
+
+export function departmentDescription(description: string) {
+  return fitDescription(
+    `${description} Softgress, Pimpri-Chinchwad, Pune: serving Pune, Mumbai, Bangalore, India and abroad.`,
+    `${description} Softgress, Pimpri-Chinchwad, Pune, India.`,
+    `${description} Softgress, Pune.`,
+    description,
+  );
 }
 
 /** Lower-cases a leading capital mid-sentence, but keeps acronyms such as CMS or UI.  */
