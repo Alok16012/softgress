@@ -3,65 +3,35 @@ import { useState } from "react";
 import clsx from "clsx";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 
-const SERVICES: Record<string, string> = {
-  Website: "built our website",
-  "Online store": "built our online store",
-  "Mobile app": "developed our mobile app",
-  Software: "built our custom software",
-  SEO: "handled our SEO",
-  "Google / Meta ads": "ran our Google and Meta ads",
-  "Social media": "managed our social media marketing",
-  "Branding / design": "did our branding and design",
-  Video: "produced our videos",
-  "AI / WhatsApp": "set up our AI and WhatsApp automation",
-};
+// The questions only jog the visitor's memory. We never write the review for them: Google
+// removes reviews whose text looks alike, and a review must be the customer's own words.
 
-const PLACES: Record<string, string> = {
-  Pune: "in Pune",
-  "Pimpri-Chinchwad": "in Pimpri-Chinchwad",
-  Mumbai: "in Mumbai",
-  Bangalore: "in Bangalore",
-  "Other city": "",
-  "Outside India": "outside India",
-};
-
+const SERVICES = ["Website", "Online store", "Mobile app", "Software", "SEO", "Google / Meta ads", "Social media", "Branding / design", "Video", "AI / WhatsApp"];
+const PLACES = ["Pune", "Pimpri-Chinchwad", "Mumbai", "Bangalore", "Other city", "Outside India"];
 const EXPERIENCES = ["Excellent", "Very good", "Good", "Average", "Poor"];
 const POSITIVE = ["Excellent", "Very good", "Good"];
+const LIKED = ["On-time delivery", "Clear communication", "Great design", "Good support", "More enquiries", "Fair pricing"];
+const IMPROVE = ["Delivery time", "Communication", "Design", "Support", "Results", "Pricing"];
 
-const LIKED: Record<string, string> = {
-  "On-time delivery": "on-time delivery",
-  "Clear communication": "clear communication",
-  "Great design": "great design",
-  "Good support": "good support",
-  "More enquiries": "more enquiries",
-  "Fair pricing": "fair pricing",
-};
+const lower = (xs: string[]) => xs.map((x) => x.toLowerCase());
+const join = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} or ${xs.at(-1)}`);
 
-const IMPROVE: Record<string, string> = {
-  "Delivery time": "delivery time",
-  Communication: "communication",
-  Design: "design",
-  Support: "support",
-  Results: "results",
-  Pricing: "pricing",
-};
-
-const join = (xs: string[]) => (xs.length < 2 ? xs.join("") : `${xs.slice(0, -1).join(", ")} and ${xs.at(-1)}`);
-
-/**
- * Builds one sentence purely from the visitor's own choices (service, place, how it went, what stood
- * out). The visitor can edit it before copying, and always picks the stars on Google.
- */
-function sentence(service: string, place: string, experience: string, points: string[]) {
-  const where = PLACES[place] ? ` for our business ${PLACES[place]}` : "";
-  const parts = [service ? `Softgress ${SERVICES[service]}${where}.` : ""];
-  if (experience) {
-    const positive = POSITIVE.includes(experience);
-    const verdict = experience === "Poor" ? "Not a good experience" : `${experience} experience`;
-    const detail = points.map((p) => (positive ? LIKED[p] : IMPROVE[p])).filter(Boolean);
-    parts.push(detail.length ? `${verdict}${positive ? ": " : ". Could be better: "}${join(detail)}.` : `${verdict}.`);
-  }
-  return parts.filter(Boolean).join(" ");
+/** Questions to answer in their own words, shaped by what the visitor picked. Never review text. */
+function hints(service: string, place: string, experience: string, points: string[]) {
+  const positive = !experience || POSITIVE.includes(experience);
+  const out = [service ? `What did we do for you (your ${service.toLowerCase()}), and what was it for?` : "What did we work on for you?"];
+  if (place && place !== "Other city") out.push(`Is your business ${place === "Outside India" ? "outside India" : `in ${place}`}? You can mention it.`);
+  out.push(
+    points.length
+      ? positive
+        ? `What happened that made ${join(lower(points))} stand out?`
+        : `What should we improve about ${join(lower(points))}?`
+      : positive
+        ? "What went well, in your own words?"
+        : "What could have been better?",
+  );
+  out.push("Would you recommend Softgress, and to whom?");
+  return out;
 }
 
 function Option({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
@@ -95,11 +65,6 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
   const positive = !experience || POSITIVE.includes(experience);
   const next = (to: number) => setTimeout(() => setStep(to), 180);
 
-  function finish(p = points) {
-    setText(sentence(service, place, experience, p));
-    setStep(4);
-  }
-
   async function go() {
     if (text.trim()) {
       try {
@@ -111,7 +76,7 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
     window.location.href = reviewUrl;
   }
 
-  const titles = ["Which service did you use?", "Where is your business?", "How was your experience?", positive ? "What stood out? (pick up to 2)" : "What could be better? (pick up to 2)", "Your review"];
+  const titles = ["Which service did you use?", "Where is your business?", "How was your experience?", positive ? "What stood out? (pick up to 2)" : "What could be better? (pick up to 2)", "Write it in your own words"];
 
   return (
     <section className="mt-6 rounded-[28px] bg-white p-5 text-ink shadow-xl sm:p-7">
@@ -135,7 +100,7 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
 
       {step === 0 && (
         <div className="mt-5 grid grid-cols-2 gap-2.5">
-          {Object.keys(SERVICES).map((s) => (
+          {SERVICES.map((s) => (
             <Option key={s} label={s} active={service === s} onClick={() => { setService(s); next(1); }} />
           ))}
         </div>
@@ -143,7 +108,7 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
 
       {step === 1 && (
         <div className="mt-5 grid grid-cols-2 gap-2.5">
-          {Object.keys(PLACES).map((p) => (
+          {PLACES.map((p) => (
             <Option key={p} label={p} active={place === p} onClick={() => { setPlace(p); next(2); }} />
           ))}
         </div>
@@ -160,7 +125,7 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
       {step === 3 && (
         <>
           <div className="mt-5 grid grid-cols-2 gap-2.5">
-            {Object.keys(positive ? LIKED : IMPROVE).map((p) => (
+            {(positive ? LIKED : IMPROVE).map((p) => (
               <Option
                 key={p}
                 label={p}
@@ -169,7 +134,7 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
               />
             ))}
           </div>
-          <button type="button" onClick={() => finish()} className="pill pill-dark mt-6 min-h-[56px] w-full justify-center text-[16px]">
+          <button type="button" onClick={() => setStep(4)} className="pill pill-dark mt-6 min-h-[56px] w-full justify-center text-[16px]">
             {points.length ? "Next" : "Skip"} <ArrowRight size={16} aria-hidden />
           </button>
         </>
@@ -177,21 +142,31 @@ export function ReviewClient({ reviewUrl }: { reviewUrl: string }) {
 
       {step === 4 && (
         <>
-          <label className="mt-3 block text-[15px] text-steel" htmlFor="review-text">
-            Edit it or add anything you like.
+          <p className="mt-3 text-[15px] text-steel">A few lines are enough. Some ideas:</p>
+          <ul className="mt-2 space-y-1.5 text-[15px] leading-snug text-ink">
+            {hints(service, place, experience, points).map((h) => (
+              <li key={h} className="flex gap-2">
+                <span aria-hidden className="text-teal-dark">•</span>
+                {h}
+              </li>
+            ))}
+          </ul>
+          <label className="sr-only" htmlFor="review-text">
+            Your review
           </label>
           <textarea
             id="review-text"
             value={text}
             onChange={(e) => setText(e.target.value)}
+            placeholder="Your review, in your own words…"
             maxLength={1000}
             rows={4}
-            className="mt-2 w-full resize-none rounded-2xl border-2 border-ink/10 px-4 py-3 text-[16px] leading-relaxed outline-none focus:border-teal-dark"
+            className="mt-4 w-full resize-none rounded-2xl border-2 border-ink/10 px-4 py-3 text-[16px] leading-relaxed outline-none focus:border-teal-dark"
           />
           <button type="button" onClick={go} className="pill pill-dark mt-5 min-h-[56px] w-full justify-center text-[16px]">
-            Copy &amp; review on Google <ArrowRight size={16} aria-hidden />
+            {text.trim() ? "Copy & review on Google" : "Review on Google"} <ArrowRight size={16} aria-hidden />
           </button>
-          <p className="mt-3 text-center text-[14px] text-steel">Paste it on Google and choose your stars.</p>
+          <p className="mt-3 text-center text-[14px] text-steel">{text.trim() ? "Paste it on Google and choose your stars." : "You can also write it directly on Google and choose your stars."}</p>
         </>
       )}
     </section>
