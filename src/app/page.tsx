@@ -6,7 +6,9 @@ import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { enquiryGroups } from "@/lib/enquiry";
 import { catalogOnly } from "@/lib/env";
 import { getPublicConfig } from "@/lib/server";
-import { DeptArt, ProjectArt } from "@/components/site/Art";
+import { DeptArt } from "@/components/site/Art";
+import { WorkCard } from "@/components/site/WorkCard";
+import { featuredProjects, portfolio } from "@/content/portfolio";
 import { ServiceList } from "@/components/site/ServiceList";
 import { HomeHero } from "@/components/site/HomeHero";
 import { SectionTitle, SiteFooter } from "@/components/site/SiteChrome";
@@ -23,9 +25,8 @@ export const metadata: Metadata = pageMeta({ title: HOME_TITLE, description: HOM
 
 /** Server-rendered company overview: departments, every service, process and work. */
 async function Directory() {
-  const { departments, services, projects } = await loadCatalog();
+  const { departments, services } = await loadCatalog();
   const depts = departments.filter((d) => d.slug !== "reception" && d.active);
-  const deptOf = (serviceSlug?: string) => services.find((s) => s.slug === serviceSlug)?.departmentSlug ?? "strategy";
   const { contactEmail, whatsappNumber } = getPublicConfig();
   return (
     <>
@@ -143,22 +144,16 @@ async function Directory() {
               <SectionTitle id="samples" href="/work">
                 Work
               </SectionTitle>
-              <p className="mt-3 text-steel text-lg">Sample concepts, clearly labelled, until approved client case studies are published.</p>
+              <p className="mt-3 text-steel text-lg">{portfolio.length} ERP, CRM, app, store and website projects. Open any one and try its live demo.</p>
             </div>
             <Link href="/work" className="pill pill-dark">
               See all work
             </Link>
           </div>
-          <ul className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {projects.map((p) => (
-              <li key={p.slug} className="group">
-                <div className="relative">
-                  <ProjectArt slug={p.slug} departmentSlug={deptOf(p.serviceSlugs[0])} className="aspect-[4/3]" />
-                  {p.isSample && <span className="badge badge-sample absolute left-4 top-4">SAMPLE CONCEPT</span>}
-                </div>
-                <p className="mt-5 eyebrow text-ink/50">{p.industry}</p>
-                <h3 className="mt-2 font-display text-xl font-bold text-ink">{p.title.replace(/^Sample concept:\s*/i, "")}</h3>
-                <p className="mt-2 text-[15px] text-steel">{p.summary}</p>
+          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredProjects.map((p) => (
+              <li key={p.slug}>
+                <WorkCard project={p} />
               </li>
             ))}
           </ul>

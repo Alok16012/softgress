@@ -135,7 +135,7 @@ The workflow shown in the virtual lab uses synthetic demo data.`,
     id: "kb-strategy-portfolio",
     departmentSlug: "strategy",
     title: "Portfolio and case studies",
-    body: `Only case studies approved and published by Softgress may be presented as client work. At the moment the project gallery shows sample concept projects, clearly labelled as samples, created to demonstrate capabilities; they are not client engagements and carry no results claims.
+    body: `The Work page (/work) shows the software projects Softgress has delivered: ERP, CRM, mobile apps, online stores, websites, AI assistants and platforms, grouped by what a client needs. Most projects have a live demo with sample data that visitors can open and click through, with demo logins shown on the project page. Client names are shown only as a description (for example "AC service company · New Delhi"); no results or revenue numbers are claimed.
 If a visitor asks for client references, explain that references can be discussed with the team during a consultation.`,
   },
   {

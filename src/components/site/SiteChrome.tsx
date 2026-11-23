@@ -207,7 +207,7 @@ export function SiteFooter({ cta = true }: { cta?: boolean }) {
               <Link href="/about" className="hover:text-teal">About us</Link>
               <Link href="/about#founder-corner" className="hover:text-teal">Founder corner</Link>
               <Link href="/services" className="hover:text-teal">All services</Link>
-              <Link href="/work" className="hover:text-teal">Work &amp; samples</Link>
+              <Link href="/work" className="hover:text-teal">Our work</Link>
               <Link href="/locations" className="hover:text-teal">Locations</Link>
               <Link href="/blog" className="hover:text-teal">Insights</Link>
               <Link href="/contact" className="hover:text-teal">Request a quote or consultation</Link>

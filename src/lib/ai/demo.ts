@@ -47,9 +47,9 @@ const PHRASES = {
     hi: "समय-सीमा स्कोपिंग के बाद प्रस्ताव में तय होती है, इसलिए मैं कोई तारीख़ का वादा नहीं कर सकता। यह मुख्य रूप से स्कोप, इंटीग्रेशन, कंटेंट की तैयारी और अप्रूवल की गति पर निर्भर करती है।",
   },
   portfolio: {
-    en: "The project gallery in our strategy room currently shows sample concept projects, clearly labelled as samples. They're not client engagements and make no results claims. Client references can be discussed with the team in a consultation.",
-    hinglish: "Strategy room ki project gallery mein abhi sample concept projects hain, clearly 'sample' label ke saath. Yeh client projects nahi hain aur inme koi results claim nahi kiye gaye. Client references ke baare mein consultation mein team se baat kar sakte hain.",
-    hi: "स्ट्रैटेजी रूम की प्रोजेक्ट गैलरी में अभी सैंपल कॉन्सेप्ट प्रोजेक्ट हैं, जिन पर साफ़ 'सैंपल' लेबल है। ये क्लाइंट प्रोजेक्ट नहीं हैं। क्लाइंट रेफ़रेंस के बारे में कंसल्टेशन में बात की जा सकती है।",
+    en: "Our Work page (/work) shows the ERP, CRM, app, online store and website projects we've delivered. Most have a live demo with sample data you can open and click through. Client references can be discussed with the team in a consultation.",
+    hinglish: "Hamare Work page (/work) pe hamare banaye ERP, CRM, app, online store aur website projects hain. Zyada-tar ka live demo hai sample data ke saath, jise aap khol ke try kar sakte hain. Client references ke baare mein consultation mein team se baat kar sakte hain.",
+    hi: "हमारे Work पेज (/work) पर हमारे बनाए ERP, CRM, ऐप, ऑनलाइन स्टोर और वेबसाइट प्रोजेक्ट हैं। ज़्यादातर का सैंपल डेटा वाला लाइव डेमो है, जिसे आप खोलकर आज़मा सकते हैं। क्लाइंट रेफ़रेंस के बारे में कंसल्टेशन में बात की जा सकती है।",
   },
   booking: {
     en: "You can choose Request a Quote, Book a Consultation, Request a Callback or Submit a Project Brief from the panel. A consultation is confirmed only when a connected calendar returns a real slot; otherwise your preferred time is saved as pending confirmation and the team confirms it. You'll get a reference code either way.",
