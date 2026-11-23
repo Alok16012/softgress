@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 490" width="540" height="490">
+  <!-- CampusPath Travel (fictional demo brand) -->
+  <circle cx="270" cy="190" r="130" fill="#5BBDE0"/>
+  <path d="M190 230 L350 150 L300 250 L270 210 Z" fill="#ffffff"/>
+  <text x="270" y="420" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700" fill="#5BBDE0" letter-spacing="2">CAMPUSPATH</text>
+  <text x="270" y="470" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#5BBDE0" letter-spacing="8">TRAVEL</text>
+</svg>

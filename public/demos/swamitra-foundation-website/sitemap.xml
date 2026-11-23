@@ -1,0 +1,1011 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://civicrights.example.com/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/index.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/index.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/about.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/about.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/advisory-council.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/advisory-council.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/advisory-council.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/advisory-council.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/advisory-council.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/advisory-council.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/annual-reports.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/annual-reports.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/annual-reports.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/annual-reports.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/annual-reports.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/annual-reports.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/careers.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/careers.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/careers.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/careers.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/careers.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/community-legal-awareness-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/community-legal-awareness-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/community-legal-awareness-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/community-legal-awareness-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/community-legal-awareness-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/community-legal-awareness-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/constitutional-literacy-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/constitutional-literacy-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/constitutional-literacy-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/constitutional-literacy-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/constitutional-literacy-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/constitutional-literacy-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/contact.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/contact.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/core-values.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/core-values.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/core-values.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/core-values.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/core-values.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/core-values.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/course.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/course.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/course.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/course.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/course.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/course.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/csr-collaboration.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/csr-collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/csr-collaboration.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/csr-collaboration.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/csr-collaboration.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/csr-collaboration.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/donate.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/donate.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/donate.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/donate.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/donate.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/donate.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/download-centre.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/download-centre.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/download-centre.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/download-centre.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/download-centre.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/download-centre.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/events-calendar.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/events-calendar.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/events-calendar.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/events-calendar.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/events-calendar.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/events-calendar.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/featured-publications.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/featured-publications.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/featured-publications.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/featured-publications.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/featured-publications.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/featured-publications.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/featured-resources.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/featured-resources.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/featured-resources.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/featured-resources.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/featured-resources.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/featured-resources.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/get-involved.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/get-involved.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/get-involved.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/get-involved.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/get-involved.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/get-involved.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/governance.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/governance.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/governance.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/governance.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/governance.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/governance.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/higher-legal-education-project.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/higher-legal-education-project.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/higher-legal-education-project.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/higher-legal-education-project.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/higher-legal-education-project.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/higher-legal-education-project.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/internship.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/internship.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/internship.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/internship.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/internship.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/internship.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/latest-resources.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/latest-resources.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/latest-resources.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/latest-resources.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/latest-resources.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/latest-resources.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/leadership-development.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/leadership-development.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/leadership-development.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/leadership-development.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/leadership-development.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/leadership-development.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/leadership.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/leadership.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/leadership.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/leadership.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/leadership.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/leadership.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/legal-awareness-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/legal-awareness-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/legal-awareness-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/legal-awareness-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/legal-awareness-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/legal-awareness-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/legal.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/legal.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/legal.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/legal.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/media-contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/media-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/media-contact.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/media-contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/media-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/media-contact.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/media-gallery.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/media-gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/media-gallery.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/media-gallery.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/media-gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/media-gallery.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/membership.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/membership.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/membership.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/membership.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/membership.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/membership.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/multimedia-library.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/multimedia-library.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/multimedia-library.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/multimedia-library.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/multimedia-library.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/multimedia-library.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/national-frameworks-and-standards.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-frameworks-and-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-frameworks-and-standards.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/national-frameworks-and-standards.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-frameworks-and-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-frameworks-and-standards.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/national-legal-education-mission.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-legal-education-mission.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-legal-education-mission.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/national-legal-education-mission.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-legal-education-mission.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-legal-education-mission.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/national-safe-school-framework.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-safe-school-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-safe-school-framework.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/national-safe-school-framework.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-safe-school-framework.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-safe-school-framework.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/national-safe-workplace-standards.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-safe-workplace-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-safe-workplace-standards.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/national-safe-workplace-standards.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/national-safe-workplace-standards.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/national-safe-workplace-standards.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/news.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/news.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/news.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/objectives.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/objectives.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/objectives.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/objectives.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/objectives.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/objectives.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/ongoing-projects.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/ongoing-projects.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/ongoing-projects.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/ongoing-projects.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/ongoing-projects.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/ongoing-projects.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/our-approach.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/our-approach.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/our-approach.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/our-approach.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/our-approach.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/our-approach.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/our-story.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/our-story.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/our-story.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/our-story.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/our-story.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/our-story.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/partnership-opportunities.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/partnership-opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/partnership-opportunities.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/partnership-opportunities.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/partnership-opportunities.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/partnership-opportunities.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/pocso-awareness-initiative.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/pocso-awareness-initiative.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/pocso-awareness-initiative.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/pocso-awareness-initiative.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/pocso-awareness-initiative.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/pocso-awareness-initiative.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/pocso-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/pocso-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/pocso-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/pocso-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/pocso-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/pocso-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/policies.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/policies.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/policies.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/policies.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/policies.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/policies.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/posh-capacity-building.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/posh-capacity-building.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/posh-capacity-building.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/posh-capacity-building.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/posh-capacity-building.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/posh-capacity-building.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/posh-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/posh-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/posh-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/posh-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/posh-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/posh-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/press-kit.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/press-kit.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/press-kit.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/press-kit.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/press-kit.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/press-kit.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/press-releases.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/press-releases.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/press-releases.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/press-releases.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/press-releases.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/press-releases.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/program.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/program.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/program.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/program.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/program.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/program.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/programs.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/programs.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/programs.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/programs.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/programs.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/programs.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/request-a-resource.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/request-a-resource.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/request-a-resource.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/request-a-resource.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/request-a-resource.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/request-a-resource.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research-and-policy-centre.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-and-policy-centre.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-and-policy-centre.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research-and-policy-centre.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-and-policy-centre.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-and-policy-centre.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research-collaborations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-collaborations.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-collaborations.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research-collaborations.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-collaborations.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-collaborations.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research-faqs.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-faqs.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-faqs.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research-faqs.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-faqs.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-faqs.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research-news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-news.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-news.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research-news.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-news.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-news.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research-objectives.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-objectives.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-objectives.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research-objectives.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-objectives.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-objectives.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research-partners.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-partners.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-partners.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research-partners.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-partners.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-partners.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research-themes.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-themes.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-themes.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research-themes.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research-themes.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research-themes.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/research.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/research.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/research.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/resource-faqs.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resource-faqs.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resource-faqs.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/resource-faqs.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resource-faqs.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resource-faqs.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/resource-library.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resource-library.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resource-library.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/resource-library.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resource-library.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resource-library.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/resource-repository.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resource-repository.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resource-repository.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/resource-repository.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resource-repository.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resource-repository.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/resources.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resources.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/resources.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/resources.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/resources.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/school-legal-education-project.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/school-legal-education-project.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/school-legal-education-project.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/school-legal-education-project.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/school-legal-education-project.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/school-legal-education-project.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/school-safety-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/school-safety-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/school-safety-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/school-safety-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/school-safety-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/school-safety-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/surveys-and-reports.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/surveys-and-reports.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/surveys-and-reports.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/surveys-and-reports.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/surveys-and-reports.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/surveys-and-reports.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/teacher-capacity-building.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/teacher-capacity-building.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/teacher-capacity-building.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/teacher-capacity-building.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/teacher-capacity-building.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/teacher-capacity-building.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/teacher-education-and-capacity-building.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/teacher-education-and-capacity-building.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/teacher-education-and-capacity-building.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/teacher-education-and-capacity-building.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/teacher-education-and-capacity-building.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/teacher-education-and-capacity-building.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/train-the-trainer-tot.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/train-the-trainer-tot.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/train-the-trainer-tot.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/train-the-trainer-tot.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/train-the-trainer-tot.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/train-the-trainer-tot.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/transparency-and-accountability.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/transparency-and-accountability.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/transparency-and-accountability.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/transparency-and-accountability.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/transparency-and-accountability.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/transparency-and-accountability.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/vision-and-mission.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/vision-and-mission.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/vision-and-mission.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/vision-and-mission.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/vision-and-mission.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/vision-and-mission.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/volunteer-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/volunteer-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/volunteer-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/volunteer-programme.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/volunteer-programme.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/volunteer-programme.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/workplace-safety-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/workplace-safety-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/workplace-safety-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://civicrights.example.com/hi/workplace-safety-training.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://civicrights.example.com/workplace-safety-training.html"/>
+    <xhtml:link rel="alternate" hreflang="hi" href="https://civicrights.example.com/hi/workplace-safety-training.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
